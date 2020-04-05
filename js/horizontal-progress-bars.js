@@ -18,9 +18,9 @@ var app = (function() {
         return output;
     }
 
-    var warriorTrainTime = 600;
-    var rogueTrainTime = 600;
-    var casterTrainTime = 600;
+    var warriorTrainTime = 1;
+    var rogueTrainTime = 6;
+    var casterTrainTime = 6;
     $('.time', '.warrior-train').html(secondsToTime(warriorTrainTime));
     $('.time', '.rogue-train').html(secondsToTime(rogueTrainTime));
     $('.time', '.caster-train').html(secondsToTime(casterTrainTime));
@@ -29,7 +29,7 @@ var app = (function() {
         var $training = $(this);
         if ($(".train-progress", $training).css("width") == "240px") {
             // $(".train-progress", $training).css("width", 0);
-            $(".time", $training).removeClass("blinking");
+            $training.removeClass("blinking");
             $(".name", $training).html("Train ");
             $(".train-progress", $training).addClass("progressReduce");
         } else if ($(".train-progress", $training).css("width") == "0px") {
@@ -60,7 +60,7 @@ var app = (function() {
                     clearInterval(id);
                     $(".fa-clock", $training).removeClass("fa-spin");
                     $(".name", $training).html("Complete ");
-                    $(".time", $training).addClass("blinking");
+                    $training.addClass("blinking");
                     $training.css("cursor", "pointer");
                 } else {
                     width = ((i*100)/(startTime*1000));

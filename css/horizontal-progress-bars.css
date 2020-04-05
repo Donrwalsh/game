@@ -56,14 +56,12 @@
   }
 
   .blinking{
-    animation:blinkingText .9s infinite;
+    animation:blinking 1.5s infinite;
 }
-@keyframes blinkingText{
-    0%{     color: #000;    }
-    49%{    color: #000; }
-    60%{    color: transparent; }
-    99%{    color:transparent;  }
-    100%{   color: #000;    }
+@keyframes blinking{
+    0%{     opacity: 100%;    }
+    50%{    opacity: 45%; }
+    100%{     opacity: 100%;    }
 }
 
 .progressReduce{
