@@ -1,0 +1,82 @@
+body {
+    font-family: "Lucida Console", Monaco, monospace;
+}
+
+.training {
+    cursor: pointer;
+    background-color: lightgray;
+    width: 240px;
+    border-radius: 5px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.display {
+    position:absolute;
+    z-index: 2;
+}
+
+.fa-clock {
+    margin-left: 10px;
+}
+
+.fa-circle-notch {
+    margin-left: 10px;
+    display: none;
+    width: fit-content;
+}
+
+.train-progress {
+    border-radius:5px;
+    height:30px;
+    position: absolute;
+    z-index: 1;
+    max-width:240px;
+}
+
+.warrior-train .train-progress {
+    background-color:red;
+}
+
+.rogue-train .train-progress {
+    background-color:green;
+}
+
+.caster-train .train-progress {
+    background-color:skyblue;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Opera and Firefox */
+  }
+
+  .blinking{
+    animation:blinkingText .9s infinite;
+}
+@keyframes blinkingText{
+    0%{     color: #000;    }
+    49%{    color: #000; }
+    60%{    color: transparent; }
+    99%{    color:transparent;  }
+    100%{   color: #000;    }
+}
+
+.progressReduce{
+    animation-name: myAnimation;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards
+}
+@keyframes myAnimation{
+    0%{
+      width: 240px;
+    }
+    100%{
+      width:0px;
+    }
+  }
