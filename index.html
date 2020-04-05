@@ -1,0 +1,218 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/3dfeca0aaa.js" crossorigin="anonymous"></script>
+
+  <title>Game</title>
+  <meta name="description" content="Game">
+  <meta name="author" content="Donrwalsh">
+
+  <link rel="stylesheet" href="css/horizontal-progress-bars.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="right-bar">
+        <div class="character-warrior" style="display:inline-block">
+            <div class="half-right-bar">
+                <h1 class="classname">Warrior</h1>
+            </div>
+            <div class="half-right-bar center">
+                <strong>Level</strong><br/> 
+                <span>0</span>
+            </div>
+            
+            <div class="training warrior-train noselect">
+                <div class="display">
+                    <i class="far fa-clock"></i>
+                    <span class="time"></span>
+                    <span class="name">Train </span>
+                </div>
+                <div class="train-progress"></div>
+            </div>
+            <div style="display:inline-block">
+                <div class="left-stat-column">
+                    <div class="red-icon icon">
+                        <i class="fas fa-fist-raised"></i>
+                    </div>
+                    <div class="stat">
+                        <span>3</span><br/>
+                    </div>
+                    <div class="blue-icon icon">
+                        <i class="fas fa-hat-wizard"></i>
+                    </div>
+                    <div class="stat">
+                        <span>1</span><br/>
+                    </div>
+                    <div class="green-icon icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="stat">
+                        <span>1</span>
+                    </div>
+                </div>
+                <div class="left-stat-column">
+                    <div class="red-icon icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="stat">
+                        <span>3</span><br/>
+                    </div>
+                    <div class="blue-icon icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="stat">
+                        <span>2</span><br/>
+                    </div>
+                    <div class="green-icon icon">
+                        <i class="fas fa-dice-d20"></i>
+                    </div>
+                    <div class="stat">
+                        <span>2</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="warrior-level level-up noselect">
+            <span>Level Up</span><br/>
+            <span>10 exp</span>
+        </div>
+
+        <div class="character-caster" style="display:inline-block">
+            <div class="half-right-bar">
+                <h1 class="classname">Caster</h1>
+            </div>
+            <div class="half-right-bar center">
+                <strong>Level</strong><br/> 
+                <span>0</span>
+            </div>
+            
+            <div class="training caster-train noselect">
+                <div class="display">
+                    <i class="far fa-clock"></i>
+                    <span class="time"></span>
+                    <span class="name">Train </span>
+                </div>
+                <div class="train-progress"></div>
+            </div>
+            <div style="display:inline-block">
+                <div class="left-stat-column">
+                    <div class="red-icon icon">
+                        <i class="fas fa-fist-raised"></i>
+                    </div>
+                    <div class="stat">
+                        <span>1</span><br/>
+                    </div>
+                    <div class="blue-icon icon">
+                        <i class="fas fa-hat-wizard"></i>
+                    </div>
+                    <div class="stat">
+                        <span>3</span><br/>
+                    </div>
+                    <div class="green-icon icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="stat">
+                        <span>2</span>
+                    </div>
+                </div>
+                <div class="left-stat-column">
+                    <div class="red-icon icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="stat">
+                        <span>2</span><br/>
+                    </div>
+                    <div class="blue-icon icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="stat">
+                        <span>3</span><br/>
+                    </div>
+                    <div class="green-icon icon">
+                        <i class="fas fa-dice-d20"></i>
+                    </div>
+                    <div class="stat">
+                        <span>1</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="caster-level level-up noselect">
+            <span>Level Up</span><br/>
+            <span>10 exp</span>
+        </div>
+
+        <div class="character-rogue" style="display:inline-block">
+            <div class="half-right-bar">
+                <h1 class="classname">Rogue</h1>
+            </div>
+            <div class="half-right-bar center">
+                <strong>Level</strong><br/> 
+                <span>0</span>
+            </div>
+            
+            <div class="training rogue-train noselect">
+                <div class="display">
+                    <i class="far fa-clock"></i>
+                    <span class="time"></span>
+                    <span class="name">Train </span>
+                </div>
+                <div class="train-progress"></div>
+            </div>
+            <div style="display:inline-block">
+                <div class="left-stat-column">
+                    <div class="red-icon icon">
+                        <i class="fas fa-fist-raised"></i>
+                    </div>
+                    <div class="stat">
+                        <span>2</span><br/>
+                    </div>
+                    <div class="blue-icon icon">
+                        <i class="fas fa-hat-wizard"></i>
+                    </div>
+                    <div class="stat">
+                        <span>2</span><br/>
+                    </div>
+                    <div class="green-icon icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="stat">
+                        <span>3</span>
+                    </div>
+                </div>
+                <div class="left-stat-column">
+                    <div class="red-icon icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="stat">
+                        <span>1</span><br/>
+                    </div>
+                    <div class="blue-icon icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="stat">
+                        <span>1</span><br/>
+                    </div>
+                    <div class="green-icon icon">
+                        <i class="fas fa-dice-d20"></i>
+                    </div>
+                    <div class="stat">
+                        <span>3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rogue-level level-up noselect">
+            <span>Level Up</span><br/>
+            <span>10 exp</span>
+        </div>
+            
+    </div>
+    
+  <script src="js/horizontal-progress-bars.js"></script>
+</body>
+</html>

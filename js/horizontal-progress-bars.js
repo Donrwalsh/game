@@ -18,9 +18,9 @@ var app = (function() {
         return output;
     }
 
-    var warriorTrainTime = 5;
-    var rogueTrainTime = 60;
-    var casterTrainTime = 60;
+    var warriorTrainTime = 600;
+    var rogueTrainTime = 600;
+    var casterTrainTime = 600;
     $('.time', '.warrior-train').html(secondsToTime(warriorTrainTime));
     $('.time', '.rogue-train').html(secondsToTime(rogueTrainTime));
     $('.time', '.caster-train').html(secondsToTime(casterTrainTime));

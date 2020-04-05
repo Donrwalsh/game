@@ -1,0 +1,101 @@
+body {
+    font-family: "Lucida Console", Monaco, monospace;
+}
+
+.right-bar {
+    float: right;
+    width: 360px;
+}
+
+.half-right-bar {
+    width:160px;
+    display:inline-block;
+}
+
+.center {
+    text-align: center;
+}
+
+.character-warrior {
+    border-bottom: 3px solid red;
+    border-top: 3px dashed red;
+    border-left: 3px dashed red;
+}
+
+.character-rogue {
+    border-bottom: 3px solid green;
+    border-top: 3px dashed green;
+    border-left: 3px dashed green;
+}
+
+.character-caster {
+    border-bottom: 3px solid skyblue;
+    border-top: 3px dashed skyblue;
+    border-left: 3px dashed skyblue;
+}
+
+.classname {
+    margin-top: .5em;
+    margin-bottom: .5em;
+    margin-left: .5em;
+}
+
+.level {
+    padding-bottom:1em;
+    padding-left: .5em;
+}
+
+.blue-icon {
+    color: skyblue;
+}
+
+.red-icon {
+    color: red;
+}
+
+.green-icon {
+    color: green;
+}
+
+.icon {
+    padding-left:.5em;
+    display: inline-block;
+    width: 16px;
+    text-align: center;
+}
+
+.stat {
+    display: inline-block;
+    line-height: 32px;
+    width: 125px;
+}
+
+.left-stat-column {
+    width: 160px;
+    display:inline-block;
+}
+
+.level-up {
+    height: 3em;
+    margin-bottom:1.5em;
+    width: 333px;
+    border-radius: 0px 0px 15px 15px;
+    text-align:center;
+    cursor:pointer;
+}
+
+.level-up span {
+    line-height: 1.5em;
+}
+
+.warrior-level {
+    background-color: red;
+}
+
+.rogue-level {
+    background-color: green;
+}
+
+.caster-level {
+    background-color: skyblue;
+}

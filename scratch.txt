@@ -1,0 +1,15 @@
+Horizontal Progress Bar
+
+<Icon> <Time> <Readout>
+
+States:
+Inactive -> Needs click to begin
+Active -> In progress
+Done -> Ready to be claimed
+
+Background fill color
+Stateful display details
+width of container
+function/action upon completion
+
+Storage concerns: maxWidth, interval counter
