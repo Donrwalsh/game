@@ -4,6 +4,14 @@
 
     Game.HorizontalProgressBars = (function() {
 
+        $('.button-plus').click(function() {
+            core.updateExp(10000);
+        });
+
+        $('.button-minus').click(function() {
+            core.updateExp(-10000);
+        });
+
         var warriorTrainTime = 1;
         var rogueTrainTime = 6;
         var casterTrainTime = 6;
@@ -70,8 +78,5 @@
 
         };
     })();
-
-    console.log(Game.getExperiencePoints());
-    core.doSomething();
 
 })(window, jQuery, Game.Utils, Game.Core);

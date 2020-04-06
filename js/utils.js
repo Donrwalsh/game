@@ -20,8 +20,13 @@
             return output;
         };
 
+        var formatNumber = function(number) {
+            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        };
+
         return {
-            secondsToTime : secondsToTime
+            secondsToTime : secondsToTime,
+            formatNumber : formatNumber
         };
 
     }();
