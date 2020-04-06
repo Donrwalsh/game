@@ -1,45 +1,18 @@
-var app = (function() {
+(function(window, $, utils, core) {
 
-    function secondsToTime(secs)
-    {
-        secs = Math.round(secs);
-        var hours = Math.floor(secs / (60 * 60));
-    
-        var divisor_for_minutes = secs % (60 * 60);
-        var minutes = Math.floor(divisor_for_minutes / 60);
-    
-        var divisor_for_seconds = divisor_for_minutes % 60;
-        var seconds = Math.ceil(divisor_for_seconds);
-        if (seconds.toString().length == 1) {
-            seconds = "0" + seconds;
-        }
-    
-        var output = minutes + ":" + seconds;
-        return output;
-    }
 
-    var warriorTrainTime = 1;
-    var rogueTrainTime = 6;
-    var casterTrainTime = 6;
-    $('.time', '.warrior-train').html(secondsToTime(warriorTrainTime));
-    $('.time', '.rogue-train').html(secondsToTime(rogueTrainTime));
-    $('.time', '.caster-train').html(secondsToTime(casterTrainTime));
 
-    $(".training").click(function() {
-        var $training = $(this);
-        if ($(".train-progress", $training).css("width") == "240px") {
-            // $(".train-progress", $training).css("width", 0);
-            $training.removeClass("blinking");
-            $(".name", $training).html("Train ");
-            $(".train-progress", $training).addClass("progressReduce");
-        } else if ($(".train-progress", $training).css("width") == "0px") {
-            $(".train-progress", $training).removeClass("progressReduce");
-            $(".train-progress", $training).css("width", "0px");
-            $training.css("cursor", "default");
-            $(".name", $training).html("Training ");
-            $(".fa-clock", $training).addClass("fa-spin");
-            var width = 0;
-            var i = 0;
+    Game.HorizontalProgressBars = (function() {
+
+        var warriorTrainTime = 1;
+        var rogueTrainTime = 6;
+        var casterTrainTime = 6;
+        $('.time', '.warrior-train').html(utils.secondsToTime(warriorTrainTime));
+        $('.time', '.rogue-train').html(utils.secondsToTime(rogueTrainTime));
+        $('.time', '.caster-train').html(utils.secondsToTime(casterTrainTime));
+
+        $(".training").click(function() {
+            var $training = $(this);
             var startTime;
             if ($training.hasClass("warrior-train")) {
                 startTime = warriorTrainTime;
@@ -48,47 +21,57 @@ var app = (function() {
             } else if ($training.hasClass("caster-train")) {
                 startTime = casterTrainTime;
             }
-            var maxWidth = 240;
-            var id = setInterval(frame, 100, startTime, maxWidth);
-            function frame(time) {
-                i++;
-                if (i % 10 == 0) {
-                    time = time - i / 10;
-                    $('.time', $training).html(secondsToTime(time));
-                }
-                if (width >= 1) {
-                    clearInterval(id);
-                    $(".fa-clock", $training).removeClass("fa-spin");
-                    $(".name", $training).html("Complete ");
-                    $training.addClass("blinking");
-                    $training.css("cursor", "pointer");
-                } else {
-                    width = ((i*100)/(startTime*1000));
-                    $(".train-progress", $training).css("width", width * maxWidth );
+            if ($(".train-progress", $training).css("width") == "240px") {
+                // $(".train-progress", $training).css("width", 0);
+                $training.removeClass("blinking");
+                $(".name", $training).html("Train ");
+                $(".train-progress", $training).addClass("progressReduce");
+                $('.time', $training).html(utils.secondsToTime(startTime));
+            } else if ($(".train-progress", $training).css("width") == "0px") {
+                $(".train-progress", $training).removeClass("progressReduce");
+                $(".train-progress", $training).css("width", "0px");
+                $training.css("cursor", "default");
+                $(".name", $training).html("Training ");
+                $(".fa-clock", $training).addClass("fa-spin");
+                var width = 0;
+                var i = 0;
+                var maxWidth = 240;
+                var id = setInterval(frame, 100, startTime, maxWidth);
+                function frame(time) {
+                    i++;
+                    if (i % 10 == 0) {
+                        time = time - i / 10;
+                        $('.time', $training).html(utils.secondsToTime(time));
+                    }
+                    if (width >= 1) {
+                        clearInterval(id);
+                        $(".fa-clock", $training).removeClass("fa-spin");
+                        $(".name", $training).html("Complete ");
+                        $training.addClass("blinking");
+                        $training.css("cursor", "pointer");
+                    } else {
+                        width = ((i*100)/(startTime*1000));
+                        $(".train-progress", $training).css("width", width * maxWidth );
+                    }
                 }
             }
-        }
-    });
+        });
 
-    var id = 0;
+        var id = 0;
 
-    return {
-        next: function() {
-            return id++;
-        },
+        return {
+            next: function() {
+                return id++;
+            },
 
-        reset: function() {
-            id = 0;
-        }
+            reset: function() {
+                id = 0;
+            }
 
-    };
-})();
+        };
+    })();
 
+    console.log(Game.getExperiencePoints());
+    core.doSomething();
 
-
-console.log(
-    app.next(),
-    app.next(),
-    app.reset(),
-    app.next()
-)
+})(window, jQuery, Game.Utils, Game.Core);
