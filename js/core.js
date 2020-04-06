@@ -5,12 +5,16 @@
         var updateExpDisplay = function(start, end) {
             var range = end - start;
             var current = start;
-            var increment = (range / 100);
+            var increment = range / 100;
+            var counter = 0;
             var timer = setInterval(function() {
+                counter++;
                 current += increment;
-                $('.exp-value').html(utils.formatNumber(current));
-                if (current == end) {
+                cleanCurrent = Math.floor(current);
+                $('.exp-value').html(utils.formatNumber(cleanCurrent));
+                if (cleanCurrent == end || counter == 100) {
                     clearInterval(timer);
+                    $('.exp-value').html(utils.formatNumber(Game.getExperiencePoints()));
                 }
             }, 1);
         };
