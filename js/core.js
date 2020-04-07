@@ -2,19 +2,23 @@
 
     var core = Game.Core = function() {
 
-        var updateExpDisplay = function(start, end) {
+        var updateExp = function(changeBy) {
+            updateDisplay('.exp-value', Game.getExperiencePoints(), Game.updateExperiencePoints(changeBy));
+        }
+
+        var updateDisplay = function(selector, start, end) {
             var range = end - start;
             var current = start;
-            var increment = range / 100;
+            var increment = range / 50;
             var counter = 0;
             var timer = setInterval(function() {
                 counter++;
                 current += increment;
-                cleanCurrent = Math.floor(current);
-                $('.exp-value').html(utils.formatNumber(cleanCurrent));
-                if (cleanCurrent == end || counter == 100) {
+                cleanCurrent = Math.ceil(current);
+                $(selector).html(utils.formatNumber(cleanCurrent));
+                if (cleanCurrent == end || counter == 50) {
                     clearInterval(timer);
-                    $('.exp-value').html(utils.formatNumber(Game.getExperiencePoints()));
+                    $(selector).html(utils.formatNumber(end));
                 }
             }, 1);
         };
@@ -24,9 +28,13 @@
                 console.log(Game.getExperiencePoints());
             },
 
-            updateExp: function(changeBy) {
-                updateExpDisplay(Game.getExperiencePoints(), Game.updateExperiencePoints(changeBy));
-                
+            updateExp: updateExp,
+
+            levelUpWarrior: function() {
+                updateExp(-10);
+                updateDisplay('.warrior-level-value', Game.getWarriorLevel(), Game.updateWarriorLevel(1));
+                updateDisplay('.warrior-strength-value', Game.getWarriorStrength(), Game.updateWarriorStrength(100));
+                updateDisplay('.warrior-health-value', Game.getWarriorHealth(), Game.updateWarriorHealth(100));
             }
         };
 
