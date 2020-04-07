@@ -3,7 +3,7 @@
     var buttons = Game.Buttons = function() {
 
         $('.button-plus').click(function() {
-            core.updateExp(99999);
+            core.updateExp(30);
         });
 
         $('.button-minus').click(function() {
@@ -12,6 +12,14 @@
 
         $('.warrior-level-up').click(function() {
             core.levelUpWarrior();
+        });
+
+        $('.caster-level-up').click(function() {
+            core.levelUpCaster();
+        });
+
+        $('.rogue-level-up').click(function() {
+            core.levelUpRogue();
         });
 
     }();

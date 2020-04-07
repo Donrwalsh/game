@@ -17,47 +17,42 @@
 <body>
     <div class="exp">
         <span class="title">Experience Points</span>
-        <span class="exp-value">0</span>
+        <span class="exp-value"></span>
     </div>
     <button class="button-plus">Add Exp</button>
     <button class="button-minus">Remove Exp</button>
     <div class="right-bar">
-        <div class="character-warrior" style="display:inline-block">
+        <div class="character-warrior">
             <div class="half-right-bar">
                 <h1 class="classname">Warrior</h1>
             </div>
             <div class="half-right-bar center">
                 <strong>Level</strong><br/> 
-                <span class="warrior-level-value">0</span>
+                <span class="warrior-level-value"></span>
             </div>
-            
-            <div class="training warrior-train noselect">
-                <div class="display">
-                    <i class="far fa-clock"></i>
-                    <span class="time"></span>
-                    <span class="name">Train </span>
-                </div>
-                <div class="train-progress"></div>
+            <div class="warrior-level-up level-up noselect no">
+                <span>Level Up</span><br/>
+                <span class="warrior-level-up-cost"></span><span> exp</span>
             </div>
-            <div style="display:inline-block">
+            <div style="display:inline-block;margin-top:.5em;">
                 <div class="left-stat-column">
                     <div class="red-icon icon">
                         <i class="fas fa-fist-raised"></i>
                     </div>
                     <div class="stat">
-                        <span class="warrior-strength-value">3</span><br/>
+                        <span class="warrior-strength-value"></span><br/>
                     </div>
                     <div class="blue-icon icon">
-                        <i class="fas fa-hat-wizard"></i>
+                        <i class="fas fa-scroll"></i>
                     </div>
                     <div class="stat">
-                        <span>1</span><br/>
+                        <span class="warrior-magic-value"></span><br/>
                     </div>
                     <div class="green-icon icon">
                         <i class="fas fa-bolt"></i>
                     </div>
                     <div class="stat">
-                        <span>1</span>
+                        <span class="warrior-speed-value"></span>
                     </div>
                 </div>
                 <div class="left-stat-column">
@@ -65,64 +60,54 @@
                         <i class="fas fa-heartbeat"></i>
                     </div>
                     <div class="stat">
-                        <span class="warrior-health-value">3</span><br/>
+                        <span class="warrior-health-value"></span><br/>
                     </div>
                     <div class="blue-icon icon">
-                        <i class="fas fa-scroll"></i>
+                        <i class="fas fa-hat-wizard"></i>
                     </div>
                     <div class="stat">
-                        <span>2</span><br/>
+                        <span class="warrior-mind-value"></span><br/>
                     </div>
                     <div class="green-icon icon">
                         <i class="fas fa-dice-d20"></i>
                     </div>
                     <div class="stat">
-                        <span>2</span>
+                        <span class="warrior-luck-value"></span>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="warrior-level-up level-up noselect">
-            <span>Level Up</span><br/>
-            <span>10 exp</span>
-        </div>
-
-        <div class="character-caster" style="display:inline-block">
+        <div class="character-caster">
             <div class="half-right-bar">
                 <h1 class="classname">Caster</h1>
             </div>
             <div class="half-right-bar center">
                 <strong>Level</strong><br/> 
-                <span>0</span>
+                <span class="caster-level-value"></span>
             </div>
-            
-            <div class="training caster-train noselect">
-                <div class="display">
-                    <i class="far fa-clock"></i>
-                    <span class="time"></span>
-                    <span class="name">Train </span>
-                </div>
-                <div class="train-progress"></div>
+            <div class="caster-level-up level-up noselect no">
+                <span>Level Up</span><br/>
+                <span class="caster-level-up-cost"></span><span> exp</span>
             </div>
-            <div style="display:inline-block">
+            <div style="display:inline-block;margin-top:.5em;">
                 <div class="left-stat-column">
                     <div class="red-icon icon">
                         <i class="fas fa-fist-raised"></i>
                     </div>
                     <div class="stat">
-                        <span>1</span><br/>
+                        <span class="caster-strength-value"></span><br/>
                     </div>
                     <div class="blue-icon icon">
-                        <i class="fas fa-hat-wizard"></i>
+                        <i class="fas fa-scroll"></i>
                     </div>
                     <div class="stat">
-                        <span>3</span><br/>
+                        <span class="caster-magic-value"></span><br/>
                     </div>
                     <div class="green-icon icon">
                         <i class="fas fa-bolt"></i>
                     </div>
                     <div class="stat">
-                        <span>2</span>
+                        <span class="caster-speed-value"></span>
                     </div>
                 </div>
                 <div class="left-stat-column">
@@ -130,64 +115,56 @@
                         <i class="fas fa-heartbeat"></i>
                     </div>
                     <div class="stat">
-                        <span>2</span><br/>
+                        <span class="caster-health-value"></span><br/>
                     </div>
                     <div class="blue-icon icon">
-                        <i class="fas fa-scroll"></i>
+                        <i class="fas fa-hat-wizard"></i>
                     </div>
                     <div class="stat">
-                        <span>3</span><br/>
+                        <span class="caster-mind-value"></span><br/>
                     </div>
                     <div class="green-icon icon">
                         <i class="fas fa-dice-d20"></i>
                     </div>
                     <div class="stat">
-                        <span>1</span>
+                        <span class="caster-luck-value"></span>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="caster-level level-up noselect">
-            <span>Level Up</span><br/>
-            <span>10 exp</span>
-        </div>
-
-        <div class="character-rogue" style="display:inline-block">
+        <div class="character-rogue">
             <div class="half-right-bar">
                 <h1 class="classname">Rogue</h1>
             </div>
             <div class="half-right-bar center">
                 <strong>Level</strong><br/> 
-                <span>0</span>
+                <span class="rogue-level-value"></span>
+            </div>
+
+            <div class="rogue-level-up level-up noselect no">
+                <span>Level Up</span><br/>
+                <span class="rogue-level-up-cost"></span><span> exp</span>
             </div>
             
-            <div class="training rogue-train noselect">
-                <div class="display">
-                    <i class="far fa-clock"></i>
-                    <span class="time"></span>
-                    <span class="name">Train </span>
-                </div>
-                <div class="train-progress"></div>
-            </div>
-            <div style="display:inline-block">
+            <div style="display:inline-block;margin-top:.5em;">
                 <div class="left-stat-column">
                     <div class="red-icon icon">
                         <i class="fas fa-fist-raised"></i>
                     </div>
                     <div class="stat">
-                        <span>2</span><br/>
+                        <span class="rogue-strength-value"></span><br/>
                     </div>
                     <div class="blue-icon icon">
-                        <i class="fas fa-hat-wizard"></i>
+                        <i class="fas fa-scroll"></i>
                     </div>
                     <div class="stat">
-                        <span>2</span><br/>
+                        <span class="rogue-magic-value"></span><br/>
                     </div>
                     <div class="green-icon icon">
                         <i class="fas fa-bolt"></i>
                     </div>
                     <div class="stat">
-                        <span>3</span>
+                        <span class="rogue-speed-value"></span>
                     </div>
                 </div>
                 <div class="left-stat-column">
@@ -195,28 +172,23 @@
                         <i class="fas fa-heartbeat"></i>
                     </div>
                     <div class="stat">
-                        <span>1</span><br/>
+                        <span class="rogue-health-value"></span><br/>
                     </div>
                     <div class="blue-icon icon">
-                        <i class="fas fa-scroll"></i>
+                        <i class="fas fa-hat-wizard"></i>
                     </div>
                     <div class="stat">
-                        <span>1</span><br/>
+                        <span class="rogue-mind-value"></span><br/>
                     </div>
                     <div class="green-icon icon">
                         <i class="fas fa-dice-d20"></i>
                     </div>
                     <div class="stat">
-                        <span>3</span>
+                        <span class="rogue-luck-value"></span>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="rogue-level level-up noselect">
-            <span>Level Up</span><br/>
-            <span>10 exp</span>
-        </div>
-            
+        </div>            
     </div>
     
   <script src="js/game.js"></script>
@@ -224,5 +196,6 @@
   <script src="js/core.js"></script>
   <script src="js/horizontal-progress-bars.js"></script>
   <script src="js/buttons.js"></script>
+  <script src="js/startup.js"></script>
 </body>
 </html>
