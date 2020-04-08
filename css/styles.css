@@ -9,6 +9,14 @@ body {
     font-family: "Lucida Console", Monaco, monospace;
 }
 
+.no {
+    cursor: not-allowed;
+}
+
+.yes {
+    cursor: pointer;
+}
+
 .exp {
     font-family: 'Luminari';
     height:50px;
@@ -21,6 +29,55 @@ body {
     margin-right: 3em;
     margin-left: 5em;
 }
+
+.left-bar {
+    width:480px;
+    background-color: pink;
+    height: 75vh;
+    float: left;
+}
+
+.active-quest {
+    overflow: hidden;
+    height: 100px;
+    background-color: lightgrey;
+}
+
+.questing {
+    width: 90%;
+    background-color: white;
+    height: 30px;
+    line-height: 30px;
+    margin: auto;
+    margin-bottom: 1em;
+    border-radius: 5px;
+    border: 2px solid brown;
+}
+
+.quest-progress {
+    background-color: brown;
+    z-index: 1;
+    height:30px;
+    position: absolute;
+}
+
+.questing.rat-den {
+    visibility: hidden;
+}
+
+.progressReduce{
+    animation-name: myAnimation;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards
+}
+@keyframes myAnimation{
+    0%{
+      width: 240px;
+    }
+    100%{
+      width:0px;
+    }
+  }
 
 .right-bar {
     float: right;

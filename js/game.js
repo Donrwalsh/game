@@ -25,6 +25,10 @@
             rogue_mind : 1,
             rogue_speed : 3,
             rogue_luck : 3,
+
+            rat_den_active : false,
+            rat_den_progress : 0,
+            rat_den_level : 0
         }
         
         
@@ -229,6 +233,10 @@
 
             getLowTierStatIncrease: function(level) {
                 return Math.floor(Math.random() * 2) + 0;
+            },
+
+            getRatDenPerTickExp: function() {
+                return 1;
             }
         };
 
