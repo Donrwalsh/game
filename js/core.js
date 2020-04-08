@@ -368,10 +368,10 @@
                     updateWarriorLevel(1);
                     updateWarriorHealth(Game.getHighTierStatIncrease(Game.getWarriorLevel()));
                     updateWarriorStrength(Game.getHighTierStatIncrease(Game.getWarriorLevel()));
-                    updateWarriorMagic(Game.getLowTierStatIncrease(Game.getWarriorLevel));
-                    updateWarriorMind(Game.getMidTierStatIncrease(Game.getWarriorLevel));
-                    updateWarriorSpeed(Game.getLowTierStatIncrease(Game.getWarriorLevel));
-                    updateWarriorLuck(Game.getMidTierStatIncrease(Game.getWarriorLevel));
+                    updateWarriorMagic(Game.getLowTierStatIncrease(Game.getWarriorLevel()));
+                    updateWarriorMind(Game.getMidTierStatIncrease(Game.getWarriorLevel()));
+                    updateWarriorSpeed(Game.getLowTierStatIncrease(Game.getWarriorLevel()));
+                    updateWarriorLuck(Game.getMidTierStatIncrease(Game.getWarriorLevel()));
                 }
             },
 
@@ -381,10 +381,10 @@
                     updateCasterLevel(1);
                     updateCasterHealth(Game.getHighTierStatIncrease(Game.getCasterLevel()));
                     updateCasterStrength(Game.getHighTierStatIncrease(Game.getCasterLevel()));
-                    updateCasterMagic(Game.getLowTierStatIncrease(Game.getCasterLevel));
-                    updateCasterMind(Game.getMidTierStatIncrease(Game.getCasterLevel));
-                    updateCasterSpeed(Game.getLowTierStatIncrease(Game.getCasterLevel));
-                    updateCasterLuck(Game.getMidTierStatIncrease(Game.getCasterLevel));
+                    updateCasterMagic(Game.getLowTierStatIncrease(Game.getCasterLevel()));
+                    updateCasterMind(Game.getMidTierStatIncrease(Game.getCasterLevel()));
+                    updateCasterSpeed(Game.getLowTierStatIncrease(Game.getCasterLevel()));
+                    updateCasterLuck(Game.getMidTierStatIncrease(Game.getCasterLevel()));
                 }
             },
 
@@ -394,10 +394,10 @@
                     updateRogueLevel(1);
                     updateRogueHealth(Game.getHighTierStatIncrease(Game.getRogueLevel()));
                     updateRogueStrength(Game.getHighTierStatIncrease(Game.getRogueLevel()));
-                    updateRogueMagic(Game.getLowTierStatIncrease(Game.getRogueLevel));
-                    updateRogueMind(Game.getMidTierStatIncrease(Game.getRogueLevel));
-                    updateRogueSpeed(Game.getLowTierStatIncrease(Game.getRogueLevel));
-                    updateRogueLuck(Game.getMidTierStatIncrease(Game.getRogueLevel));
+                    updateRogueMagic(Game.getLowTierStatIncrease(Game.getRogueLevel()));
+                    updateRogueMind(Game.getMidTierStatIncrease(Game.getRogueLevel()));
+                    updateRogueSpeed(Game.getLowTierStatIncrease(Game.getRogueLevel()));
+                    updateRogueLuck(Game.getMidTierStatIncrease(Game.getRogueLevel()));
                 }
             }
         };
