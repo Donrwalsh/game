@@ -1,35 +1,36 @@
-(function(window, $, utils, core) {
+(function(window, $, data, char) {
 
-    var startup = Game.Startup = function() {
+    var startup = Startup = function() {
 
         var freshGame = function() {
-            core.setExp(0);
-            core.setWarriorLevel(0);
-            core.setWarriorStrength(3);
-            core.setWarriorHealth(3);
-            core.setWarriorMagic(1);
-            core.setWarriorMind(2);
-            core.setWarriorSpeed(1);
-            core.setWarriorLuck(2);
-            core.setCasterLevel(0);
-            core.setCasterStrength(1);
-            core.setCasterHealth(2);
-            core.setCasterMagic(3);
-            core.setCasterMind(3);
-            core.setCasterSpeed(2);
-            core.setCasterLuck(1);
-            core.setRogueLevel(0);
-            core.setRogueStrength(2);
-            core.setRogueHealth(1);
-            core.setRogueMagic(2);
-            core.setRogueMind(1);
-            core.setRogueSpeed(3);
-            core.setRogueLuck(3);
+            char.setExp(10);
+            char.warrior.setLevel(0);
+            char.warrior.setStrength(3);
+            char.warrior.setHealth(3);
+            char.warrior.setMagic(1);
+            char.warrior.setMind(2);
+            char.warrior.setSpeed(1);
+            char.warrior.setLuck(2);
+            char.caster.setLevel(0);
+            char.caster.setStrength(1);
+            char.caster.setHealth(2);
+            char.caster.setMagic(3);
+            char.caster.setMind(3);
+            char.caster.setSpeed(2);
+            char.caster.setLuck(1);
+            char.rogue.setLevel(0);
+            char.rogue.setStrength(2);
+            char.rogue.setHealth(1);
+            char.rogue.setMagic(2);
+            char.rogue.setMind(1);
+            char.rogue.setSpeed(3);
+            char.rogue.setLuck(3);
         }
 
         freshGame();
 
+
     }();
 
-})(window, jQuery, Game.Utils, Game.Core);
+})(window, jQuery, Data, Char);
 

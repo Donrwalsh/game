@@ -1,25 +1,25 @@
-(function(window, $, utils, core) {
+(function(window, $, char) {
 
-    var buttons = Game.Buttons = function() {
+    var buttons = Buttons = function() {
 
         $('.button-plus').click(function() {
-            core.updateExp(30);
+            char.updateExp(30);
         });
 
         $('.button-minus').click(function() {
-            core.updateExp(-1);
+            char.updateExp(-1);
         });
 
         $('.warrior-level-up').click(function() {
-            core.levelUpWarrior();
+            char.warrior.levelUp();
         });
 
         $('.caster-level-up').click(function() {
-            core.levelUpCaster();
+            char.caster.levelUp();
         });
 
         $('.rogue-level-up').click(function() {
-            core.levelUpRogue();
+            char.rogue.levelUp();
         });
 
         $('.rat-den-quest').click(function() {
@@ -66,4 +66,4 @@
     }();
 
 
-})(window, jQuery, Game.Utils, Game.Core);
+})(window, jQuery, Char);
