@@ -1,4 +1,4 @@
-(function(window, $, data, char) {
+(function(window, $, data, char, quests) {
 
     var startup = Startup = function() {
 
@@ -25,6 +25,8 @@
             char.rogue.setMind(1);
             char.rogue.setSpeed(3);
             char.rogue.setLuck(3);
+
+            quests.setActiveQuest(1, 10, 20);
         }
 
         freshGame();
@@ -32,5 +34,5 @@
 
     }();
 
-})(window, jQuery, Data, Char);
+})(window, jQuery, Data, Char, Quests);
 

@@ -20,8 +20,15 @@
         }
 
         // Quests
+        var active_quest = {
+            id : 0,
+            progress : 0,
+            running : false,
+            time : 0
+        }
+
         var rat_den = {
-            active : false, progress : 0, level : 0
+            level : 0
         }
     
         return {
@@ -33,6 +40,7 @@
             rogue : rogue,
             
             // Quests
+            active_quest : active_quest,
             rat_den : rat_den
         }
     }();
