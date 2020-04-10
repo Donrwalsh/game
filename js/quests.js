@@ -38,6 +38,38 @@
 
         var completeRatDenQuest = function() {
             console.log("complete rat den quest");
+            var stat;
+            switch(Math.floor(Math.random() * 6) + 1) {
+                case 1:
+                    stat = char.warrior.getStrength() + char.caster.getStrength() + char.rogue.getStrength();
+                    break;
+                case 2:
+                    stat = char.warrior.getHealth() + char.caster.getHealth() + char.rogue.getHealth();
+                    break;
+                case 3:
+                    stat = char.warrior.getMagic() + char.caster.getMagic() + char.rogue.getMagic();
+                    break;
+                case 4:
+                    stat = char.warrior.getMind() + char.caster.getMind() + char.rogue.getMind();
+                    break;
+                case 5:
+                    stat = char.warrior.getSpeed() + char.caster.getSpeed() + char.rogue.getSpeed();
+                    break;
+                case 6:
+                    stat = char.warrior.getLuck() + char.caster.getLuck() + char.rogue.getLuck();
+                    break;
+            }
+            var challengeStat = 5;
+            var challengeValue = ((stat - challengeStat) / (1 + Math.abs(stat - challengeStat)) + .9) / 2;
+            var roll = Math.random();
+            if (roll < challengeValue) {
+                console.log("win!");
+            } else {
+                console.log("lose :(");
+            }
+            display.completeQuest();
+            data.active_quest.id = 0;
+            setTimeout( () => this.beginQuest(0, this.getTime()), 1000);
         }
 
         var completeSpiderCaveQuest = function() {
@@ -49,6 +81,7 @@
             display.awaitingQuestCompletion();
             $('.questing').click(function() {
                 getQuestById(data.active_quest.id).completeQuest();
+                $('.questing').unbind();
             })
         }
 
@@ -72,7 +105,7 @@
         }
 
         var getRatDenTime = function() {
-            return 60;
+            return 5;
         }
 
         var getSpiderCaveTime = function() {

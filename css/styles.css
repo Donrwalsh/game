@@ -65,20 +65,6 @@ body {
     visibility: hidden;
 }
 
-.progressReduce{
-    animation-name: myAnimation;
-    animation-duration: 1000ms;
-    animation-fill-mode: forwards
-}
-@keyframes myAnimation{
-    0%{
-      width: 240px;
-    }
-    100%{
-      width:0px;
-    }
-  }
-
 .right-bar {
     float: right;
     width: 360px;

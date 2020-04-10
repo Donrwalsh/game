@@ -13,6 +13,30 @@
                 return this.source.level + 3;
             }
 
+            getHealth = function() {
+                return this.source.health;
+            }
+
+            getLuck = function() {
+                return this.source.luck;
+            }
+
+            getMagic = function() {
+                return this.source.magic;
+            }
+
+            getMind = function() {
+                return this.source.mind;
+            }
+
+            getSpeed = function() {
+                return this.source.speed;
+            }
+
+            getStrength = function() {
+                return this.source.strength;
+            }
+
             handleLevelUpButton = function() {
                 if (data.experience_points >= this.getLevelUpCost()) {
                     $(this.selector + 'level-up').addClass('yes').removeClass('no');

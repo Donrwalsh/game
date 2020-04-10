@@ -34,13 +34,18 @@
             $questing.removeClass("no");
         }
 
+        var completeQuest = function() {
+            $(".quest-progress", $questing).animate({
+                width: "0px",
+            }, 1000);
+        }
+
         var initQuest = function(progress, time, name) {
             $('.time', $questing).html(secondsToTime(time-progress));
             $('.name', $questing).html(name);
             $questing.css('visibility', 'visible');
             $questing.addClass('no');
             $questing.removeClass('yes');
-            $(".quest-progress", $questing).removeClass("progressReduce");
             $(".quest-progress", $questing).css("width", (progress / time) * parseFloat($questing.css("width"),10) );
             $(".fa-clock", $questing).addClass("fa-spin");
         };
@@ -69,6 +74,7 @@
 
         return {
             awaitingQuestCompletion : awaitingQuestCompletion,
+            completeQuest : completeQuest,
             initQuest : initQuest,
             updateQuest : updateQuest,
             update : update

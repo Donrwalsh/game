@@ -3,7 +3,7 @@
     var startup = Startup = function() {
 
         var freshGame = function() {
-            char.setExp(10);
+            char.setExp(5000000);
             char.warrior.setLevel(0);
             char.warrior.setStrength(3);
             char.warrior.setHealth(3);
@@ -26,7 +26,7 @@
             char.rogue.setSpeed(3);
             char.rogue.setLuck(3);
 
-            quests.setActiveQuest(1, 10, 20);
+            quests.setActiveQuest(1, 59, 60);
         }
 
         freshGame();
