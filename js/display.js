@@ -26,6 +26,10 @@
             return output;
         };
         
+        var addMessage = function(message) {
+            $('#messages').append('<div class="message">' + message + '</div>');
+        }
+
         var awaitingQuestCompletion = function() {
             $(".fa-clock", $questing).removeClass("fa-spin");
             $(".name", $questing).append(" Complete ");
@@ -34,7 +38,8 @@
             $questing.removeClass("no");
         }
 
-        var completeQuest = function() {
+        var completeQuest = function(message) {
+            addMessage(message);
             $(".quest-progress", $questing).animate({
                 width: "0px",
             }, 1000);
@@ -48,6 +53,7 @@
             $questing.removeClass('yes');
             $(".quest-progress", $questing).css("width", (progress / time) * parseFloat($questing.css("width"),10) );
             $(".fa-clock", $questing).addClass("fa-spin");
+            addMessage("Now questing in the " + name + ".");
         };
 
         var setSelectedQuest = function(quest) {

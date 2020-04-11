@@ -37,37 +37,46 @@
         }
 
         var completeRatDenQuest = function() {
-            console.log("complete rat den quest");
+            //TODO: replace 'a rat' with determination of common vs. rare
+            var message = "While questing in the Rat Den, our heroes encountered a rat! Faced a "
             var stat;
             switch(Math.floor(Math.random() * 6) + 1) {
                 case 1:
                     stat = char.warrior.getStrength() + char.caster.getStrength() + char.rogue.getStrength();
+                    message += '<i class="fas fa-fist-raised"></i>';
                     break;
                 case 2:
                     stat = char.warrior.getHealth() + char.caster.getHealth() + char.rogue.getHealth();
+                    message += '<i class="fas fa-heartbeat"></i>';
                     break;
                 case 3:
                     stat = char.warrior.getMagic() + char.caster.getMagic() + char.rogue.getMagic();
+                    message += '<i class="fas fa-scroll"></i>';
                     break;
                 case 4:
                     stat = char.warrior.getMind() + char.caster.getMind() + char.rogue.getMind();
+                    message += '<i class="fas fa-hat-wizard"></i>';
                     break;
                 case 5:
                     stat = char.warrior.getSpeed() + char.caster.getSpeed() + char.rogue.getSpeed();
+                    message += '<i class="fas fa-bolt"></i>';
                     break;
                 case 6:
                     stat = char.warrior.getLuck() + char.caster.getLuck() + char.rogue.getLuck();
+                    message += '<i class="fas fa-dice-d20"></i>';
                     break;
             }
             var challengeStat = 5;
             var challengeValue = ((stat - challengeStat) / (1 + Math.abs(stat - challengeStat)) + .9) / 2;
             var roll = Math.random();
+            message += " challenge and ";
             if (roll < challengeValue) {
-                console.log("win!");
+                message += "won!";
+                this.questReward();
             } else {
-                console.log("lose :(");
+                message += "lost.";
             }
-            display.completeQuest();
+            display.completeQuest(message);
             data.active_quest.id = 0;
             setTimeout( () => this.beginQuest(0, this.getTime()), 1000);
         }
@@ -117,6 +126,10 @@
             quest.beginQuest(0, quest.getTime());
         }
 
+        var ratDenQuestReward = function() {
+            console.log("reward");
+        }
+
         var setActiveQuest = function(id, progress, time) {
             quest = getQuestById(id);
             quest.beginQuest(progress, time);
@@ -140,6 +153,7 @@
             getExpPerTick : getRatDenTickExp,
             getLevel : getLevel,
             getTime : getRatDenTime,
+            questReward : ratDenQuestReward
         }
 
         var spiderCave = {
