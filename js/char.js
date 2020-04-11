@@ -3,10 +3,11 @@
     var char = Char = function() {
 
         class Character {
-            constructor(source, statTier, selector) {
+            constructor(source, statTier, selector, idSelector) {
                 this.source = source;
                 this.statTier = statTier;
                 this.selector = selector;
+                this.idSelector = idSelector;
             }
 
             getLevelUpCost = function() {
@@ -39,9 +40,9 @@
 
             handleLevelUpButton = function() {
                 if (data.experience_points >= this.getLevelUpCost()) {
-                    $(this.selector + 'level-up').addClass('yes').removeClass('no');
+                    $(this.idSelector + 'level-up').addClass('yes').removeClass('no');
                 } else {
-                    $(this.selector + 'level-up').addClass('no').removeClass('yes');
+                    $(this.idSelector + 'level-up').addClass('no').removeClass('yes');
                 }
             }
 
@@ -156,9 +157,9 @@
             speed : 'high', luck : 'high'
         }
 
-        var warrior = new Character(data.warrior, warriorStatTier, '.warrior-');
-        var caster = new Character(data.caster, casterStatTier, '.caster-');
-        var rogue = new Character(data.rogue, rogueStatTier, '.rogue-');
+        var warrior = new Character(data.warrior, warriorStatTier, '.warrior-', '#warrior-');
+        var caster = new Character(data.caster, casterStatTier, '.caster-', '#caster-');
+        var rogue = new Character(data.rogue, rogueStatTier, '.rogue-', '#rogue-');
 
         var getLevelUpStatIncrease = function(tier, level) {
             var result = 0;
@@ -183,7 +184,7 @@
         var setExp = function(amount) {
             var original = data.experience_points;
             data.experience_points = amount;
-            display.update('.exp-value', original, amount);
+            display.update('#exp-value', original, amount);
             handleAllLevelUpButtons();
         }
 

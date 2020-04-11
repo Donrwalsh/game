@@ -1,15 +1,14 @@
-.left-bar {
+#left-panel {
     width:480px;
-    height: 720px;
-    float: left;
+    height: 100%;
     background-color: pink;
 }
 
-.left-bar-select {
+#left-panel-select {
     height: 25px;
 }
 
-.left-bar-select-option {
+.left-panel-select-option {
     width:100px;
     display:inline-block;
     text-align: center;
@@ -17,11 +16,31 @@
     border-radius: 10px 10px 0 0;
     height: 25px;
     line-height: 25px;
+    cursor: pointer;
 }
 
-.left-bar-select-option.selected {
+.left-panel-select-option.selected {
     background-color : black;
     color: white;
+}
+
+#selected-quest-title {
+    font-family: 'Luminari';
+    padding-left: 1em;
+    line-height: 85px;
+    font-size: xx-large;
+    vertical-align: center;
+}
+
+.half-left-bar {
+    width:220px;
+    display:inline-block;
+}
+
+.selected-quest-stat {
+    padding-top: .5em;
+    padding-bottom: .5em;
+    margin-left: .5em;
 }
 
 .selected-quest-challenge i {
