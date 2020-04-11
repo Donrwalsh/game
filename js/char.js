@@ -3,11 +3,16 @@
     var char = Char = function() {
 
         class Character {
-            constructor(source, statTier, selector, idSelector) {
+            constructor(name, source, statTier, selector, idSelector) {
+                this.name = name;
                 this.source = source;
                 this.statTier = statTier;
                 this.selector = selector;
                 this.idSelector = idSelector;
+            }
+
+            getLevel = function() {
+                return this.source.level;
             }
 
             getLevelUpCost = function() {
@@ -48,14 +53,29 @@
 
             levelUp = function() {
                 if (data.experience_points >= this.getLevelUpCost()) {
+                    var message = "[-" + display.formatNumber(this.getLevelUpCost()) + " exp] " +  this.name;
                     updateExp(-1 * this.getLevelUpCost());
                     this.updateLevel(1);
-                    this.updateHealth(getLevelUpStatIncrease(this.statTier.health, this.source.level))
-                    this.updateStrength(getLevelUpStatIncrease(this.statTier.strength, this.source.level))
-                    this.updateMagic(getLevelUpStatIncrease(this.statTier.magic, this.source.level))
-                    this.updateMind(getLevelUpStatIncrease(this.statTier.mind, this.source.level))
-                    this.updateSpeed(getLevelUpStatIncrease(this.statTier.speed, this.source.level))
-                    this.updateLuck(getLevelUpStatIncrease(this.statTier.luck, this.source.level))
+                    message += " has reached level " + this.getLevel() + ": ";
+                    var strengthIncrease = getLevelUpStatIncrease(this.statTier.strength, this.source.level);
+                    var healthIncrease = getLevelUpStatIncrease(this.statTier.health, this.source.level);
+                    var magicIncrease = getLevelUpStatIncrease(this.statTier.magic, this.source.level);
+                    var mindIncrease = getLevelUpStatIncrease(this.statTier.mind, this.source.level);
+                    var speedIncrease = getLevelUpStatIncrease(this.statTier.speed, this.source.level);
+                    var luckIncrease =  getLevelUpStatIncrease(this.statTier.luck, this.source.level);
+                    message += '<i class="fas fa-fist-raised"></i>+' + strengthIncrease  + 
+                               ' <i class="fas fa-heartbeat"></i>+' +  healthIncrease + 
+                               ' <i class="fas fa-scroll"></i>+' + magicIncrease +
+                               ' <i class="fas fa-hat-wizard"></i>+' + mindIncrease +
+                               ' <i class="fas fa-bolt"></i>+' + speedIncrease +
+                               ' <i class="fas fa-dice-d20"></i>+' + luckIncrease; 
+                    this.updateStrength(strengthIncrease);
+                    this.updateHealth(healthIncrease);
+                    this.updateMagic(magicIncrease);
+                    this.updateMind(mindIncrease);
+                    this.updateSpeed(speedIncrease);
+                    this.updateLuck(luckIncrease);
+                    display.addMessage(message);
                 }
             }
 
@@ -157,9 +177,9 @@
             speed : 'high', luck : 'high'
         }
 
-        var warrior = new Character(data.warrior, warriorStatTier, '.warrior-', '#warrior-');
-        var caster = new Character(data.caster, casterStatTier, '.caster-', '#caster-');
-        var rogue = new Character(data.rogue, rogueStatTier, '.rogue-', '#rogue-');
+        var warrior = new Character("Warrior", data.warrior, warriorStatTier, '.warrior-', '#warrior-');
+        var caster = new Character("Caster", data.caster, casterStatTier, '.caster-', '#caster-');
+        var rogue = new Character("Rogue", data.rogue, rogueStatTier, '.rogue-', '#rogue-');
 
         var getLevelUpStatIncrease = function(tier, level) {
             var result = 0;

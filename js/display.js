@@ -89,8 +89,10 @@
         };
 
         return {
+            addMessage : addMessage,
             awaitingQuestCompletion : awaitingQuestCompletion,
             completeQuest : completeQuest,
+            formatNumber : formatNumber,
             initQuest : initQuest,
             setSelectedQuest : setSelectedQuest,
             updateQuest : updateQuest,

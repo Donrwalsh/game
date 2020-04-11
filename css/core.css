@@ -34,7 +34,6 @@ body {
 
 #primary-zone {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     flex: 1;
     flex-direction: row;
