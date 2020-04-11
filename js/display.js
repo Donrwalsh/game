@@ -57,7 +57,7 @@
         };
 
         var setSelectedQuest = function(quest) {
-            $('.selected-quest').attr("href", quest.img);
+            $('#selected-quest-image').attr("href", quest.img);
             $('#selected-quest-title').html(quest.name);
             $('.selected-quest-level').html(quest.getLevel());
             $('.selected-quest-time').html(secondsToTime(quest.getTime()));
