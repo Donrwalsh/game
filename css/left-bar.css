@@ -1,0 +1,41 @@
+.left-bar {
+    width:480px;
+    height: 75vh;
+    float: left;
+    background-color: pink;
+}
+
+.left-bar-select {
+    height: 25px;
+}
+
+.left-bar-select-option {
+    width:100px;
+    display:inline-block;
+    text-align: center;
+    background-color: lightgreen;
+    border-radius: 10px 10px 0 0;
+    height: 25px;
+    line-height: 25px;
+}
+
+.left-bar-select-option.selected {
+    background-color : black;
+    color: white;
+}
+
+.selected-quest-challenge i {
+    padding-left: .2em;
+    padding-right: .2em;
+}
+
+.init-selected-quest {
+    cursor: pointer;
+    text-align: right;
+}
+
+.selected-quest-title-zone {
+    display: inline-block;
+    height: 100px;
+    width: 300px;
+}

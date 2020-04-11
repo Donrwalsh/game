@@ -26,7 +26,8 @@
             char.rogue.setSpeed(3);
             char.rogue.setLuck(3);
 
-            quests.setActiveQuest(1, 59, 60);
+            // quests.setActiveQuest(1, 59, 60);
+            quests.setSelected(1);
         }
 
         freshGame();

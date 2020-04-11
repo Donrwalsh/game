@@ -105,11 +105,16 @@
         }
 
         var getRatDenTime = function() {
-            return 5;
+            return 60;
         }
 
         var getSpiderCaveTime = function() {
             return 600;
+        }
+
+        var initSelectedQuest = function() {
+            var quest = getQuestById(data.selected_quest.id);
+            quest.beginQuest(0, quest.getTime());
         }
 
         var setActiveQuest = function(id, progress, time) {
@@ -117,8 +122,17 @@
             quest.beginQuest(progress, time);
         }
 
+        var setSelected = function(id) {
+            data.selected_quest.id = id;
+            quest = getQuestById(id);
+            display.setSelectedQuest(quest);
+        }
+
         var ratDen = {
             name : 'Rat Den',
+            img : 'img/rat.svg',
+            risk : 'None',
+            challenge : '<i class="fas fa-fist-raised"></i>, <i class="fas fa-heartbeat"></i>, <i class="fas fa-scroll"></i>, <i class="fas fa-hat-wizard"></i>, <i class="fas fa-bolt"></i> or <i class="fas fa-dice-d20"></i>',
             id : 1,
             source : data.rat_den,
             beginQuest : beginQuest,
@@ -142,7 +156,9 @@
         return {
             ratDen : ratDen,
             spiderCave : spiderCave,
-            setActiveQuest : setActiveQuest
+            initSelectedQuest : initSelectedQuest,
+            setActiveQuest : setActiveQuest,
+            setSelected : setSelected
         }
 
     }();

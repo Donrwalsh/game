@@ -50,6 +50,16 @@
             $(".fa-clock", $questing).addClass("fa-spin");
         };
 
+        var setSelectedQuest = function(quest) {
+            $('.selected-quest').attr("href", quest.img);
+            $('.selected-quest-title').html(quest.name);
+            $('.selected-quest-level').html(quest.getLevel());
+            $('.selected-quest-time').html(secondsToTime(quest.getTime()));
+            $('.selected-quest-exp-per-tick').html(quest.getExpPerTick());
+            $('.selected-quest-risk').html(quest.risk);
+            $('.selected-quest-challenge').html(quest.challenge);
+        }
+
         var updateQuest = function(progress, time) {
             $('.time', $questing).html(secondsToTime(time-progress));
             $(".quest-progress", $questing).css("width", (progress / time) * parseFloat($questing.css("width"),10) );
@@ -76,6 +86,7 @@
             awaitingQuestCompletion : awaitingQuestCompletion,
             completeQuest : completeQuest,
             initQuest : initQuest,
+            setSelectedQuest : setSelectedQuest,
             updateQuest : updateQuest,
             update : update
         }
