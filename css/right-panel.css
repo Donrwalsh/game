@@ -29,8 +29,8 @@
 }
 
 .level-up.no {
-    background-color: lightgrey;
-    cursor: not-allowed;
+    background-color: lightgrey !important;
+    cursor: not-allowed !important;
 }
 
 .level-up span {
