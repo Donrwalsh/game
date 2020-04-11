@@ -291,13 +291,6 @@ svg {
     margin-left: .5em;
 }
 
-.exp {
-    font-family: 'Luminari';
-    height:50px;
-    border-bottom: 3px solid black;
-    margin-bottom: .5em;
-    font-size: xx-large;
-}
 
 .exp .title {
     margin-right: 3em;

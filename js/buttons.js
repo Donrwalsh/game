@@ -2,15 +2,15 @@
 
     var buttons = Buttons = function() {
 
-        $('.warrior-level-up').click(function() {
+        $('#warrior-level-up').click(function() {
             char.warrior.levelUp();
         });
 
-        $('.caster-level-up').click(function() {
+        $('#caster-level-up').click(function() {
             char.caster.levelUp();
         });
 
-        $('.rogue-level-up').click(function() {
+        $('#rogue-level-up').click(function() {
             char.rogue.levelUp();
         });
 
