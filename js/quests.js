@@ -1,4 +1,4 @@
-(function(window, $, data, display, char) {
+(function(window, $, data, display, char, items) {
 
     var quests = Quests = function() {
 
@@ -126,8 +126,17 @@
             quest.beginQuest(0, quest.getTime());
         }
 
+        //TODO: consider generalizing this method
         var ratDenQuestReward = function() {
-            console.log("reward");
+            for (var i = 0; i < data.storage.collect.length+1; i++) {
+                if (i === data.storage.collect.length) {
+                    display.addNotEnoughRoomMessage(1);
+                } else if (data.storage.collect[i] == 0) {
+                    data.storage.collect[i] = 1;
+                    display.addCollectionReward(i, 1);
+                    break;
+                }
+            }
         }
 
         var setActiveQuest = function(id, progress, time) {
@@ -177,4 +186,4 @@
 
     }();
 
-})(window, jQuery, Data, Display, Char);
+})(window, jQuery, Data, Display, Char, Items);

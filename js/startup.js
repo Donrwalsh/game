@@ -1,9 +1,9 @@
-(function(window, $, data, char, quests) {
+(function(window, $, data, char, quests, items) {
 
     var startup = Startup = function() {
 
         var freshGame = function() {
-            char.setExp(5000000);
+            char.setExp(0);
             char.warrior.setLevel(0);
             char.warrior.setStrength(3);
             char.warrior.setHealth(3);
@@ -26,8 +26,9 @@
             char.rogue.setSpeed(3);
             char.rogue.setLuck(3);
 
-            // quests.setActiveQuest(1, 59, 60);
             quests.setSelected(1);
+
+            items.setCollectStorageCount(3, [0, 0, 0]);
         }
 
         freshGame();
@@ -35,5 +36,5 @@
 
     }();
 
-})(window, jQuery, Data, Char, Quests);
+})(window, jQuery, Data, Char, Quests, Items);
 

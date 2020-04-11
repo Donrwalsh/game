@@ -19,6 +19,11 @@
             mind : 1, speed : 3, luck : 3
         }
 
+        var storage = {
+            count : 3,
+            collect : [0, 0, 0]
+        }
+
         // Quests
         var active_quest = {
             id : 0,
@@ -42,6 +47,7 @@
             warrior : warrior,
             caster : caster,
             rogue : rogue,
+            storage : storage,
             
             // Quests
             active_quest : active_quest,

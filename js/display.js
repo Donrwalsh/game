@@ -4,9 +4,30 @@
 
         $questing = $('.questing');
 
+        var addCollectionBox = function(num, collect) {
+            var inner = getCollectIconById(collect);
+            var yes = inner === "" ? "" : "yes";
+            $('#collection-zone').append('<div class="collection-box ' + yes + '" data-id="' + num + '">' + inner + '</div>');
+        }
+
+        var addCollectionReward = function(position, quest) {
+            $('.collection-box[data-id="' + position + '"]').addClass("yes").append(getCollectIconById(quest));
+        }
+
         var formatNumber = function(number) {
             return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         };
+
+        var getCollectIconById = function(id) {
+            var output = "";
+            if (id === 1) {
+                output = '<svg height="32px" width="32px"' +
+                        'xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">' +
+                        '<image class="smol-img" href="img/rat.svg"/>' +
+                        '</svg>';
+            }
+            return output;
+        }
 
         var secondsToTime = function(secs)
         {
@@ -30,6 +51,13 @@
             $('#messages').append('<div class="message">' + message + '</div>');
         }
 
+        var addNotEnoughRoomMessage = function(id) {
+            var message = '<span style="float:left;line-height:30px;padding-right:.5rem;">All backpacks are full, </span>';
+            message += getCollectIconById(id);
+            message += '<span style="padding-left:.5rem;line-height:30px;"> was lost :(</span>'
+            addMessage(message);
+        }
+
         var awaitingQuestCompletion = function() {
             $(".fa-clock", $questing).removeClass("fa-spin");
             $(".name", $questing).append(" Complete ");
@@ -43,6 +71,10 @@
             $(".quest-progress", $questing).animate({
                 width: "0px",
             }, 1000);
+        }
+
+        var initCollectionZone = function() {
+            console.log("init collection-zone")
         }
 
         var initQuest = function(progress, time, name) {
@@ -89,10 +121,14 @@
         };
 
         return {
+            addCollectionBox : addCollectionBox,
+            addCollectionReward : addCollectionReward,
             addMessage : addMessage,
+            addNotEnoughRoomMessage : addNotEnoughRoomMessage,
             awaitingQuestCompletion : awaitingQuestCompletion,
             completeQuest : completeQuest,
             formatNumber : formatNumber,
+            initCollectionZone : initCollectionZone,
             initQuest : initQuest,
             setSelectedQuest : setSelectedQuest,
             updateQuest : updateQuest,

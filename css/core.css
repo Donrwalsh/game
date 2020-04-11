@@ -80,7 +80,31 @@ body {
 
 #active-quest-zone {
     background-color: lightgrey;
-    height: 200px;
+    height: 250px;
+}
+
+#collection-zone {
+    margin-left: .5em;
+    margin-right: .5em;
+}
+
+.collection-box {
+    height: 32px;
+    width: 32px;
+    border: 2px black solid;
+    text-align: center;
+    line-height: 32px;
+    display: inline-block;
+    margin-right: .5em;
+}
+
+.collection-box svg {
+    border-radius: 0px;
+}
+
+.smol-img {
+    height: 32px;
+    width: 32px;
 }
 
 .questing {
