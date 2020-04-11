@@ -13,3 +13,491 @@ width of container
 function/action upon completion
 
 Storage concerns: maxWidth, interval counter
+
+
+
+    <div class="exp">
+        <span class="title">Experience Points</span>
+        <span class="exp-value"></span>
+    </div>
+    
+    <div class="left-bar">
+        <div class="left-bar-select">
+            <div class="left-bar-select-option quest selected">Quest</div>
+            <div class="left-bar-select-option map">Map</div>
+            <div class="left-bar-select-option skills">Skills</div>
+            <div class="left-bar-select-option items">Items</div>
+        </div>
+        <div class="selected-quest-panel">
+            <svg width="100" height="100"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">       
+                <image class="selected-quest" href="" height="100" width="100"/>
+            </svg>
+            <div class="selected-quest-title-zone">
+                <span class="selected-quest-title"></span>
+                <div class="init-selected-quest">Quest Here</div>
+            </div>
+            <div class="half-left-bar">
+                <div class="selected-quest-stat">
+                    <strong>Level: </strong>
+                    <span class="selected-quest-level"></span>
+                </div>
+                <div class="selected-quest-stat">
+                    <strong>Risk: </strong>
+                    <span class="selected-quest-risk"></span>
+                </div>
+            </div>
+            <div class="half-left-bar">
+                <div class="selected-quest-stat">
+                    <i class="fas fa-clock"></i>
+                    <span class="selected-quest-time"></span>
+                </div>
+                <div class="selected-quest-stat">
+                    <strong>Exp/second: </strong>
+                    <span class="selected-quest-exp-per-tick"></span>  
+                </div>
+            </div>
+            <div class="selected-quest-stat">
+                <strong>Challenge: </strong>
+                <span class="selected-quest-challenge"></span>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+    <div class="right-bar">
+        <div class="character-warrior">
+            <div class="half-right-bar">
+                <h1 class="classname">Warrior</h1>
+            </div>
+            <div class="half-right-bar center">
+                <strong>Level</strong><br/> 
+                <span class="warrior-level-value"></span>
+            </div>
+            <div class="warrior-level-up level-up noselect no">
+                <span>Level Up</span><br/>
+                <span class="warrior-level-up-cost"></span><span> exp</span>
+            </div>
+            <div style="display:inline-block;margin-top:.5em;">
+                <div class="left-stat-column">
+                    <div class="red-icon icon">
+                        <i class="fas fa-fist-raised"></i>
+                    </div>
+                    <div class="stat">
+                        <span class="warrior-strength-value"></span><br/>
+                    </div>
+                    <div class="blue-icon icon">
+                        <i class="fas fa-scroll"></i>
+                    </div>
+                    <div class="stat">
+                        <span class="warrior-magic-value"></span><br/>
+                    </div>
+                    <div class="green-icon icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="stat">
+                        <span class="warrior-speed-value"></span>
+                    </div>
+                </div>
+                <div class="left-stat-column">
+                    <div class="red-icon icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="stat">
+                        <span class="warrior-health-value"></span><br/>
+                    </div>
+                    <div class="blue-icon icon">
+                        <i class="fas fa-hat-wizard"></i>
+                    </div>
+                    <div class="stat">
+                        <span class="warrior-mind-value"></span><br/>
+                    </div>
+                    <div class="green-icon icon">
+                        <i class="fas fa-dice-d20"></i>
+                    </div>
+                    <div class="stat">
+                        <span class="warrior-luck-value"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="character-caster">
+            <div class="half-right-bar">
+                <h1 class="classname">Caster</h1>
+            </div>
+            <div class="half-right-bar center">
+                <strong>Level</strong><br/> 
+                <span class="caster-level-value"></span>
+            </div>
+            <div class="caster-level-up level-up noselect no">
+                <span>Level Up</span><br/>
+                <span class="caster-level-up-cost"></span><span> exp</span>
+            </div>
+            <div style="display:inline-block;margin-top:.5em;">
+                <div class="left-stat-column">
+                    <div class="red-icon icon">
+                        <i class="fas fa-fist-raised"></i>
+                    </div>
+                    <div class="stat">
+                        <span class="caster-strength-value"></span><br/>
+                    </div>
+                    <div class="blue-icon icon">
+                        <i class="fas fa-scroll"></i>
+                    </div>
+                    <div class="stat">
+                        <span class="caster-magic-value"></span><br/>
+                    </div>
+                    <div class="green-icon icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="stat">
+                        <span class="caster-speed-value"></span>
+                    </div>
+                </div>
+                <div class="left-stat-column">
+                    <div class="red-icon icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="stat">
+                        <span class="caster-health-value"></span><br/>
+                    </div>
+                    <div class="blue-icon icon">
+                        <i class="fas fa-hat-wizard"></i>
+                    </div>
+                    <div class="stat">
+                        <span class="caster-mind-value"></span><br/>
+                    </div>
+                    <div class="green-icon icon">
+                        <i class="fas fa-dice-d20"></i>
+                    </div>
+                    <div class="stat">
+                        <span class="caster-luck-value"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="character-rogue">
+            <div class="half-right-bar">
+                <h1 class="classname">Rogue</h1>
+            </div>
+            <div class="half-right-bar center">
+                <strong>Level</strong><br/> 
+                <span class="rogue-level-value"></span>
+            </div>
+
+            <div class="rogue-level-up level-up noselect no">
+                <span>Level Up</span><br/>
+                <span class="rogue-level-up-cost"></span><span> exp</span>
+            </div>
+            
+            <div style="display:inline-block;margin-top:.5em;">
+                <div class="left-stat-column">
+                    <div class="red-icon icon">
+                        <i class="fas fa-fist-raised"></i>
+                    </div>
+                    <div class="stat">
+                        <span class="rogue-strength-value"></span><br/>
+                    </div>
+                    <div class="blue-icon icon">
+                        <i class="fas fa-scroll"></i>
+                    </div>
+                    <div class="stat">
+                        <span class="rogue-magic-value"></span><br/>
+                    </div>
+                    <div class="green-icon icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="stat">
+                        <span class="rogue-speed-value"></span>
+                    </div>
+                </div>
+                <div class="left-stat-column">
+                    <div class="red-icon icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="stat">
+                        <span class="rogue-health-value"></span><br/>
+                    </div>
+                    <div class="blue-icon icon">
+                        <i class="fas fa-hat-wizard"></i>
+                    </div>
+                    <div class="stat">
+                        <span class="rogue-mind-value"></span><br/>
+                    </div>
+                    <div class="green-icon icon">
+                        <i class="fas fa-dice-d20"></i>
+                    </div>
+                    <div class="stat">
+                        <span class="rogue-luck-value"></span>
+                    </div>
+                </div>
+            </div>
+        </div>            
+    </div>
+    <div class="active-quest">
+        <div class="questing noselect">
+            <div class="display">
+                <i class="far fa-clock"></i>
+                <span class="time"></span>
+                <span class="name"></span>
+            </div>
+            <div class="quest-progress"></div>
+        </div>
+        <i class="fas fa-2x fa-question" style="border:5px black solid; padding:8px;width:32px;text-align:center;"></i>
+    </div>
+    <div id="message-zone">
+        <div id="messages">
+        </div>
+    </div>
+
+@font-face {
+    font-family: 'Luminari';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Luminari'), url('Luminari-Regular.woff') format('woff');
+    }
+
+body {
+    font-family: "Lucida Console", Monaco, monospace;
+    position: relative;
+    height: auto;
+    min-height: 100% !important;
+}
+
+.no {
+    cursor: not-allowed;
+}
+
+.yes {
+    cursor: pointer;
+}
+
+svg {
+    display: inline-block;
+}
+
+.selected-quest-title {
+    font-family: 'Luminari';
+    padding-left: 1em;
+    line-height: 85px;
+    font-size: xx-large;
+    vertical-align: center;
+}
+
+.selected-quest-stat {
+    padding-top: .5em;
+    padding-bottom: .5em;
+    margin-left: .5em;
+}
+
+.exp {
+    font-family: 'Luminari';
+    height:50px;
+    border-bottom: 3px solid black;
+    margin-bottom: .5em;
+    font-size: xx-large;
+}
+
+.exp .title {
+    margin-right: 3em;
+    margin-left: 5em;
+}
+
+.half-left-bar {
+    width:220px;
+    display:inline-block;
+}
+
+.active-quest {
+    overflow: hidden;
+    height: 200px;
+    background-color: lightgrey;
+}
+
+.questing {
+    width: 90%;
+    background-color: white;
+    height: 30px;
+    line-height: 30px;
+    margin: auto;
+    margin-bottom: 1em;
+    border-radius: 5px;
+    border: 2px solid brown;
+}
+
+.quest-progress {
+    background-color: brown;
+    z-index: 1;
+    height:30px;
+    position: absolute;
+}
+
+.questing {
+    visibility: hidden;
+}
+
+.right-bar {
+    float: right;
+    width: 360px;
+}
+
+.half-right-bar {
+    width:160px;
+    display:inline-block;
+}
+
+.center {
+    text-align: center;
+}
+
+.character-warrior {
+    border-bottom: 3px dashed red;
+    border-top: 3px dashed red;
+    border-left: 3px dashed red;
+    display: inline-block;
+    margin-bottom: 1em;
+}
+
+.character-caster {
+    border-bottom: 3px dashed skyblue;
+    border-top: 3px dashed skyblue;
+    border-left: 3px dashed skyblue;
+    margin-bottom: 1em;
+}
+
+.character-rogue {
+    border-bottom: 3px dashed green;
+    border-top: 3px dashed green;
+    border-left: 3px dashed green;
+    margin-bottom: 1em;
+}
+
+.classname {
+    margin-top: .5em;
+    margin-bottom: .5em;
+    margin-left: .5em;
+}
+
+.level {
+    padding-bottom:1em;
+    padding-left: .5em;
+}
+
+.blue-icon {
+    color: skyblue;
+}
+
+.red-icon {
+    color: red;
+}
+
+.green-icon {
+    color: green;
+}
+
+.icon {
+    padding-left:.5em;
+    display: inline-block;
+    width: 16px;
+    text-align: center;
+}
+
+.stat {
+    display: inline-block;
+    line-height: 32px;
+    width: 125px;
+}
+
+.left-stat-column {
+    width: 160px;
+    display:inline-block;
+}
+
+.level-up {
+    height: 3em;
+    width: 250px;
+    margin: auto;
+    border-radius: 15px 15px 15px 15px;
+    border: 2px black solid;
+    text-align:center;
+    cursor:pointer;
+}
+
+.level-up.no {
+    background-color: lightgrey;
+    cursor: not-allowed;
+}
+
+.level-up span {
+    line-height: 1.5em;
+}
+
+.warrior-level-up {
+    background-color: red;
+    color: white;
+}
+
+.warrior-level-up:hover {
+    color: white;
+}
+
+.rogue-level-up {
+    background-color: green;
+    color: white;
+}
+
+.caster-level-up {
+    background-color: skyblue;
+    color: white;
+}
+
+.yes {
+    animation:blinking 1.5s infinite;
+}
+@keyframes blinking{
+    0%{     opacity: 100%;    }
+    50%{    opacity: 75%; }
+    100%{     opacity: 100%;    }
+}
+
+.yes:hover {
+    /* Start the shake animation and make the animation last for 0.5 seconds */
+    animation: shake 1.5s;
+  
+    /* When the animation is finished, start again */
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+
+#message-zone {
+    overflow: auto;
+    height: 520px;
+    background-color: darkorange;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+#messages {
+    margin-top: auto;
+}
+
+.message {
+    height: 40px;
+    width: 100%;
+    margin-top: 0;
+}
+
