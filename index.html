@@ -11,10 +11,8 @@
   <meta name="author" content="Donrwalsh">
 
   <link rel="stylesheet" href="css/core.css">
-  <link rel="stylesheet" href="css/left-bar.css">
-
-  <link rel="stylesheet" href="css/horizontal-progress-bars.css">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/left-panel.css">
+  <link rel="stylesheet" href="css/right-panel.css">
 </head>
 
 <body>
@@ -24,7 +22,48 @@
             <span id="exp-value"></span>
         </div>
         <div id="primary-zone">
-            <div class="item-1"></div>
+            <div id="left-panel">
+                <div id="left-panel-select">
+                    <div class="left-panel-select-option quest selected">Quest</div>
+                    <div class="left-panel-select-option map">Map</div>
+                    <div class="left-panel-select-option skills">Skills</div>
+                    <div class="left-panel-select-option items">Items</div>
+                </div>
+                <div id="selected-quest-panel">
+                    <svg width="100" height="100"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">       
+                        <image class="selected-quest" href="" height="100" width="100"/>
+                    </svg>
+                    <div class="selected-quest-title-zone">
+                        <span id="selected-quest-title"></span>
+                        <div class="init-selected-quest">Quest Here</div>
+                    </div>
+                    <div class="half-left-bar">
+                        <div class="selected-quest-stat">
+                            <strong>Level: </strong>
+                            <span class="selected-quest-level"></span>
+                        </div>
+                        <div class="selected-quest-stat">
+                            <strong>Risk: </strong>
+                            <span class="selected-quest-risk"></span>
+                        </div>
+                    </div>
+                    <div class="half-left-bar">
+                        <div class="selected-quest-stat">
+                            <i class="fas fa-clock"></i>
+                            <span class="selected-quest-time"></span>
+                        </div>
+                        <div class="selected-quest-stat">
+                            <strong>Exp/second: </strong>
+                            <span class="selected-quest-exp-per-tick"></span>  
+                        </div>
+                    </div>
+                    <div class="selected-quest-stat">
+                        <strong>Challenge: </strong>
+                        <span class="selected-quest-challenge"></span>
+                    </div>
+                </div>
+            </div>
             <div class="item-2"></div>
             <div id="right-panel">
                 <div id="character-warrior">
