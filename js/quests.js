@@ -37,7 +37,7 @@
         }
 
         var completeRatDenQuest = function() {
-            //TODO: replace 'a rat' with determination of common vs. rare
+            //TODO: encountering things other than just a normal rat
             var message = "While questing in the Rat Den, our heroes encountered a rat! Faced a "
             var stat;
             switch(Math.floor(Math.random() * 6) + 1) {
@@ -129,14 +129,33 @@
         //TODO: consider generalizing this method
         var ratDenQuestReward = function() {
             for (var i = 0; i < data.storage.collect.length+1; i++) {
+                var rarity = this.rollRarity();
                 if (i === data.storage.collect.length) {
-                    display.addNotEnoughRoomMessage(1);
+                    display.addNotEnoughRoomMessage(1, rarity);
                 } else if (data.storage.collect[i] == 0) {
                     data.storage.collect[i] = 1;
-                    display.addCollectionReward(i, 1);
+                    data.storage.collectRarity[i] = rarity;
+                    display.addCollectionReward(i, 1, rarity);
                     break;
                 }
             }
+        }
+
+        var ratDenRollRarity = function() {
+            var roll = Math.random();
+            var rarity = 0;
+            if (roll >= .99) {
+                rarity = 5;
+            } else if (roll >= .9) {
+                rarity = 4;
+            } else if (roll >= .75) {
+                rarity = 3;
+            } else if (roll >= .5) {
+                rarity = 2;
+            } else {
+                rarity = 1;
+            }
+            return rarity;
         }
 
         var setActiveQuest = function(id, progress, time) {
@@ -162,7 +181,8 @@
             getExpPerTick : getRatDenTickExp,
             getLevel : getLevel,
             getTime : getRatDenTime,
-            questReward : ratDenQuestReward
+            questReward : ratDenQuestReward,
+            rollRarity : ratDenRollRarity
         }
 
         var spiderCave = {

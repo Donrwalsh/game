@@ -28,7 +28,7 @@
 
             quests.setSelected(1);
 
-            items.setCollectStorageCount(3, [0, 0, 0]);
+            items.setCollectStorageCount(3, [0, 0, 0], [0, 0, 0]);
         }
 
         freshGame();

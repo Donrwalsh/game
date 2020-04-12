@@ -21,7 +21,8 @@
 
         var storage = {
             count : 3,
-            collect : [0, 0, 0]
+            collect : [0, 0, 0],
+            collectRarity : [0, 0, 0]
         }
 
         // Quests

@@ -4,29 +4,51 @@
 
         $questing = $('.questing');
 
-        var addCollectionBox = function(num, collect) {
-            var inner = getCollectIconById(collect);
+        var addCollectionBox = function(num, collect, rarity) {
+            var inner = getCollectIconByIdAndRarity(collect, rarity);
             var yes = inner === "" ? "" : "yes";
             $('#collection-zone').append('<div class="collection-box ' + yes + '" data-id="' + num + '">' + inner + '</div>');
         }
 
-        var addCollectionReward = function(position, quest) {
-            $('.collection-box[data-id="' + position + '"]').addClass("yes").append(getCollectIconById(quest));
+        var addCollectionReward = function(position, quest, rarity) {
+            $('.collection-box[data-id="' + position + '"]').addClass("yes").append(getCollectIconByIdAndRarity(quest, rarity));
         }
 
         var formatNumber = function(number) {
             return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         };
 
-        var getCollectIconById = function(id) {
+        var getCollectIconByIdAndRarity = function(id, rarity) {
             var output = "";
+            var rarityString = getRarityString(rarity);
             if (id === 1) {
                 output = '<svg height="32px" width="32px"' +
                         'xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">' +
-                        '<image class="smol-img" href="img/rat.svg"/>' +
+                        '<image class="smol-img" href="img/rat-' + rarityString + '.svg"/>' +
                         '</svg>';
             }
             return output;
+        }
+
+        var getRarityString = function(rarity) {
+            var rarityString = "";
+            switch(rarity) {
+                case 1:
+                    rarityString = "common";
+                    break;
+                case 2:
+                    rarityString = "uncommon";
+                    break;
+                case 3:
+                    rarityString = "rare";
+                    break;
+                case 4:
+                    rarityString = "epic";
+                    break;
+                case 5:
+                    rarityString = "legendary";
+            }
+            return rarityString;
         }
 
         var secondsToTime = function(secs)
@@ -51,9 +73,9 @@
             $('#messages').append('<div class="message">' + message + '</div>');
         }
 
-        var addNotEnoughRoomMessage = function(id) {
+        var addNotEnoughRoomMessage = function(id, rarity) {
             var message = '<span style="float:left;line-height:30px;padding-right:.5rem;">All backpacks are full, </span>';
-            message += getCollectIconById(id);
+            message += getCollectIconByIdAndRarity(id, rarity);
             message += '<span style="padding-left:.5rem;line-height:30px;"> was lost :(</span>'
             addMessage(message);
         }
