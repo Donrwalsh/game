@@ -3,7 +3,7 @@
     var startup = Startup = function() {
 
         var freshGame = function() {
-            char.setExp(0);
+            char.setExp(10000);
             char.warrior.setLevel(0);
             char.warrior.setStrength(3);
             char.warrior.setHealth(3);

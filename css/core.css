@@ -141,10 +141,12 @@ body {
     background-color: darkorange;
     display: flex;
     flex-direction: column-reverse;
+    position: relative;
 }
 
 #messages {
     margin-top: auto;
+    position: absolute;
 }
 
 .message {
