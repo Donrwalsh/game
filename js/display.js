@@ -22,7 +22,7 @@
             var output = "";
             var rarityString = getRarityString(rarity);
             if (id === 1) {
-                output = '<svg height="32px" width="32px"' +
+                output = '<svg class= "smol-svg" height="32px" width="32px"' +
                         'xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">' +
                         '<image class="smol-img" href="img/rat-' + rarityString + '.svg"/>' +
                         '</svg>';

@@ -102,6 +102,10 @@ body {
     border-radius: 0px;
 }
 
+.smol-svg {
+    float: left;
+}
+
 .smol-img {
     height: 32px;
     width: 32px;
@@ -157,13 +161,14 @@ body {
 
 .split-message-left {
     float: left;
-    line-height: 30px;
+    line-height: 32px;
     padding-right: .5rem;
 }
 
 .split-message-right {
     padding-left: .5rem;
-    line-height: 30px;
+    line-height: 32px;
+    float: left;
 }
 
 .yes {
