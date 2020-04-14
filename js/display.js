@@ -74,9 +74,9 @@
         }
 
         var addNotEnoughRoomMessage = function(id, rarity) {
-            var message = '<span style="float:left;line-height:30px;padding-right:.5rem;">All backpacks are full, </span>';
+            var message = '<span class="split-message-left">All backpacks are full, </span>';
             message += getCollectIconByIdAndRarity(id, rarity);
-            message += '<span style="padding-left:.5rem;line-height:30px;"> was lost :(</span>'
+            message += '<span class="split-message-right"> was lost :(</span>'
             addMessage(message);
         }
 
@@ -150,6 +150,7 @@
             awaitingQuestCompletion : awaitingQuestCompletion,
             completeQuest : completeQuest,
             formatNumber : formatNumber,
+            getCollectIconByIdAndRarity : getCollectIconByIdAndRarity,
             initCollectionZone : initCollectionZone,
             initQuest : initQuest,
             setSelectedQuest : setSelectedQuest,

@@ -36,6 +36,32 @@
             }
         }
 
+        var bindCollectBoxClicks = function() {
+            $('.collection-box').unbind();
+            $('.collection-box').click(function() {
+                if (items.isCollectBoxFullById($(this).data('id'))) {
+                    var id = data.storage.collect[$(this).data('id')];
+                    var rarity = data.storage.collectRarity[$(this).data('id')];
+                    getQuestById(id).collect(rarity);
+                    items.depleteCollectBox($(this).data('id'));
+                } else {
+                    console.log("do not collect");
+                }
+            })
+        }
+
+        var ratDenCollect = function(rarity) {
+            var message = '<span class="split-message-left">Collected </span>' + display.getCollectIconByIdAndRarity(1, rarity);
+            message += '<span class="split-message-right">: ';
+            if (rarity == 1) { //common
+                var exp = Math.ceil(Math.random() * 9) + 1;
+                char.updateExp(exp);
+                message += 'It contained ' + exp + ' experience points!';
+                display.addMessage(message);
+            }
+            console.log("rat den collect rarity " + rarity);
+        }
+
         var completeRatDenQuest = function() {
             //TODO: encountering things other than just a normal rat
             var message = "While questing in the Rat Den, our heroes encountered a rat! Faced a "
@@ -177,6 +203,7 @@
             id : 1,
             source : data.rat_den,
             beginQuest : beginQuest,
+            collect: ratDenCollect,
             completeQuest : completeRatDenQuest,
             getExpPerTick : getRatDenTickExp,
             getLevel : getLevel,
@@ -199,6 +226,7 @@
         return {
             ratDen : ratDen,
             spiderCave : spiderCave,
+            bindCollectBoxClicks : bindCollectBoxClicks,
             initSelectedQuest : initSelectedQuest,
             setActiveQuest : setActiveQuest,
             setSelected : setSelected
