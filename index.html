@@ -30,16 +30,20 @@
                     <div class="left-panel-select-option items">Items</div>
                 </div>
                 <div id="selected-quest-panel">
+                    <div id="no-selected-quest-panel">
+                        <span>No Quest Selected</span>
+                    </div>
                     <div>
-                        <svg height="100px" width="100px"
+                        <svg id="selected-quest-svg" height="100px" width="100px"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">       
                             <image id="selected-quest-image" href=""/>
                         </svg>
                     </div>
-                    <div class="selected-quest-title-zone">
+                    <div id="selected-quest-title-zone">
                         <span id="selected-quest-title"></span>
+                        <i id="deselect-quest" class="fas fa-times"></i>
                     </div>                   
-                    <div class="init-selected-quest yes">Quest Here</div>
+                    <div id="init-selected-quest">Quest Here</div>
                     <div class="half-left-bar">
                         <div class="selected-quest-stat">
                             <strong>Level: </strong>
@@ -64,6 +68,11 @@
                         <strong>Challenge: </strong>
                         <span class="selected-quest-challenge"></span>
                     </div>
+                </div>
+                <div id="map-panel">
+                    <svg id="map-rat-den" height="50px" width="50px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">       
+                        <image class="map-image" href="img/rat.svg"></image>
+                    </svg>
                 </div>
             </div>
             <div class="center-zone">

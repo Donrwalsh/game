@@ -110,7 +110,28 @@
             addMessage("Now questing in the " + name + ".");
         };
 
+        var setNoSelectedQuest = function() {
+            $('#selected-quest-panel').css('display', 'block');
+            $('#no-selected-quest-panel').css('display', 'block');
+            $('#selected-quest-title-zone').css('display', 'none');
+            $('#init-selected-quest').removeClass("yes");
+            $('#init-selected-quest').css('display', 'none');
+            $('.selected-quest-stat').css('display', 'none');
+            $('#selected-quest-image').attr("href", "");
+        }
+
         var setSelectedQuest = function(quest) {
+            $('#map-panel').css('display', 'none');
+            $('.left-panel-select-option.map').removeClass('selected');
+            $('.left-panel-select-option.quest').addClass('selected');
+
+            $('#selected-quest-panel').css('display', 'block');
+            $('#no-selected-quest-panel').css('display', 'none');
+            $('#selected-quest-title-zone').css('display', 'block');
+            $('#init-selected-quest').addClass("yes");
+            $('#init-selected-quest').css('display', 'block');
+            $('.selected-quest-stat').css('display', 'block');
+
             $('#selected-quest-image').attr("href", quest.img);
             $('#selected-quest-title').html(quest.name);
             $('.selected-quest-level').html(quest.getLevel());
@@ -153,6 +174,7 @@
             getCollectIconByIdAndRarity : getCollectIconByIdAndRarity,
             initCollectionZone : initCollectionZone,
             initQuest : initQuest,
+            setNoSelectedQuest : setNoSelectedQuest,
             setSelectedQuest : setSelectedQuest,
             updateQuest : updateQuest,
             update : update

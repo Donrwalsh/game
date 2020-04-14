@@ -190,9 +190,17 @@
         }
 
         var setSelected = function(id) {
-            data.selected_quest.id = id;
-            quest = getQuestById(id);
-            display.setSelectedQuest(quest);
+            if (id === null) {
+                id = data.selected_quest.id;
+            } else {
+                data.selected_quest.id = id;
+            }
+            if (id === 0) {
+                display.setNoSelectedQuest();
+            } else {
+                quest = getQuestById(id);
+                display.setSelectedQuest(quest);
+            }
         }
 
         var ratDen = {

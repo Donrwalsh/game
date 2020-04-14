@@ -14,7 +14,7 @@
             char.rogue.levelUp();
         });
 
-        $('.init-selected-quest').click(function() {
+        $('#init-selected-quest').click(function() {
             quests.initSelectedQuest();
         });
 
@@ -32,48 +32,61 @@
             }
         });
 
+        $('#deselect-quest').click(function() {
+            quests.setSelected(0);
+        })
+
+        $('#map-rat-den').click(function() {
+            quests.setSelected(1);
+        })
+
         $('.left-panel-select-option.quest').click(function() {
             $('.left-panel-select-option.quest').addClass('selected');
-            $('#selected-quest-panel').css("visibility", "visible");
             $('.left-panel-select-option.map').removeClass('selected');
-            $('.map-panel').css("visibility", "hidden");
             $('.left-panel-select-option.skills').removeClass('selected');
-            $('.skills-panel').css("visibility", "hidden");
             $('.left-panel-select-option.items').removeClass('selected');
-            $('.items-panel').css("visibility", "hidden");
+
+
+            $('#selected-quest-panel').css("display", "block");
+            $('#map-panel').css("display", "none");
+            $('#skills-panel').css("display", "none");
+            $('#items-panel').css("display", "none");
         });
 
         $('.left-panel-select-option.map').click(function() {
             $('.left-panel-select-option.quest').removeClass('selected');
-            $('#selected-quest-panel').css("visibility", "hidden");
             $('.left-panel-select-option.map').addClass('selected');
-            $('.map-panel').css("visibility", "visible");
             $('.left-panel-select-option.skills').removeClass('selected');
-            $('.skills-panel').css("visibility", "hidden");
             $('.left-panel-select-option.items').removeClass('selected');
-            $('.items-panel').css("visibility", "hidden");
+
+            $('#selected-quest-panel').css("display", "none");
+            $('#map-panel').css("display", "block");
+            $('#skills-panel').css("display", "none");
+            $('#items-panel').css("display", "none");
         });
 
         $('.left-panel-select-option.skills').click(function() {
             $('.left-panel-select-option.quest').removeClass('selected');
-            $('#selected-quest-panel').css("visibility", "hidden");
             $('.left-panel-select-option.map').removeClass('selected');
-            $('.map-panel').css("visibility", "hidden");
             $('.left-panel-select-option.skills').addClass('selected');
-            $('.skills-panel').css("visibility", "visible");
             $('.left-panel-select-option.items').removeClass('selected');
-            $('.items-panel').css("visibility", "hidden");
+            
+            $('#selected-quest-panel').css("display", "none");
+            $('#map-panel').css("display", "none");
+            $('#skills-panel').css("display", "block");
+            $('#items-panel').css("display", "none");
         });
 
         $('.left-panel-select-option.items').click(function() {
             $('.left-panel-select-option.quest').removeClass('selected');
-            $('#selected-quest-panel').css("visibility", "hidden");
             $('.left-panel-select-option.map').removeClass('selected');
-            $('.map-panel').css("visibility", "hidden");
             $('.left-panel-select-option.skills').removeClass('selected');
-            $('.skills-panel').css("visibility", "hidden");
             $('.left-panel-select-option.items').addClass('selected');
-            $('.items-panel').css("visibility", "visible");
+
+            $('#selected-quest-panel').css("display", "none");
+            $('#map-panel').css("display", "none");
+            $('#skills-panel').css("display", "none");
+            $('#items-panel').css("display", "block");
         });
 
     }();

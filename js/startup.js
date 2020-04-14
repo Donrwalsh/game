@@ -26,7 +26,7 @@
             char.rogue.setSpeed(3);
             char.rogue.setLuck(3);
 
-            quests.setSelected(1);
+            quests.setSelected(0);
 
             items.setCollectStorageCount(3, [1, 1, 1], [1, 3, 5]);
             quests.bindCollectBoxClicks();
