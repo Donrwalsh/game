@@ -189,6 +189,20 @@
             quest.beginQuest(progress, time);
         }
 
+        //Currently only cares about spider-cave
+        var setMapPieces = function(pieces) {
+            data.spider_cave.map_pieces = pieces;
+            for (var i = 0; i < pieces.length; i++) {
+                var position = ['top-left', 'top-right', 'bottom-left', 'bottom-right'][i]
+                if (pieces[i] === 1) {
+                    $('image', '.map-spider-cave.' + position).attr("href", "img/spider-cave.svg")
+                }
+            }
+            if (data.spider_cave.map_pieces = [1,1,1,1]) {
+                console.log("make clickable");
+            }
+        }
+
         var setSelected = function(id) {
             if (id === null) {
                 id = data.selected_quest.id;
@@ -237,6 +251,7 @@
             bindCollectBoxClicks : bindCollectBoxClicks,
             initSelectedQuest : initSelectedQuest,
             setActiveQuest : setActiveQuest,
+            setMapPieces : setMapPieces,
             setSelected : setSelected
         }
 

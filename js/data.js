@@ -40,6 +40,11 @@
         var rat_den = {
             level : 0
         }
+
+        var spider_cave = {
+            level : 0,
+            map_pieces : [0, 0, 0, 0]
+        }
     
         return {
             experience_points : experience_points,
@@ -53,7 +58,8 @@
             // Quests
             active_quest : active_quest,
             selected_quest : selected_quest,
-            rat_den : rat_den
+            rat_den : rat_den,
+            spider_cave : spider_cave
         }
     }();
 })(window, jQuery);

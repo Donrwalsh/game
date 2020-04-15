@@ -40,9 +40,6 @@
 
 #selected-quest-svg {
     float: left;
-}
-
-svg {
     border-radius: 5px;
 }
 
@@ -118,4 +115,54 @@ svg {
 
 #map-rat-den {
     cursor: pointer;
+    border-radius: 5px;
+}
+
+#map-panel table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+#map-panel td {
+    padding: 0;
+}
+
+#map-panel td svg {
+    display: block;
+}
+
+.top-left {
+    border-radius: 5px 0px 0px 0px;
+}
+
+.top-right {
+    border-radius: 0px 5px 0px 0px;
+}
+
+.bottom-left {
+    border-radius: 0px 0px 0px 5px;
+}
+
+.bottom-right {
+    border-radius: 0px 0px 5px 0px;
+}
+
+#map-spider-cave .top-left {
+    border-top: 1px #9b9b9b solid;
+    border-left: 1px #9b9b9b solid;
+}
+
+#map-spider-cave .top-right {
+    border-top: 1px #9b9b9b solid;
+    border-right: 1px #9b9b9b solid;
+}
+
+#map-spider-cave .bottom-left {
+    border-bottom: 1px #9b9b9b solid;
+    border-left: 1px #9b9b9b solid;
+}
+
+#map-spider-cave .bottom-right {
+    border-bottom: 1px #9b9b9b solid;
+    border-right: 1px #9b9b9b solid;
 }
