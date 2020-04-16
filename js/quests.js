@@ -147,7 +147,7 @@
                     break;
             }
             var challengeStat = 5;
-            var challengeValue = ((stat - challengeStat) / (1 + Math.abs(stat - challengeStat)) + .9) / 2;
+            var challengeValue = ((stat - challengeStat) / (1 + Math.abs(stat - challengeStat)) + .99) / 2;
             var roll = Math.random();
             message += " challenge and ";
             if (roll < challengeValue) {

@@ -100,6 +100,46 @@
     width: 300px;
 }
 
+#loot-label {
+    float: left;
+    line-height: 32px;
+    margin-right: .5rem;
+}
+
+#spider-cave-map-loot {
+    width: 32px;
+    height: 32px;
+    border-radius: 5px;
+    
+}
+
+#spider-cave-map-svg {
+    border: 2px #9b9b9b solid;
+    border-radius: 5px;
+}
+
+.loot-icon {
+    border-radius: 5px;
+    height: 32px;
+    width: 32px;
+}
+
+.uncommon-loot {
+    border: 2px #7ED321 solid;
+}
+
+.rare-loot {
+    border: 2px #48BAFF solid;
+}
+
+.epic-loot {
+    border: 2px #9013FE solid;
+}
+
+.legendary-loot {
+    border: 2px #F5A623 solid;
+}
+
 #map-panel {
     display: none;
     padding: 10px;
