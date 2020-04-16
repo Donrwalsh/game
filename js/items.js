@@ -21,10 +21,35 @@
             }
         }
 
+        var setInventory = function(items) {
+            for (var i=0; i < items.length; i++) {
+                switch(i) {
+                    case 0:
+                        data.items.rat_tail.amount = items[i][0];
+                        data.items.rat_tail.seen  = items[i][1];
+                        break;
+                    case 1:
+                        data.items.den_shroom.amount = items[i][0];
+                        data.items.den_shroom.seen  = items[i][1];
+                        break;
+                    case 2:
+                        data.items.rat_poison.amount = items[i][0];
+                        data.items.rat_poison.seen  = items[i][1];
+                        break;
+                    case 3:
+                        data.items.survival_quartz.amount = items[i][0];
+                        data.items.survival_quartz.seen  = items[i][1];
+                        break;
+                }
+            }
+            display.updateItemsDisplay();
+        }
+
         return {
             depleteCollectBox : depleteCollectBox,
             isCollectBoxFullById : isCollectBoxFullById,
-            setCollectStorageCount : setCollectStorageCount
+            setCollectStorageCount : setCollectStorageCount,
+            setInventory : setInventory
         }
 
     }();

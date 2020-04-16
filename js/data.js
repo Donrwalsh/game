@@ -46,6 +46,13 @@
             level : 0,
             map_pieces : [0, 0, 0, 0]
         }
+
+        var items = {
+            rat_tail : { amount : 0, seen : 0 },
+            den_shroom : { amount : 0, seen : 0 },
+            rat_poison : { amount : 0, seen : 0 },
+            survival_quartz : { amount : 0, seen : 0 }
+        }
     
         return {
             experience_points : experience_points,
@@ -60,7 +67,10 @@
             active_quest : active_quest,
             selected_quest : selected_quest,
             rat_den : rat_den,
-            spider_cave : spider_cave
+            spider_cave : spider_cave,
+
+            //Items
+            items : items
         }
     }();
 })(window, jQuery);

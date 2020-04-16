@@ -171,6 +171,25 @@
             $('.selected-quest-challenge').html(quest.challenge);
         }
 
+        var updateItemsDisplay = function() {
+            if (data.items.rat_tail.seen) {
+                $('#rat-tail-inventory').css('display', 'inline-block');
+                $('.item-amount', '#rat-tail-inventory').html(data.items.rat_tail.amount);
+            }
+            if (data.items.den_shroom.seen) {
+                $('#den-shroom-inventory').css('display', 'inline-block');
+                $('.item-amount', '#den-shroom-inventory').html(data.items.den_shroom.amount);
+            }
+            if (data.items.rat_poison.seen) {
+                $('#rat-poison-inventory').css('display', 'inline-block');
+                $('.item-amount', '#rat-poison-inventory').html(data.items.rat_poison.amount);
+            }
+            if (data.items.survival_quartz.seen) {
+                $('#survival-quartz-inventory').css('display', 'inline-block');
+                $('.item-amount', '#survival-quartz-inventory').html(data.items.survival_quartz.amount);
+            }
+        }
+
         var updateQuest = function(progress, time) {
             $('.time', $questing).html(secondsToTime(time-progress));
             $(".quest-progress", $questing).css("width", (progress / time) * parseFloat($questing.css("width"),10) );
@@ -208,7 +227,8 @@
             setNoSelectedQuest : setNoSelectedQuest,
             setSelectedQuest : setSelectedQuest,
             updateQuest : updateQuest,
-            update : update
+            update : update,
+            updateItemsDisplay : updateItemsDisplay
         }
 
 

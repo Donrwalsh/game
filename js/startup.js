@@ -30,6 +30,12 @@
             quests.setMapPieces([0,0,0,0])
 
             items.setCollectStorageCount(3, [1, 1, 1], [1, 1, 1]);
+            items.setInventory([
+                [0,0],
+                [0,0],
+                [0,0],
+                [0,0]
+            ]);
             quests.bindCollectBoxClicks();
         }
 
