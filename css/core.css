@@ -159,6 +159,11 @@ body {
     margin-top: 0;
 }
 
+.map-piece-image {
+    height: 64px;
+    width: 64px;
+}
+
 .split-message-left {
     float: left;
     line-height: 32px;
@@ -167,6 +172,7 @@ body {
 
 .split-message-right {
     padding-left: .5rem;
+    padding-right: .5rem;
     line-height: 32px;
     float: left;
 }

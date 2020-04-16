@@ -38,7 +38,8 @@
         }
 
         var rat_den = {
-            level : 0
+            level : 0,
+            map_pieces : [0, 0, 0, 0]
         }
 
         var spider_cave = {

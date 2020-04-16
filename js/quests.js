@@ -2,6 +2,33 @@
 
     var quests = Quests = function() {
 
+        /**
+         * Randomly shuffle an array
+         * https://stackoverflow.com/a/2450976/1293256
+         * @param  {Array} array The array to shuffle
+         * @return {String}      The first item in the shuffled array
+         */
+        var shuffle = function (array) {
+
+            var currentIndex = array.length;
+            var temporaryValue, randomIndex;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                // And swap it with the current element.
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
+
+            return array;
+
+        };
+
         beginQuest = function(progress, time) {
             if (data.active_quest.id != this.id 
                 && (data.active_quest.id == 0 || data.active_quest.progress != data.active_quest.time)) {
@@ -44,22 +71,49 @@
                     var rarity = data.storage.collectRarity[$(this).data('id')];
                     getQuestById(id).collect(rarity);
                     items.depleteCollectBox($(this).data('id'));
-                } else {
-                    console.log("do not collect");
                 }
-            })
+            });
+        }
+
+        var obtainMapPiece = function(position) {
+            this.source.map_pieces[position] = 1;
+            setMapPieces(this.source.map_pieces);
         }
 
         var ratDenCollect = function(rarity) {
             var message = '<span class="split-message-left">Collected </span>' + display.getCollectIconByIdAndRarity(1, rarity);
             message += '<span class="split-message-right">: ';
             if (rarity == 1) { //common
-                var exp = Math.ceil(Math.random() * 9) + 1;
-                char.updateExp(exp);
-                message += 'It contained ' + exp + ' experience points!';
-                display.addMessage(message);
+                var levelUpDepleteModifier = this.source.level > 1000 ? 1 : (this.source.level + 1) / 1000;
+                var roll = Math.random();
+                console.log(roll);
+                if (roll > .995) {
+                    if (this.mapPiecesAvailable) {
+                        var array = shuffle([0, 1, 2, 3]);
+                        for (var i = 0; i < array.length; i++) {
+                            if (this.source.map_pieces[array[i]] === 0) {
+                                this.obtainMapPiece(array[i]);
+                                message += "It contained a map piece! </span>" + display.getMapIconByPosition(array[i]);
+                                break;
+                            }
+                        }
+                    }
+                    //TODO: fallback epic
+                } else if (roll > .99) {
+                    //TODO: epic
+                } else if (roll > .96) {
+                    //TODO: rare
+                } else if (roll > .91) {
+                    //TODO: uncommon
+                } else if (roll > .45 + (.4 * levelUpDepleteModifier)) {
+                    //TODO: Level up zone
+                } else {
+                    var exp = Math.ceil(Math.random() * 9) + 1;
+                    char.updateExp(exp);
+                    message += 'It contained ' + exp + ' experience points!</span>';
+                }
             }
-            console.log("rat den collect rarity " + rarity);
+            display.addMessage(message);
         }
 
         var completeRatDenQuest = function() {
@@ -152,6 +206,16 @@
             quest.beginQuest(0, quest.getTime());
         }
 
+        var mapPiecesAvailable = function() {
+            var result = false;
+            for (var i = 0; i < this.source.map_pieces.length; i++) {
+                if (this.source.map_pieces[i] === 0) {
+                    result = true;
+                }
+            }
+            return result;
+        }
+
         //TODO: consider generalizing this method
         var ratDenQuestReward = function() {
             for (var i = 0; i < data.storage.collect.length+1; i++) {
@@ -170,13 +234,13 @@
         var ratDenRollRarity = function() {
             var roll = Math.random();
             var rarity = 0;
-            if (roll >= .99) {
+            if (roll > .99) {
                 rarity = 5;
-            } else if (roll >= .9) {
+            } else if (roll > .9) {
                 rarity = 4;
-            } else if (roll >= .75) {
+            } else if (roll > .75) {
                 rarity = 3;
-            } else if (roll >= .5) {
+            } else if (roll > .5) {
                 rarity = 2;
             } else {
                 rarity = 1;
@@ -189,17 +253,17 @@
             quest.beginQuest(progress, time);
         }
 
-        //Currently only cares about spider-cave
+        //Currently only cares about rat-den map pieces
         var setMapPieces = function(pieces) {
-            data.spider_cave.map_pieces = pieces;
+            data.rat_den.map_pieces = pieces;
             for (var i = 0; i < pieces.length; i++) {
                 var position = ['top-left', 'top-right', 'bottom-left', 'bottom-right'][i]
                 if (pieces[i] === 1) {
                     $('image', '.map-spider-cave.' + position).attr("href", "img/spider-cave.svg")
                 }
             }
-            if (data.spider_cave.map_pieces = [1,1,1,1]) {
-                console.log("make clickable");
+            if (data.rat_den.map_pieces === [1,1,1,1]) {
+                console.log("make spider-cave clickable");
             }
         }
 
@@ -231,7 +295,9 @@
             getLevel : getLevel,
             getTime : getRatDenTime,
             questReward : ratDenQuestReward,
-            rollRarity : ratDenRollRarity
+            rollRarity : ratDenRollRarity,
+            mapPiecesAvailable : mapPiecesAvailable,
+            obtainMapPiece : obtainMapPiece
         }
 
         var spiderCave = {

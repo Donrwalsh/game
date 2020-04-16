@@ -29,7 +29,7 @@
             quests.setSelected(0);
             quests.setMapPieces([0,0,0,0])
 
-            items.setCollectStorageCount(3, [1, 1, 1], [1, 3, 5]);
+            items.setCollectStorageCount(3, [1, 1, 1], [1, 1, 1]);
             quests.bindCollectBoxClicks();
         }
 

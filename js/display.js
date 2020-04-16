@@ -18,8 +18,38 @@
             return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         };
 
-        var getCollectIconByIdAndRarity = function(id, rarity) {
+        //Only cares about spider-cave map icons
+        var getMapIconByPosition = function(position) {
+            var quadrant;
+            var viewBox;
+            switch(position) {
+                case 0:
+                    quadrant = "top-left";
+                    viewBox = "0 0"
+                    break;
+                case 1:
+                    quadrant = "top-right";
+                    viewBox = "32 0"
+                    break;
+                case 2:
+                    quadrant = "bottom-left";
+                    viewBox = "0 32"
+                    break;
+                case 3:
+                    quadrant = "top-right";
+                    viewBox = "32 32"
+                    break;
+            }
             var output = "";
+            output = '<svg class="map-spider-cave ' + quadrant + '" viewBox="' + viewBox + ' 32 32" height="32px" width="32px"' +
+                     'xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">' +
+                     '<image class="map-piece-image" href ="img/spider-cave.svg"/>' +
+                     '</svg>';
+            return output;
+        }
+
+        var getCollectIconByIdAndRarity = function(id, rarity) {
+            var output;
             var rarityString = getRarityString(rarity);
             if (id === 1) {
                 output = '<svg class= "smol-svg" height="32px" width="32px"' +
@@ -172,6 +202,7 @@
             completeQuest : completeQuest,
             formatNumber : formatNumber,
             getCollectIconByIdAndRarity : getCollectIconByIdAndRarity,
+            getMapIconByPosition : getMapIconByPosition,
             initCollectionZone : initCollectionZone,
             initQuest : initQuest,
             setNoSelectedQuest : setNoSelectedQuest,
