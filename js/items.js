@@ -2,6 +2,37 @@
 
     var items = Items = function() {
 
+        class Item {
+            constructor(name, source, rarity, path) {
+                this.name = name;
+                this.source = source;
+                this.rarity = rarity;
+                this.path = path;
+            }
+
+            obtain = function() {
+                this.source.seen = 1;
+                this.source.amount += 1;
+                display.updateItemsDisplay();
+            }
+
+            getMessageIcon() {
+                return '<img class="loot-icon ' + getRarityString(this.rarity) + '-loot"' +
+                    ' src="' + this.path + '" alt="' + this.name + '">';
+            }
+        }
+
+        var ratPoison = new Item("Rat Poison", data.items.rat_poison, 3, 'img/loot/rat_poison.png');
+
+        var getRarityString = function(rarity) {
+            var string;
+            if (rarity === 1) {string = "uncommon"}
+            if (rarity === 2) {string = "rare"}
+            if (rarity === 3) {string = "epic"}
+            if (rarity === 4) {string = "legendary"}
+            return string;
+        }
+
         var depleteCollectBox = function(id) {
             data.storage.collect[id] = 0;
             data.storage.collectRarity[id] = 0;
@@ -49,7 +80,8 @@
             depleteCollectBox : depleteCollectBox,
             isCollectBoxFullById : isCollectBoxFullById,
             setCollectStorageCount : setCollectStorageCount,
-            setInventory : setInventory
+            setInventory : setInventory,
+            ratPoison : ratPoison
         }
 
     }();
