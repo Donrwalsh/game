@@ -81,6 +81,7 @@
         }
 
         var ratDenCollect = function(rarity) {
+            console.log(data.selected_quest);
             var message = '<span class="split-message">Collected </span>' + display.getCollectIconByIdAndRarity(1, rarity);
             message += '<span class="split-message">: ';
             if (rarity == 1) { //common
@@ -99,17 +100,20 @@
                         }
                     } else {
                         this.epicItem.obtain();
-                        message += "It contained " + this.epicItem.name + "</span>" + this.epicItem.getMessageIcon() + '<span class="split-message">!</span>';
+                        message += "It contained 1 " + this.epicItem.name + " </span>" + this.epicItem.getMessageIcon() + '<span class="split-message">!</span>';
                     }
                 } else if (roll > .99) {
                     this.epicItem.obtain();
-                    message += "It contained " + this.epicItem.name + "</span>" + this.epicItem.getMessageIcon() + '<span class="split-message">!</span>';
+                    message += "It contained 1 " + this.epicItem.name + " </span>" + this.epicItem.getMessageIcon() + '<span class="split-message">!</span>';
                 } else if (roll > .96) {
-                    //TODO: rare
+                    this.rareItem.obtain();
+                    message += "It contained 1 " + this.rareItem.name + " </span>" + this.rareItem.getMessageIcon() + '<span class="split-message">!</span>';
                 } else if (roll > .91) {
-                    //TODO: uncommon
+                    this.uncommonItem.obtain();
+                    message += "It contained 1 " + this.uncommonItem.name + " </span>" + this.uncommonItem.getMessageIcon() + '<span class="split-message">!</span>';
                 } else if (roll > .45 + (.4 * levelUpDepleteModifier)) {
-                    //TODO: Level up zone
+                    this.levelUp(1);
+                    message += 'Rat Den level increased by 1!</span>'
                 } else {
                     var exp = Math.ceil(Math.random() * 9) + 1;
                     char.updateExp(exp);
@@ -117,6 +121,14 @@
                 }
             }
             display.addMessage(message);
+        }
+
+        var levelUp = function(amount) {
+            this.source.level += amount;
+            if (data.selected_quest.id === this.id) {
+                console.log("hello there");
+                display.setSelectedQuest(this);
+            }
         }
 
         var completeRatDenQuest = function() {
@@ -292,12 +304,16 @@
             id : 1,
             source : data.rat_den,
             beginQuest : beginQuest,
+            uncommonItem : items.ratTail,
+            rareItem : items.denShroom,
             epicItem : items.ratPoison,
+            legendaryItem : items.survivalQuartz,
             collect: ratDenCollect,
             completeQuest : completeRatDenQuest,
             getExpPerTick : getRatDenTickExp,
             getLevel : getLevel,
             getTime : getRatDenTime,
+            levelUp : levelUp,
             questReward : ratDenQuestReward,
             rollRarity : ratDenRollRarity,
             mapPiecesAvailable : mapPiecesAvailable,

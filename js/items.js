@@ -22,7 +22,10 @@
             }
         }
 
+        var ratTail = new Item("Rat Tail", data.items.rat_tail, 1, 'img/loot/rat_tail.png');
+        var denShroom = new Item("Den Shroom", data.items.den_shroom, 2, 'img/loot/den_shroom.png');
         var ratPoison = new Item("Rat Poison", data.items.rat_poison, 3, 'img/loot/rat_poison.png');
+        var survivalQuartz = new Item("Survival Quartz", data.items.survival_quartz, 4, 'img/loot/survival_quartz.png');
 
         var getRarityString = function(rarity) {
             var string;
@@ -81,7 +84,12 @@
             isCollectBoxFullById : isCollectBoxFullById,
             setCollectStorageCount : setCollectStorageCount,
             setInventory : setInventory,
-            ratPoison : ratPoison
+            
+            //Items
+            ratTail : ratTail,
+            denShroom : denShroom,
+            ratPoison : ratPoison,
+            survivalQuartz : survivalQuartz
         }
 
     }();
