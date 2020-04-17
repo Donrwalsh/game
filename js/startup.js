@@ -3,7 +3,7 @@
     var startup = Startup = function() {
 
         var freshGame = function() {
-            char.setExp(10000);
+            char.setExp(0);
             char.warrior.setLevel(0);
             char.warrior.setStrength(3);
             char.warrior.setHealth(3);
@@ -26,11 +26,11 @@
             char.rogue.setSpeed(3);
             char.rogue.setLuck(3);
 
-            quests.setSelected(1);
-            quests.ratDen.levelUp(99);
+            quests.setSelected(0);
+            quests.ratDen.levelUp(0);
             quests.setMapPieces([0,0,0,0])
 
-            items.setCollectStorageCount(3, [1, 1, 1], [1, 1, 1]);
+            items.setCollectStorageCount(3, [0, 0, 0], [0, 0, 0]);
             items.setInventory([
                 [0,0],
                 [0,0],

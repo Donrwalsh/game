@@ -49,7 +49,7 @@
         }
 
         var getCollectIconByIdAndRarity = function(id, rarity) {
-            var output;
+            var output = "";
             var rarityString = getRarityString(rarity);
             if (id === 1) {
                 output = '<svg class= "smol-svg" height="32px" width="32px"' +

@@ -81,13 +81,11 @@
         }
 
         var ratDenCollect = function(rarity) {
-            console.log(data.selected_quest);
             var message = '<span class="split-message">Collected </span>' + display.getCollectIconByIdAndRarity(1, rarity);
             message += '<span class="split-message">: ';
             if (rarity == 1) { //common
                 var levelUpDepleteModifier = this.source.level > 1000 ? 1 : (this.source.level + 1) / 1000;
                 var roll = Math.random();
-                console.log(roll);
                 if (roll > .995) {
                     if (this.mapPiecesAvailable()) {
                         var array = shuffle([0, 1, 2, 3]);
@@ -126,7 +124,6 @@
         var levelUp = function(amount) {
             this.source.level += amount;
             if (data.selected_quest.id === this.id) {
-                console.log("hello there");
                 display.setSelectedQuest(this);
             }
         }
