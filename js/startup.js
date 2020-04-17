@@ -26,7 +26,8 @@
             char.rogue.setSpeed(3);
             char.rogue.setLuck(3);
 
-            quests.setSelected(0);
+            quests.setSelected(1);
+            quests.ratDen.levelUp(99);
             quests.setMapPieces([0,0,0,0])
 
             items.setCollectStorageCount(3, [1, 1, 1], [1, 1, 1]);

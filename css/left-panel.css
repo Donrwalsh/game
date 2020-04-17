@@ -140,6 +140,63 @@
     border: 2px #F5A623 solid;
 }
 
+#selected-quest-perks {
+    display: none;
+}
+
+#perks-title {
+    display: none;
+    width: 474px;
+    text-align: center;
+    background-color: brown;
+    border-radius: 10px;
+    color: white;
+    height: 20px;
+    line-height: 20px;
+    margin-top: 3px;
+    margin-left: 3px;
+    margin-right: 3px;
+    font-family: "Luminari";
+}
+
+.perks-level {
+    font-family: "Luminari";
+    display: inline-block;
+    width: 137px;
+    background-color: brown;
+    color: white;
+    line-height: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 10px 0 0 10px;
+    margin-top: 3px;
+    margin-left: 3px;
+}
+
+.perks-description {
+    display: inline-block;
+    width: 337px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 0 10px 10px 0;
+    margin-top: 3px;
+    margin-right: 3px;
+    font-family: "Lucida Console", Monaco, monospace;
+}
+
+.time-perk {
+    background-color: darkturquoise;
+}
+
+.exp-perk {
+    background-color: coral;
+}
+
+.perks-description i{ 
+    line-height: 16px;
+}
+
 #map-panel {
     display: none;
     padding: 10px;

@@ -148,6 +148,8 @@
             $('#init-selected-quest').css('display', 'none');
             $('.selected-quest-stat').css('display', 'none');
             $('#selected-quest-image').attr("href", "");
+            $('#selected-quest-perks').css('display', 'none');
+            $('#perks-list').empty();
         }
 
         var setSelectedQuest = function(quest) {
@@ -169,6 +171,18 @@
             $('.selected-quest-exp-per-tick').html(quest.getExpPerTick());
             $('.selected-quest-risk').html(quest.risk);
             $('.selected-quest-challenge').html(quest.challenge);
+
+            if (quest.getLevel() >= 10) {
+                $('#selected-quest-perks').css('display', 'block');
+                $('#perks-list').empty();
+                var perks = quest.perks.slice().reverse();
+                for (perk in perks) {
+                    if (quest.getLevel() >= perks[perk].level) {
+                        $('#perks-list').append(perks[perk].html);
+                    }
+                }
+                $('#perks-title').css('display', 'inline-block');
+            }
         }
 
         var updateItemsDisplay = function() {

@@ -48,6 +48,7 @@
 
 
             $('#selected-quest-panel').css("display", "block");
+            $('#selected-quest-perks').css("display", "block");
             $('#map-panel').css("display", "none");
             $('#skills-panel').css("display", "none");
             $('#items-panel').css("display", "none");
@@ -60,6 +61,7 @@
             $('.left-panel-select-option.items').removeClass('selected');
 
             $('#selected-quest-panel').css("display", "none");
+            $('#selected-quest-perks').css("display", "none");
             $('#map-panel').css("display", "block");
             $('#skills-panel').css("display", "none");
             $('#items-panel').css("display", "none");
@@ -72,6 +74,7 @@
             $('.left-panel-select-option.items').removeClass('selected');
             
             $('#selected-quest-panel').css("display", "none");
+            $('#selected-quest-perks').css("display", "none");
             $('#map-panel').css("display", "none");
             $('#skills-panel').css("display", "block");
             $('#items-panel').css("display", "none");
@@ -84,6 +87,7 @@
             $('.left-panel-select-option.items').addClass('selected');
 
             $('#selected-quest-panel').css("display", "none");
+            $('#selected-quest-perks').css("display", "none");
             $('#map-panel').css("display", "none");
             $('#skills-panel').css("display", "none");
             $('#items-panel').css("display", "block");

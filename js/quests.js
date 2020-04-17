@@ -201,7 +201,13 @@
         }
 
         var getRatDenTickExp = function() {
-            return 1;
+            var tickExp = 1;
+            if (this.getLevel() >= 20) tickExp++;
+            if (this.getLevel() >= 40) tickExp++;
+            if (this.getLevel() >= 60) tickExp++;
+            if (this.getLevel() >= 80) tickExp++;
+            if (this.getLevel() >= 100) tickExp++;
+            return tickExp;
         }
 
         var getSpiderCaveTickExp = function() {
@@ -209,7 +215,13 @@
         }
 
         var getRatDenTime = function() {
-            return 60;
+            var time = 60;
+            if (this.getLevel() >= 10) time--;
+            if (this.getLevel() >= 30) time--;
+            if (this.getLevel() >= 50) time--;
+            if (this.getLevel() >= 70) time--;
+            if (this.getLevel() >= 90) time--;
+            return time;
         }
 
         var getSpiderCaveTime = function() {
@@ -302,6 +314,18 @@
             risk : 'None',
             challenge : '<i class="fas fa-fist-raised"></i>, <i class="fas fa-heartbeat"></i>, <i class="fas fa-scroll"></i>, <i class="fas fa-hat-wizard"></i>, <i class="fas fa-bolt"></i> or <i class="fas fa-dice-d20"></i>',
             id : 1,
+            perks : [
+                { level : 10,  html : '<div class="perks-level">Level 10</div><div class="perks-description time-perk"><i class="far fa-clock"></i> -1 second</div>'},
+                { level : 20,  html : '<div class="perks-level">Level 20</div><div class="perks-description exp-perk">+1 Exp/second</div>'},
+                { level : 30,  html : '<div class="perks-level">Level 30</div><div class="perks-description time-perk"><i class="far fa-clock"></i> -1 second</div>'},
+                { level : 40,  html : '<div class="perks-level">Level 40</div><div class="perks-description exp-perk">+1 Exp/second</div>'},
+                { level : 50,  html : '<div class="perks-level">Level 50</div><div class="perks-description time-perk"><i class="far fa-clock"></i> -1 second</div>'},
+                { level : 60,  html : '<div class="perks-level">Level 60</div><div class="perks-description exp-perk">+1 Exp/second</div>'},
+                { level : 70,  html : '<div class="perks-level">Level 70</div><div class="perks-description time-perk"><i class="far fa-clock"></i> -1 second</div>'},
+                { level : 80,  html : '<div class="perks-level">Level 80</div><div class="perks-description exp-perk">+1 Exp/second</div>'},
+                { level : 90,  html : '<div class="perks-level">Level 90</div><div class="perks-description time-perk"><i class="far fa-clock"></i> -1 second</div>'},
+                { level : 100,  html : '<div class="perks-level">Level 100</div><div class="perks-description exp-perk">+1 Exp/second</div>'},
+            ],
             source : data.rat_den,
             beginQuest : beginQuest,
             uncommonItem : items.ratTail,
