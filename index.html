@@ -27,8 +27,7 @@
                 <div id="left-panel-select">
                     <div class="left-panel-select-option quest selected">Quest</div>
                     <div class="left-panel-select-option map">Map</div>
-                    <div class="left-panel-select-option skills">Skills</div>
-                    <div class="left-panel-select-option items">Items</div>
+                    <div class="left-panel-select-option upgrade">Upgrade</div>
                 </div>
                 <div id="selected-quest-panel">
                     <div id="no-selected-quest-panel">
@@ -120,22 +119,9 @@
                         </tr>
                     </table>
                 </div>
-                <div id="items-panel">
-                    <div id="rat-tail-inventory" class="items-item">
-                        <img class="loot-icon uncommon-loot" src="img/loot/rat_tail.png" alt="Rat Tail">
-                        <span class="item-amount"></span>
-                    </div>
-                    <div id="den-shroom-inventory" class="items-item">
-                        <img class="loot-icon rare-loot" src="img/loot/den_shroom.png" alt="Den Shroom">
-                        <span class="item-amount"></span>
-                    </div>
-                    <div id="rat-poison-inventory" class="items-item">
-                        <img class="loot-icon epic-loot" src="img/loot/rat_poison.png" alt="Rat Poison">
-                        <span class="item-amount"></span>
-                    </div>
-                    <div id="survival-quartz-inventory" class="items-item">
-                        <img class="loot-icon legendary-loot" src="img/loot/survival_quartz.png" alt="Survival Quartz">
-                        <span class="item-amount"></span>
+                <div id="upgrade-panel">
+                    <div id="no-selected-gear-panel">
+                        <span>No Gear Selected</span>
                     </div>
                 </div>
             </div>
@@ -158,172 +144,214 @@
                 </div>
             </div>
             <div id="right-panel">
-                <div id="character-warrior">
-                    <div class="half-right-panel">
-                        <h1 class="classname">Warrior</h1>
-                    </div>
-                    <div class="half-right-panel center">
-                        <strong>Level</strong><br/> 
-                        <span class="warrior-level-value"></span>
-                    </div>
-                    <div id="warrior-level-up" class="level-up noselect no">
-                        <span>Level Up</span><br/>
-                        <span class="warrior-level-up-cost"></span><span> exp</span>
-                    </div>
-                    <div style="display:inline-block;margin-top:.5em;">
-                        <div class="left-stat-column">
-                            <div class="icon">
-                                <i class="fas fa-fist-raised"></i>
-                            </div>
-                            <div class="stat">
-                                <span class="warrior-strength-value"></span><br/>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-scroll"></i>
-                            </div>
-                            <div class="stat">
-                                <span class="warrior-magic-value"></span><br/>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-bolt"></i>
-                            </div>
-                            <div class="stat">
-                                <span class="warrior-speed-value"></span>
-                            </div>
-                        </div>
-                        <div class="left-stat-column">
-                            <div class="icon">
-                                <i class="fas fa-heartbeat"></i>
-                            </div>
-                            <div class="stat">
-                                <span class="warrior-health-value"></span><br/>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-hat-wizard"></i>
-                            </div>
-                            <div class="stat">
-                                <span class="warrior-mind-value"></span><br/>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-dice-d20"></i>
-                            </div>
-                            <div class="stat">
-                                <span class="warrior-luck-value"></span>
-                            </div>
-                        </div>
-                    </div>
+                <div id="right-panel-select">
+                    <div class="right-panel-select-option heroes selected">Heroes</div>
+                    <div class="right-panel-select-option gear">Gear</div>
+                    <div class="right-panel-select-option items">Items</div>
                 </div>
-                <div id="character-caster">
-                    <div class="half-right-panel">
-                        <h1 class="classname">Caster</h1>
-                    </div>
-                    <div class="half-right-panel center">
-                        <strong>Level</strong><br/> 
-                        <span class="caster-level-value"></span>
-                    </div>
-                    <div id="caster-level-up" class="level-up noselect no">
-                        <span>Level Up</span><br/>
-                        <span class="caster-level-up-cost"></span><span> exp</span>
-                    </div>
-                    <div style="display:inline-block;margin-top:.5em;">
-                        <div class="left-stat-column">
-                            <div class="icon">
-                                <i class="fas fa-fist-raised"></i>
+                <div id="heroes-panel">
+                    <div id="character-warrior">
+                        <div class="half-right-panel">
+                            <h1 class="classname">Warrior</h1>
+                        </div>
+                        <div class="half-right-panel center">
+                            <strong>Level</strong><br/> 
+                            <span class="warrior-level-value"></span>
+                        </div>
+                        <div id="warrior-level-up" class="level-up noselect no">
+                            <span>Level Up</span><br/>
+                            <span class="warrior-level-up-cost"></span><span> exp</span>
+                        </div>
+                        <div style="display:inline-block;margin-top:.5em;">
+                            <div class="left-stat-column">
+                                <div class="icon">
+                                    <i class="fas fa-fist-raised"></i>
+                                </div>
+                                <div class="stat">
+                                    <span class="warrior-strength-value"></span><br/>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-scroll"></i>
+                                </div>
+                                <div class="stat">
+                                    <span class="warrior-magic-value"></span><br/>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div class="stat">
+                                    <span class="warrior-speed-value"></span>
+                                </div>
                             </div>
-                            <div class="stat">
-                                <span class="caster-strength-value"></span><br/>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-scroll"></i>
-                            </div>
-                            <div class="stat">
-                                <span class="caster-magic-value"></span><br/>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-bolt"></i>
-                            </div>
-                            <div class="stat">
-                                <span class="caster-speed-value"></span>
+                            <div class="left-stat-column">
+                                <div class="icon">
+                                    <i class="fas fa-heartbeat"></i>
+                                </div>
+                                <div class="stat">
+                                    <span class="warrior-health-value"></span><br/>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-hat-wizard"></i>
+                                </div>
+                                <div class="stat">
+                                    <span class="warrior-mind-value"></span><br/>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-dice-d20"></i>
+                                </div>
+                                <div class="stat">
+                                    <span class="warrior-luck-value"></span>
+                                </div>
                             </div>
                         </div>
-                        <div class="left-stat-column">
-                            <div class="icon">
-                                <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div id="character-caster">
+                        <div class="half-right-panel">
+                            <h1 class="classname">Caster</h1>
+                        </div>
+                        <div class="half-right-panel center">
+                            <strong>Level</strong><br/> 
+                            <span class="caster-level-value"></span>
+                        </div>
+                        <div id="caster-level-up" class="level-up noselect no">
+                            <span>Level Up</span><br/>
+                            <span class="caster-level-up-cost"></span><span> exp</span>
+                        </div>
+                        <div style="display:inline-block;margin-top:.5em;">
+                            <div class="left-stat-column">
+                                <div class="icon">
+                                    <i class="fas fa-fist-raised"></i>
+                                </div>
+                                <div class="stat">
+                                    <span class="caster-strength-value"></span><br/>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-scroll"></i>
+                                </div>
+                                <div class="stat">
+                                    <span class="caster-magic-value"></span><br/>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div class="stat">
+                                    <span class="caster-speed-value"></span>
+                                </div>
                             </div>
-                            <div class="stat">
-                                <span class="caster-health-value"></span><br/>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-hat-wizard"></i>
-                            </div>
-                            <div class="stat">
-                                <span class="caster-mind-value"></span><br/>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-dice-d20"></i>
-                            </div>
-                            <div class="stat">
-                                <span class="caster-luck-value"></span>
+                            <div class="left-stat-column">
+                                <div class="icon">
+                                    <i class="fas fa-heartbeat"></i>
+                                </div>
+                                <div class="stat">
+                                    <span class="caster-health-value"></span><br/>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-hat-wizard"></i>
+                                </div>
+                                <div class="stat">
+                                    <span class="caster-mind-value"></span><br/>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-dice-d20"></i>
+                                </div>
+                                <div class="stat">
+                                    <span class="caster-luck-value"></span>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div id="character-rogue">
+                        <div class="half-right-panel">
+                            <h1 class="classname">Rogue</h1>
+                        </div>
+                        <div class="half-right-panel center">
+                            <strong>Level</strong><br/> 
+                            <span class="rogue-level-value"></span>
+                        </div>
+                        <div id="rogue-level-up" class="level-up noselect no">
+                            <span>Level Up</span><br/>
+                            <span class="rogue-level-up-cost"></span><span> exp</span>
+                        </div>
+                        
+                        <div style="display:inline-block;margin-top:.5em;">
+                            <div class="left-stat-column">
+                                <div class="red-icon icon">
+                                    <i class="fas fa-fist-raised"></i>
+                                </div>
+                                <div class="stat">
+                                    <span class="rogue-strength-value"></span><br/>
+                                </div>
+                                <div class="blue-icon icon">
+                                    <i class="fas fa-scroll"></i>
+                                </div>
+                                <div class="stat">
+                                    <span class="rogue-magic-value"></span><br/>
+                                </div>
+                                <div class="green-icon icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div class="stat">
+                                    <span class="rogue-speed-value"></span>
+                                </div>
+                            </div>
+                            <div class="left-stat-column">
+                                <div class="red-icon icon">
+                                    <i class="fas fa-heartbeat"></i>
+                                </div>
+                                <div class="stat">
+                                    <span class="rogue-health-value"></span><br/>
+                                </div>
+                                <div class="blue-icon icon">
+                                    <i class="fas fa-hat-wizard"></i>
+                                </div>
+                                <div class="stat">
+                                    <span class="rogue-mind-value"></span><br/>
+                                </div>
+                                <div class="green-icon icon">
+                                    <i class="fas fa-dice-d20"></i>
+                                </div>
+                                <div class="stat">
+                                    <span class="rogue-luck-value"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>       
                 </div>
-                <div id="character-rogue">
-                    <div class="half-right-panel">
-                        <h1 class="classname">Rogue</h1>
-                    </div>
-                    <div class="half-right-panel center">
-                        <strong>Level</strong><br/> 
-                        <span class="rogue-level-value"></span>
-                    </div>
-                    <div id="rogue-level-up" class="level-up noselect no">
-                        <span>Level Up</span><br/>
-                        <span class="rogue-level-up-cost"></span><span> exp</span>
+                <div id="gear-panel">
+                    <div id="gear-warrior">
+                        <div id="warrior-sword" class="gear-piece">
+                            <img class="gear-icon" src="img/gear/small_sword.png" alt="Sword" style="opacity:.25;">
+                            <span class="gear-name">???</span>
+                        </div>
+                        <div id="warrior-shield" class="gear-piece">
+                            <img class="gear-icon" src="img/gear/buckler.png" alt="Shield" style="opacity:.25;">
+                            <span class="gear-name">???</span>
+                        </div>
+                        <div id="warrior-bag" class="gear-piece">
+                            <img class="gear-icon" src="img/gear/pouch.png" alt="Pouch">
+                            <span class="gear-name">Pouch</span>
+                        </div>
                     </div>
                     
-                    <div style="display:inline-block;margin-top:.5em;">
-                        <div class="left-stat-column">
-                            <div class="red-icon icon">
-                                <i class="fas fa-fist-raised"></i>
-                            </div>
-                            <div class="stat">
-                                <span class="rogue-strength-value"></span><br/>
-                            </div>
-                            <div class="blue-icon icon">
-                                <i class="fas fa-scroll"></i>
-                            </div>
-                            <div class="stat">
-                                <span class="rogue-magic-value"></span><br/>
-                            </div>
-                            <div class="green-icon icon">
-                                <i class="fas fa-bolt"></i>
-                            </div>
-                            <div class="stat">
-                                <span class="rogue-speed-value"></span>
-                            </div>
-                        </div>
-                        <div class="left-stat-column">
-                            <div class="red-icon icon">
-                                <i class="fas fa-heartbeat"></i>
-                            </div>
-                            <div class="stat">
-                                <span class="rogue-health-value"></span><br/>
-                            </div>
-                            <div class="blue-icon icon">
-                                <i class="fas fa-hat-wizard"></i>
-                            </div>
-                            <div class="stat">
-                                <span class="rogue-mind-value"></span><br/>
-                            </div>
-                            <div class="green-icon icon">
-                                <i class="fas fa-dice-d20"></i>
-                            </div>
-                            <div class="stat">
-                                <span class="rogue-luck-value"></span>
-                            </div>
-                        </div>
+                </div>
+                <div id="items-panel">
+                    <div id="rat-tail-inventory" class="items-item">
+                        <img class="loot-icon uncommon-loot" src="img/loot/rat_tail.png" alt="Rat Tail">
+                        <span class="item-amount"></span>
                     </div>
-                </div>            
+                    <div id="den-shroom-inventory" class="items-item">
+                        <img class="loot-icon rare-loot" src="img/loot/den_shroom.png" alt="Den Shroom">
+                        <span class="item-amount"></span>
+                    </div>
+                    <div id="rat-poison-inventory" class="items-item">
+                        <img class="loot-icon epic-loot" src="img/loot/rat_poison.png" alt="Rat Poison">
+                        <span class="item-amount"></span>
+                    </div>
+                    <div id="survival-quartz-inventory" class="items-item">
+                        <img class="loot-icon legendary-loot" src="img/loot/survival_quartz.png" alt="Survival Quartz">
+                        <span class="item-amount"></span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -335,6 +363,7 @@
   <script src="js/char.js"></script>
   <script src="js/items.js"></script>
   <script src="js/quests.js"></script>
+  <script src="js/gear.js"></script>
   <script src="js/buttons.js"></script>
   <script src="js/startup.js"></script>
 </body>

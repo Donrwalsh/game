@@ -15,6 +15,11 @@ survival_quartz = gemsicons 66
 
 rat_den_unknown = looticons chest_t_01
 
+pouch = bagsandboxes 06_t
+
+small sword = rpgweaponsicons sv_t_08
+buckler = weaponandarmoriconpack shields shield_t_01
+
 ## Attributions
 
 [Rat icon](https://game-icons.net/1x1/delapouite/rat.html) by [Delapouite](http://delapouite.com/) under [CC BY 3.0](http://creativecommons.org/licenses/by/3.0/)

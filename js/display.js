@@ -140,6 +140,10 @@
             addMessage("Now questing in the " + name + ".");
         };
 
+        var setNoSelectedGear = function() {
+            $('#no-selected-gear-panel').css('display', 'block');
+        }
+
         var setNoSelectedQuest = function() {
             $('#selected-quest-panel').css('display', 'block');
             $('#no-selected-quest-panel').css('display', 'block');
@@ -255,6 +259,7 @@
             getMapIconByPosition : getMapIconByPosition,
             initCollectionZone : initCollectionZone,
             initQuest : initQuest,
+            setNoSelectedGear : setNoSelectedGear,
             setNoSelectedQuest : setNoSelectedQuest,
             setSelectedQuest : setSelectedQuest,
             updateQuest : updateQuest,

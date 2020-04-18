@@ -37,6 +37,10 @@
             id : 0
         }
 
+        var selected_gear = {
+            id : 0
+        }
+
         var rat_den = {
             level : 0,
             map_pieces : [0, 0, 0, 0]
@@ -65,12 +69,15 @@
             
             // Quests
             active_quest : active_quest,
-            selected_quest : selected_quest,
             rat_den : rat_den,
             spider_cave : spider_cave,
 
             //Items
-            items : items
+            items : items,
+
+            //Display
+            selected_gear : selected_gear,
+            selected_quest : selected_quest
         }
     }();
 })(window, jQuery);

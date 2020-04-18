@@ -1,4 +1,4 @@
-(function(window, $, data, char, quests, items) {
+(function(window, $, data, char, quests, items, gear) {
 
     var startup = Startup = function() {
 
@@ -32,12 +32,14 @@
 
             items.setCollectStorageCount(3, [0, 0, 0], [0, 0, 0]);
             items.setInventory([
-                [0,0], //ratTail
-                [0,0], //denShroom
-                [0,0], //ratPoison
-                [0,0] //survivalQuartz
+                [1,1], //ratTail
+                [1,1], //denShroom
+                [1,1], //ratPoison
+                [1,1] //survivalQuartz
             ]);
             quests.bindCollectBoxClicks();
+
+            gear.setSelected(0);
         }
 
         freshGame();
@@ -45,5 +47,5 @@
 
     }();
 
-})(window, jQuery, Data, Char, Quests, Items);
+})(window, jQuery, Data, Char, Quests, Items, Gear);
 
