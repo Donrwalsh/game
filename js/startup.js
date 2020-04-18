@@ -32,10 +32,10 @@
 
             items.setCollectStorageCount(3, [0, 0, 0], [0, 0, 0]);
             items.setInventory([
-                [0,0],
-                [0,0],
-                [0,0],
-                [0,0]
+                [0,0], //ratTail
+                [0,0], //denShroom
+                [0,0], //ratPoison
+                [0,0] //survivalQuartz
             ]);
             quests.bindCollectBoxClicks();
         }

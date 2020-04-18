@@ -13,6 +13,8 @@ den_shroom = herbalicons mushrooms m_06
 rat_poison = bluelootbox 46
 survival_quartz = gemsicons 66
 
+rat_den_unknown = looticons chest_t_01
+
 ## Attributions
 
 [Rat icon](https://game-icons.net/1x1/delapouite/rat.html) by [Delapouite](http://delapouite.com/) under [CC BY 3.0](http://creativecommons.org/licenses/by/3.0/)

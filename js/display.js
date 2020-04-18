@@ -152,6 +152,15 @@
             $('#perks-list').empty();
         }
 
+        var setSelectedQuestLoot = function(item) {
+            var name = item.source.seen === 1 ? item.name : "??????";
+            var path = item.source.seen === 1 ? item.path : item.getUnknownPath();
+            $(item.getLootSelectorStub(), '.selected-quest-stat')
+                .attr('src', path)
+                .attr('alt', name);
+            $(item.getLootSelectorStub() + '-tooltip-text').html(name);
+        }
+
         var setSelectedQuest = function(quest) {
             $('#map-panel').css('display', 'none');
             $('.left-panel-select-option.map').removeClass('selected');
@@ -172,6 +181,11 @@
             $('.selected-quest-risk').html(quest.risk);
             $('.selected-quest-challenge').html(quest.challenge);
 
+            setSelectedQuestLoot(quest.uncommonItem);
+            setSelectedQuestLoot(quest.rareItem);
+            setSelectedQuestLoot(quest.epicItem);
+            setSelectedQuestLoot(quest.legendaryItem);
+
             if (quest.getLevel() >= 10) {
                 $('#selected-quest-perks').css('display', 'block');
                 $('#perks-list').empty();
@@ -185,7 +199,10 @@
             }
         }
 
-        var updateItemsDisplay = function() {
+        var updateItemsDisplay = function(item) {
+            if (data.selected_quest.id === item.getZoneId()) {
+                setSelectedQuestLoot(item);
+            }
             if (data.items.rat_tail.seen) {
                 $('#rat-tail-inventory').css('display', 'inline-block');
                 $('.item-amount', '#rat-tail-inventory').html(data.items.rat_tail.amount);

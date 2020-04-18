@@ -3,29 +3,63 @@
     var items = Items = function() {
 
         class Item {
-            constructor(name, source, rarity, path) {
+            constructor(id, name, source, rarity, path) {
+                this.id = id;
                 this.name = name;
                 this.source = source;
                 this.rarity = rarity;
                 this.path = path;
             }
 
-            obtain = function() {
-                this.source.seen = 1;
-                this.source.amount += 1;
-                display.updateItemsDisplay();
+            getLootSelectorStub = function() {
+                return '.' + getRarityString(this.rarity) + '-loot';
             }
 
             getMessageIcon() {
                 return '<img class="loot-icon ' + getRarityString(this.rarity) + '-loot"' +
                     ' src="' + this.path + '" alt="' + this.name + '">';
             }
+
+            getUnknownPath() {
+                var path = "";
+                switch(this.getZoneId()) {
+                    case 1:
+                        path = "img/loot/rat_den_unknown.png"
+                        break;
+                }
+                return path;
+            }
+
+            getZoneId() {
+                return Math.ceil(this.id/4);
+            }
+
+            init(amount, seen) {
+                this.source.amount = amount;
+                this.source.seen  = seen;
+                display.updateItemsDisplay(this);
+            }
+
+            obtain = function() {
+                this.source.seen = 1;
+                this.source.amount += 1;
+                display.updateItemsDisplay(this);
+            }
         }
 
-        var ratTail = new Item("Rat Tail", data.items.rat_tail, 1, 'img/loot/rat_tail.png');
-        var denShroom = new Item("Den Shroom", data.items.den_shroom, 2, 'img/loot/den_shroom.png');
-        var ratPoison = new Item("Rat Poison", data.items.rat_poison, 3, 'img/loot/rat_poison.png');
-        var survivalQuartz = new Item("Survival Quartz", data.items.survival_quartz, 4, 'img/loot/survival_quartz.png');
+        var ratTail = new Item(1, "Rat Tail", data.items.rat_tail, 1, 'img/loot/rat_tail.png');
+        var denShroom = new Item(2, "Den Shroom", data.items.den_shroom, 2, 'img/loot/den_shroom.png');
+        var ratPoison = new Item(3, "Rat Poison", data.items.rat_poison, 3, 'img/loot/rat_poison.png');
+        var survivalQuartz = new Item(4, "Survival Quartz", data.items.survival_quartz, 4, 'img/loot/survival_quartz.png');
+
+        var getItemById = function(id) {
+            var item;
+            if (id === 1) item = ratTail;
+            if (id === 2) item = denShroom;
+            if (id === 3) item = ratPoison;
+            if (id === 4) item = survivalQuartz;
+            return item;
+        }
 
         var getRarityString = function(rarity) {
             var string;
@@ -57,26 +91,8 @@
 
         var setInventory = function(items) {
             for (var i=0; i < items.length; i++) {
-                switch(i) {
-                    case 0:
-                        data.items.rat_tail.amount = items[i][0];
-                        data.items.rat_tail.seen  = items[i][1];
-                        break;
-                    case 1:
-                        data.items.den_shroom.amount = items[i][0];
-                        data.items.den_shroom.seen  = items[i][1];
-                        break;
-                    case 2:
-                        data.items.rat_poison.amount = items[i][0];
-                        data.items.rat_poison.seen  = items[i][1];
-                        break;
-                    case 3:
-                        data.items.survival_quartz.amount = items[i][0];
-                        data.items.survival_quartz.seen  = items[i][1];
-                        break;
-                }
+                getItemById(i+1).init(items[i][0], items[i][1]);
             }
-            display.updateItemsDisplay();
         }
 
         return {

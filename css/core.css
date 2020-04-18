@@ -79,7 +79,6 @@ body {
 }
 
 #active-quest-zone {
-    background-color: lightgrey;
     height: 250px;
 }
 
@@ -138,7 +137,6 @@ body {
 #message-zone {
     overflow: auto;
     height: 100%;
-    background-color: darkorange;
     display: flex;
     flex-direction: column-reverse;
     position: relative;
