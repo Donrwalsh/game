@@ -18,7 +18,22 @@ rat_den_unknown = looticons chest_t_01
 pouch = bagsandboxes 06_t
 
 small sword = rpgweaponsicons sv_t_08
+armor = armoriconpack armor_11
 buckler = weaponandarmoriconpack shields shield_t_01
+helmet = armoriconpack helmets_21
+medallion = WeaponsAndArmorIcons nk_t_02
+
+staff = MagicItems staff_08_t
+robe = rpgarmorsets lightarmor l_a_03 dru_arm_01_t.PNG
+orb = MagicItems addon addons_11_t.png
+timepiece = MagicItems artifact_12_t.PNG
+ring = armoriconpack rings_7.PNG
+
+boots = armoriconpack boots_6.png
+coin = looticons addons 152_t.png
+belt = WeaponsAndArmorIcons belt_t_01.png
+bracers = armoriconpack bracers_3.PNG
+potion = magicitems potion_11_t.png
 
 ## Attributions
 
