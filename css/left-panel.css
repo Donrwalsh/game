@@ -70,7 +70,6 @@
     padding-top: .5em;
     padding-bottom: .5em;
     margin-left: .5em;
-    position: relative;
 }
 
 .selected-quest-challenge i {
@@ -117,74 +116,6 @@
 #spider-cave-map-svg {
     border: 2px #9b9b9b solid;
     border-radius: 5px;
-}
-
-.loot-icon {
-    border-radius: 5px;
-    height: 32px;
-    width: 32px;
-}
-
-.tooltip-text {
-    visibility: hidden;
-    position: absolute;
-    z-index: 1;
-    background-color: black;
-    color: white;
-    width: 150px;
-    top: -12px;
-    border-radius: 5px 5px 5px 0;
-    text-align: center;
-    height: 20px;
-    line-height: 20px;
-}
-
-.uncommon-loot {
-    border: 2px #7ED321 solid;
-}
-
-.uncommon-loot-tooltip-text {
-    left: 72px;
-}
-
-.uncommon-loot:hover + .uncommon-loot-tooltip-text {
-    visibility: visible;
-}
-
-.rare-loot {
-    border: 2px #48BAFF solid;
-}
-
-.rare-loot-tooltip-text {
-    left: 118px;
-}
-
-.rare-loot:hover + .rare-loot-tooltip-text {
-    visibility: visible;
-}
-
-.epic-loot {
-    border: 2px #9013FE solid;
-}
-
-.epic-loot-tooltip-text {
-    left: 164px;
-}
-
-.epic-loot:hover + .epic-loot-tooltip-text {
-    visibility: visible;
-}
-
-.legendary-loot-tooltip-text {
-    left: 210px;
-}
-
-.legendary-loot {
-    border: 2px #F5A623 solid;
-}
-
-.legendary-loot:hover + .legendary-loot-tooltip-text {
-    visibility: visible;
 }
 
 #selected-quest-perks {

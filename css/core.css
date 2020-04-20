@@ -212,3 +212,66 @@ body {
               user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome, Opera and Firefox */
   }
+
+  .loot-icon-container {
+    display: inline-block;
+    position: relative;
+}
+
+.loot-icon {
+    border-radius: 5px;
+    height: 32px;
+    width: 32px;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    background-color: black;
+    color: white;
+    width: 150px;
+    top: -20px;
+    left: 16px;
+    border-radius: 5px 5px 5px 0;
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+}
+
+.go-left {
+    left: -136px;
+    border-radius: 5px 5px 0 5px;
+}
+
+.uncommon-loot {
+    border: 2px #7ED321 solid;
+}
+
+.uncommon-loot:hover + .uncommon-loot-tooltip-text {
+    visibility: visible;
+}
+
+.rare-loot {
+    border: 2px #48BAFF solid;
+}
+
+.rare-loot:hover + .rare-loot-tooltip-text {
+    visibility: visible;
+}
+
+.epic-loot {
+    border: 2px #9013FE solid;
+}
+
+.epic-loot:hover + .epic-loot-tooltip-text {
+    visibility: visible;
+}
+
+.legendary-loot {
+    border: 2px #F5A623 solid;
+}
+
+.legendary-loot:hover + .legendary-loot-tooltip-text {
+    visibility: visible;
+}

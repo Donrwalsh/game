@@ -26,13 +26,13 @@
             char.rogue.setSpeed(3);
             char.rogue.setLuck(3);
 
-            quests.setSelected(0);
+            quests.setSelected(1);
             quests.ratDen.levelUp(0);
             quests.setMapPieces([0,0,0,0])
 
             items.setCollectStorageCount(3, [0, 0, 0], [0, 0, 0]);
             items.setInventory([
-                [1,1], //ratTail
+                [999,1], //ratTail
                 [1,1], //denShroom
                 [1,1], //ratPoison
                 [1,1] //survivalQuartz

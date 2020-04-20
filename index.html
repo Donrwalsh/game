@@ -70,14 +70,22 @@
                     </div>
                     <div class="selected-quest-stat">
                         <strong id="loot-label">Loot: </strong>
-                        <img class="loot-icon uncommon-loot">
-                        <span class="uncommon-loot-tooltip-text tooltip-text"></span>
-                        <img class="loot-icon rare-loot">
-                        <span class="rare-loot-tooltip-text tooltip-text"></span>
-                        <img class="loot-icon epic-loot">
-                        <span class="epic-loot-tooltip-text tooltip-text"></span>
-                        <img class="loot-icon legendary-loot">
-                        <span class="legendary-loot-tooltip-text tooltip-text"></span>
+                        <div class="loot-icon-container">
+                            <img class="loot-icon uncommon-loot">
+                            <span class="uncommon-loot-tooltip-text tooltip-text"></span>
+                        </div>
+                        <div class="loot-icon-container">
+                            <img class="loot-icon rare-loot">
+                            <span class="rare-loot-tooltip-text tooltip-text"></span>
+                        </div>
+                        <div class="loot-icon-container">
+                            <img class="loot-icon epic-loot">
+                            <span class="epic-loot-tooltip-text tooltip-text"></span>
+                        </div>
+                        <div class="loot-icon-container">
+                            <img class="loot-icon legendary-loot">
+                            <span class="legendary-loot-tooltip-text tooltip-text"></span>
+                        </div>
                         <svg id="spider-cave-map-svg" height="32px" width="32px"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">       
                         <image id="spider-cave-map-loot" href="img/spider-cave.svg"/>
@@ -399,19 +407,31 @@
                 </div>
                 <div id="items-panel">
                     <div id="rat-tail-inventory" class="items-item">
-                        <img class="loot-icon uncommon-loot" src="img/loot/rat_tail.png" alt="Rat Tail">
+                        <div class="loot-icon-container">
+                            <img class="loot-icon uncommon-loot" src="img/loot/rat_tail.png" alt="Rat Tail">
+                            <span class="uncommon-loot-tooltip-text tooltip-text go-left">Rat Tail</span>
+                        </div>
                         <span class="item-amount"></span>
                     </div>
                     <div id="den-shroom-inventory" class="items-item">
-                        <img class="loot-icon rare-loot" src="img/loot/den_shroom.png" alt="Den Shroom">
+                        <div class="loot-icon-container">
+                            <img class="loot-icon rare-loot" src="img/loot/den_shroom.png" alt="Den Shroom">
+                            <span class="rare-loot-tooltip-text tooltip-text go-left">Den Shroom</span>
+                        </div>
                         <span class="item-amount"></span>
                     </div>
                     <div id="rat-poison-inventory" class="items-item">
-                        <img class="loot-icon epic-loot" src="img/loot/rat_poison.png" alt="Rat Poison">
+                        <div class="loot-icon-container">
+                            <img class="loot-icon epic-loot" src="img/loot/rat_poison.png" alt="Rat Poison">
+                            <span class="epic-loot-tooltip-text tooltip-text go-left">Rat Poison</span>
+                        </div>
                         <span class="item-amount"></span>
                     </div>
                     <div id="survival-quartz-inventory" class="items-item">
-                        <img class="loot-icon legendary-loot" src="img/loot/survival_quartz.png" alt="Survival Quartz">
+                        <div class="loot-icon-container">
+                            <img class="loot-icon legendary-loot" src="img/loot/survival_quartz.png" alt="Survival Quartz">
+                            <span class="legendary-loot-tooltip-text tooltip-text go-left">Survival Quartz</span>
+                        </div>
                         <span class="item-amount"></span>
                     </div>
                 </div>

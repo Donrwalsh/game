@@ -144,6 +144,10 @@
             $('#no-selected-gear-panel').css('display', 'block');
         }
 
+        var setSelectedGear = function(gear) {
+
+        }
+
         var setNoSelectedQuest = function() {
             $('#selected-quest-panel').css('display', 'block');
             $('#no-selected-quest-panel').css('display', 'block');
@@ -260,6 +264,7 @@
             initCollectionZone : initCollectionZone,
             initQuest : initQuest,
             setNoSelectedGear : setNoSelectedGear,
+            setSelectedGear : setSelectedGear,
             setNoSelectedQuest : setNoSelectedQuest,
             setSelectedQuest : setSelectedQuest,
             updateQuest : updateQuest,
