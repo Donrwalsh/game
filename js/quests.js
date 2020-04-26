@@ -83,6 +83,7 @@
         var ratDenCollect = function(rarity) {
             var message = '<span class="split-message">Collected </span>' + display.getCollectIconByIdAndRarity(1, rarity);
             message += '<span class="split-message">: ';
+            var obtain;
             if (rarity == 1) { //common
                 var levelUpDepleteModifier = this.source.level > 1000 ? 1 : (this.source.level + 1) / 1000;
                 var roll = Math.random();
@@ -97,18 +98,18 @@
                             }
                         }
                     } else {
-                        this.epicItem.obtain();
-                        message += "It contained 1 " + this.epicItem.name + " </span>" + this.epicItem.getMessageIcon() + '<span class="split-message">!</span>';
+                        obtain = this.epicItem.obtain();
+                        message += display.obtainItemMessage(this.epicItem, obtain);
                     }
                 } else if (roll > .99) {
-                    this.epicItem.obtain();
-                    message += "It contained 1 " + this.epicItem.name + " </span>" + this.epicItem.getMessageIcon() + '<span class="split-message">!</span>';
+                    obtain = this.epicItem.obtain();
+                    message += display.obtainItemMessage(this.epicItem, obtain);
                 } else if (roll > .96) {
-                    this.rareItem.obtain();
-                    message += "It contained 1 " + this.rareItem.name + " </span>" + this.rareItem.getMessageIcon() + '<span class="split-message">!</span>';
+                    obtain = this.rareItem.obtain();
+                    message += display.obtainItemMessage(this.rareItem, obtain);
                 } else if (roll > .91) {
-                    this.uncommonItem.obtain();
-                    message += "It contained 1 " + this.uncommonItem.name + " </span>" + this.uncommonItem.getMessageIcon() + '<span class="split-message">!</span>';
+                    obtain = this.uncommonItem.obtain();
+                    message += display.obtainItemMessage(this.uncommonItem, obtain);
                 } else if (roll > .45 + (.4 * levelUpDepleteModifier)) {
                     this.levelUp(1);
                     message += 'Rat Den level increased by 1!</span>'

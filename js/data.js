@@ -52,10 +52,10 @@
         }
 
         var items = {
-            rat_tail : { amount : 0, seen : 0 },
-            den_shroom : { amount : 0, seen : 0 },
-            rat_poison : { amount : 0, seen : 0 },
-            survival_quartz : { amount : 0, seen : 0 }
+            rat_tail : { amount : 0, seen : 0, max : 3 },
+            den_shroom : { amount : 0, seen : 0, max : 3 },
+            rat_poison : { amount : 0, seen : 0, max : 3 },
+            survival_quartz : { amount : 0, seen : 0, max : 3 }
         }
     
         return {

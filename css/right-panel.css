@@ -121,7 +121,7 @@
 .items-item {
     display: none;
     vertical-align: middle;
-    width: 31%;
+    width: 48%;
     padding-bottom: .5rem;
 }
 
@@ -131,6 +131,13 @@
     font-family: 'Luminari';
     font-size: x-large;
     margin-left: .5rem;
+}
+
+.item-max {
+    line-height: 39px;
+    vertical-align: top;
+    font-family: 'Luminari';
+    font-size: x-large;
 }
 
 #gear-panel {

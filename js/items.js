@@ -41,9 +41,16 @@
             }
 
             obtain = function() {
+                var result;
                 this.source.seen = 1;
-                this.source.amount += 1;
-                display.updateItemsDisplay(this);
+                if (this.source.max > this.source.amount) {
+                    this.source.amount += 1;
+                    result = true;
+                    display.updateItemsDisplay(this);
+                } else {
+                    result = false;
+                }
+                return result;
             }
         }
 

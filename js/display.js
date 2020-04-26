@@ -214,18 +214,22 @@
             if (data.items.rat_tail.seen) {
                 $('#rat-tail-inventory').css('display', 'inline-block');
                 $('.item-amount', '#rat-tail-inventory').html(data.items.rat_tail.amount);
+                $('.item-max', '#rat-tail-inventory').html("/ " + data.items.rat_tail.max);
             }
             if (data.items.den_shroom.seen) {
                 $('#den-shroom-inventory').css('display', 'inline-block');
                 $('.item-amount', '#den-shroom-inventory').html(data.items.den_shroom.amount);
+                $('.item-max', '#den-shroom-inventory').html("/ " + data.items.den_shroom.max);
             }
             if (data.items.rat_poison.seen) {
                 $('#rat-poison-inventory').css('display', 'inline-block');
                 $('.item-amount', '#rat-poison-inventory').html(data.items.rat_poison.amount);
+                $('.item-max', '#rat-poison-inventory').html("/ " + data.items.rat_poison.max);
             }
             if (data.items.survival_quartz.seen) {
                 $('#survival-quartz-inventory').css('display', 'inline-block');
                 $('.item-amount', '#survival-quartz-inventory').html(data.items.survival_quartz.amount);
+                $('.item-max', '#survival-quartz-inventory').html("/ " + data.items.survival_quartz.max);
             }
         }
 
@@ -251,6 +255,12 @@
             }, 1);
         };
 
+        var obtainItemMessage = function(item, obtain) {
+            var message = "It contained 1 " + item.name + " </span>" + item.getMessageIcon() + '<span class="split-message">';
+            message += obtain ? " which was added to inventory!</span>" : ", but there wasn't enough inventory space.</span>";
+            return message;
+        }
+
         return {
             addCollectionBox : addCollectionBox,
             addCollectionReward : addCollectionReward,
@@ -269,7 +279,8 @@
             setSelectedQuest : setSelectedQuest,
             updateQuest : updateQuest,
             update : update,
-            updateItemsDisplay : updateItemsDisplay
+            updateItemsDisplay : updateItemsDisplay,
+            obtainItemMessage : obtainItemMessage
         }
 
 
