@@ -173,6 +173,7 @@
     width: 50px;
     display: block;
     margin: auto;
+    cursor: pointer;
 }
 
 .gear-name {
@@ -180,10 +181,10 @@
     line-height: 20px;
     vertical-align: top;
     font-size: medium;
+    cursor: pointer;
 }
 
 .gear-piece {
-    cursor: pointer;
     width: 178px;
     display: inline-block;
     text-align: center;

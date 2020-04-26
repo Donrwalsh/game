@@ -144,10 +144,6 @@
             $('#no-selected-gear-panel').css('display', 'block');
         }
 
-        var setSelectedGear = function(gear) {
-
-        }
-
         var setNoSelectedQuest = function() {
             $('#selected-quest-panel').css('display', 'block');
             $('#no-selected-quest-panel').css('display', 'block');
@@ -167,6 +163,26 @@
                 .attr('src', path)
                 .attr('alt', name);
             $(item.getLootSelectorStub() + '-tooltip-text').html(name);
+        }
+
+        var setSelectedGear = function(gear) {
+            $('#map-panel').css('display', 'none');
+            $('#selected-quest-panel').css('display', 'none');
+            $('#upgrade-panel').css('display', 'block');
+            $('.left-panel-select-option.map').removeClass('selected');
+            $('.left-panel-select-option.quest').removeClass('selected');
+            $('.left-panel-select-option.upgrade').addClass('selected');
+
+            $('#selected-gear-panel').css('display', 'block');
+            $('#selected-gear-panel').css('border', '3px solid ' + gear.color);
+            $('#selected-gear-upgrade-tree').css('border', '2px solid ' + gear.color);
+            $('#no-selected-gear-panel').css('display', 'none');
+
+            $('#selected-gear-image').attr("src", gear.img);
+            $('#selected-gear-image').attr("alt", gear.name);
+            $('#selected-gear-title').html(gear.name);
+            $('#selected-gear-attributes').html(gear.getAttributeText());
+
         }
 
         var setSelectedQuest = function(quest) {

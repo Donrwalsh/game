@@ -1,4 +1,4 @@
-(function(window, $, char, quests) {
+(function(window, $, char, quests, gear) {
 
     var buttons = Buttons = function() {
 
@@ -30,7 +30,11 @@
 
         $('#map-rat-den').click(function() {
             quests.setSelected(1);
-        })
+        });
+
+        $('#warrior-bag > .gear-name, #warrior-bag > .gear-icon').click(function() {
+            gear.setSelected(1);
+        });
 
         $('.left-panel-select-option.quest').click(function() {
             $('.left-panel-select-option.quest').addClass('selected');
@@ -98,4 +102,4 @@
     }();
 
 
-})(window, jQuery, Char, Quests);
+})(window, jQuery, Char, Quests, Gear);
