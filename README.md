@@ -1,6 +1,5 @@
 NEXT UP
 
-Need to get the X's working again for selected gear / quests and gear upgrades. Then implement closing of selected gear upgrade.
 Building the upgrade tree is shimmed to only show the initial quadrant-3 upgrade node. Needs to be smart enough to build in multiple locations ~ and then add lines indicating prereqs.
 
 game

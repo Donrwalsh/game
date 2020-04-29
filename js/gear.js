@@ -3,11 +3,12 @@
     var gear = Gear = function() {
 
         class upgrade {
-            constructor(id, title, description, image, gridLocation, cost, unlocked) {
+            constructor(id, title, description, image, imageText, gridLocation, cost, unlocked) {
                 this.id = id;
                 this.title = title;
                 this.description = description;
                 this.image = image;
+                this.imageText = imageText;
                 this.gridLocation = gridLocation;
                 this.cost = cost;
                 this.unlocked = unlocked;
@@ -29,8 +30,9 @@
             }
         }
 
-        var unlockPouch = new upgrade(1, "Unlock Pouch", "Storage Capacity +1 for all items.", "img/gear/pouch.png", 3, [], true)
-        var warriorPouch = new gearPiece(1, "Pouch", "img/gear/pouch.png", "red", [unlockPouch]);
+        var unlockPouch = new upgrade(1, "Unlock Pouch", "Storage Capacity +1 for all items.", "img/gear/pouch.png", '', 3, [], true)
+        var ratTailThree = new upgrade(2, "Rat Tail Storage III", "Storage Capacity +300 for " + items.ratTail.getMessageIcon() + '.', "img/loot/rat_tail.png", "III", 1, [[items.ratTail, 99]], false);
+        var warriorPouch = new gearPiece(1, "Pouch", "img/gear/pouch.png", "red", [unlockPouch, ratTailThree]);
 
         var setSelected = function(id) {
             if (id === null) {

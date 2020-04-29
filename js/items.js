@@ -77,15 +77,6 @@
             return item;
         }
 
-        var getRarityString = function(rarity) {
-            var string;
-            if (rarity === 1) {string = "uncommon"}
-            if (rarity === 2) {string = "rare"}
-            if (rarity === 3) {string = "epic"}
-            if (rarity === 4) {string = "legendary"}
-            return string;
-        }
-
         var depleteCollectBox = function(id) {
             data.storage.collect[id] = 0;
             data.storage.collectRarity[id] = 0;

@@ -309,7 +309,7 @@
 .tree-node {
     height: 50px;
     width: 50px;
-    margin-top: 5px;
+    margin-top: 20px;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -320,7 +320,7 @@
     float: left;
 }
 
-#selected-gear-upgrade-icon > img {
+#selected-gear-upgrade-icon > div > img {
     height: 50px;
     width: 50px;
     margin-top: 25px;
@@ -334,6 +334,16 @@
 
 #selected-gear-upgrade-cost {
     height: 30px;
+}
+
+.upgrade-description {
+    line-height: 25px;
+}
+
+.upgrade-description > img{
+    height: 25px;
+    width: 25px;
+    vertical-align: middle;
 }
 
 #selected-gear-upgrade-cost > strong {
@@ -355,4 +365,19 @@
     float: right;
     cursor: pointer;
     padding-right: 15px;
+}
+
+.container {
+    position: relative;
+    width: 50px;
+}
+
+.icon-text {
+    position: absolute;
+    right: 2px;
+    bottom: 0px;
+    color: white;
+    font-size: xx-large;
+    font-family: fantasy;
+    pointer-events: none;
 }
