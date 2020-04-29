@@ -305,3 +305,48 @@
     padding-right: 16px;
     font-size:0;
 }
+
+.tree-node {
+    height: 50px;
+    width: 50px;
+    margin-top: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#selected-gear-upgrade-icon {
+    height: 100px;
+    width: 60px;
+    float: left;
+}
+
+#selected-gear-upgrade-icon > img {
+    height: 50px;
+    width: 50px;
+    margin-top: 25px;
+    border-radius: 5px;
+}
+
+#selected-gear-upgrade-text {
+    height: 70px;
+    margin-top: 5px;
+}
+
+#selected-gear-upgrade-cost {
+    height: 30px;
+}
+
+#selected-gear-upgrade-cost > strong {
+    line-height: 30px;
+    vertical-align: text-bottom;
+}
+
+#selected-gear-upgrade-cost > img {
+    height: 25px;
+    width: 25px;
+}
+
+#selected-gear-upgrade-cost > span {
+    line-height: 30px;
+    vertical-align: text-bottom;
+}

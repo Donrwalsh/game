@@ -12,12 +12,21 @@
             }
 
             getLootSelectorStub = function() {
-                return '.' + getRarityString(this.rarity) + '-loot';
+                return '.' + this.getRarityString() + '-loot';
             }
 
             getMessageIcon() {
-                return '<img class="loot-icon ' + getRarityString(this.rarity) + '-loot"' +
+                return '<img class="loot-icon ' + this.getRarityString() + '-loot"' +
                     ' src="' + this.path + '" alt="' + this.name + '">';
+            }
+
+            getRarityString() {
+                var string;
+                if (this.rarity === 1) {string = "uncommon"}
+                if (this.rarity === 2) {string = "rare"}
+                if (this.rarity === 3) {string = "epic"}
+                if (this.rarity === 4) {string = "legendary"}
+                return string;
             }
 
             getUnknownPath() {
