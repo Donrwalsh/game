@@ -140,6 +140,7 @@
                         <div id="selected-gear-attributes"></div>
                     </div>
                     <div id="selected-gear-selected-upgrade">
+                        <i id="deselect-upgrade" class="fas fa-times"></i>
                         <div id="selected-gear-upgrade-icon"></div>
                         <div id="selected-gear-upgrade-text"></div>
                         <div id="selected-gear-upgrade-cost"></div>
@@ -456,7 +457,10 @@
         </div>
     </div>
  
-  <script src="js/fontawesome.js"></script>
+    <script type="text/javascript">
+        window.FontAwesomeConfig = { autoReplaceSvg: false }
+    </script>
+    <script src="js/fontawesome.js"></script>
 
   <script src="js/data.js"></script>
   <script src="js/display.js"></script>

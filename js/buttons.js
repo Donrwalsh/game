@@ -24,9 +24,13 @@
             }
         });
 
+        $('#deselect-gear').click(function() {
+            gear.setSelected(0);
+        })
+
         $('#deselect-quest').click(function() {
             quests.setSelected(0);
-        })
+        });
 
         $('#map-rat-den').click(function() {
             quests.setSelected(1);

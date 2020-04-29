@@ -141,6 +141,9 @@
         };
 
         var setNoSelectedGear = function() {
+            $('#selected-gear-panel').css('display', 'none');
+            $('#selected-gear-selected-upgrade').css('display', 'none');
+            $('#selected-gear-upgrade-tree').css('display', 'none');
             $('#no-selected-gear-panel').css('display', 'block');
         }
 
@@ -165,10 +168,20 @@
             $(item.getLootSelectorStub() + '-tooltip-text').html(name);
         }
 
+        var setNoSelectedUpgrade = function() {
+            $('#deselect-upgrade').css('display', 'none');
+            $('#selected-gear-upgrade-icon').empty();
+            $('#selected-gear-upgrade-text').empty();
+            $("#selected-gear-upgrade-cost").empty();
+        }
+
         var setSelectedGear = function(gear) {
             $('#map-panel').css('display', 'none');
             $('#selected-quest-panel').css('display', 'none');
             $('#upgrade-panel').css('display', 'block');
+            $('#selected-gear-selected-upgrade').css('display', 'block');
+            setNoSelectedUpgrade();
+            $('#selected-gear-upgrade-tree').css('display', 'block');
             $('.left-panel-select-option.map').removeClass('selected');
             $('.left-panel-select-option.quest').removeClass('selected');
             $('.left-panel-select-option.upgrade').addClass('selected');
@@ -182,21 +195,18 @@
                 //need to programatically determine the correct margin-left value.
                 $('#selected-gear-upgrade-tree').append('<img id="' + id +'" src="' + node.image + '" class="tree-node" style="margin-left:262.5px;background-color:' + (node.unlocked ? gear.color : 'lightgrey') + ';"></image>')
                 $('#' + id).click(function() {
-                    $('#selected-gear-upgrade-icon').empty().append('<img src="' + node.image + '" style="background-color:' + (node.unlocked ? gear.color : 'lightgrey') + '"></image>');
-                    $('#selected-gear-upgrade-text').empty().append('<strong>' + node.title + '</strong><br><span>' + node.description + '</span>');
+                    $('#deselect-upgrade').css('display', 'block').click(function() { setNoSelectedUpgrade();});
+                    $('#selected-gear-upgrade-icon').append('<img src="' + node.image + '" style="background-color:' + (node.unlocked ? gear.color : 'lightgrey') + '"></image>');
+                    $('#selected-gear-upgrade-text').append('<strong>' + node.title + '</strong><br><span>' + node.description + '</span>');
                     if (node.unlocked) {
-                        $("#selected-gear-upgrade-cost").empty().append('<strong>Already unlocked</strong>');    
+                        $("#selected-gear-upgrade-cost").append('<strong>Already unlocked</strong>');    
                     } else {
-                        $("#selected-gear-upgrade-cost").empty().append('<strong>Cost: </strong>');
+                        $("#selected-gear-upgrade-cost").append('<strong>Cost: </strong>');
                         for (item in node.cost) {
                             console.log(node.cost[item]);
                             $("#selected-gear-upgrade-cost").append('<img class="loot-icon ' + node.cost[item][0].getRarityString() + '-loot" src="' + node.cost[item][0].path + '" alt="something"><span>x' + node.cost[item][1] + '</span>');
                         }
                     }
-                    
-
-                    
-
                 });
             }
             $('#selected-gear-upgrade-tree').css('border', '2px solid ' + gear.color);

@@ -350,3 +350,9 @@
     line-height: 30px;
     vertical-align: text-bottom;
 }
+
+#deselect-upgrade {
+    float: right;
+    cursor: pointer;
+    padding-right: 15px;
+}
