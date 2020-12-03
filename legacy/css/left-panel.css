@@ -307,6 +307,7 @@
 }
 
 .tree-node {
+    position: absolute;
     height: 50px;
     width: 50px;
     margin-top: 20px;
