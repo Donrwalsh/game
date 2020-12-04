@@ -27,4 +27,19 @@ public class BarController {
             return new ResponseEntity<>(result, HttpStatus.CREATED);
         }
     }
+
+    @GetMapping("/completions")
+    public ResponseEntity<?> completions() {
+        return new ResponseEntity<>(service.getCompletions(), HttpStatus.OK);
+    }
+
+    @GetMapping("/complete")
+    public ResponseEntity<?> completeBar(@RequestParam int barId) {
+        Completion result = service.completeProgressBar(barId);
+        if (result == null) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        } else {
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        }
+    }
 }

@@ -11,4 +11,6 @@ public interface ProgressRepository extends CrudRepository<Progress, Long> {
     Progress findByUserIdAndBarId(int userId, int barId);
 
     Progress save(Progress progress);
+
+    void deleteByUserIdAndBarId(int userId, int barId);
 }

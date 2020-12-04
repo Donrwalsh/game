@@ -29,15 +29,41 @@ $(document).ready(function(){
         }
     });
 
+        const Url2='http://localhost:8080/completions';
+        $.ajax({
+            url: Url2,
+            type:"GET",
+            success: function(result){
+                $('#completion-count').text(result.count);
+            },
+            error:function(error){
+                console.log('Error ${error}')
+            }
+        });
+
     $(".bar").click(function() {
         var id = parseInt($(this).attr('id').charAt(3));
         if (!isBarActive(bars[id-1])) {
-            const Url='http://localhost:8080/start?barId=' +id;
+            const Url='http://localhost:8080/start?barId='+id;
                 $.ajax({
                     url: Url,
                     type: "GET",
                     success: function(result) {
                         registerBar(result);
+                    },
+                    error:function(error) {
+                        console.log('Error ${error}')
+                    }
+                });
+        }
+        if (isBarComplete(bars[id-1])) {
+            const Url='http://localhost:8080/complete?barId='+id;
+                $.ajax({
+                    url: Url,
+                    type: "GET",
+                    success: function(result) {
+                        completeBar(bars[id-1], id);
+                        $('#completion-count').text(result.count);
                     },
                     error:function(error) {
                         console.log('Error ${error}')
@@ -61,4 +87,15 @@ function registerBar(progress) {
 
 function isBarActive(bar) {
     return bar.start != 0 && bar.end != 0 && bar.current != 0;
+}
+
+function isBarComplete(bar) {
+    return isBarActive(bar) && bar.end - Date.parse(new Date()) < 0;
+}
+
+function completeBar(bar, i) {
+    bar.end = 0;
+    bar.start = 0;
+    bar.current = 0;
+    $("#bar"+(i)+"-progress").css("width", 0);
 }
