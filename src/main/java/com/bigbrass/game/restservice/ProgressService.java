@@ -14,4 +14,15 @@ public class ProgressService {
     public List<Progress> findByUserId(int userId) {
         return repository.findByUserId(userId);
     }
+
+    public Progress startProgressBar(int barId) {
+        Progress progressBar = new Progress(barId);
+        Progress result = null;
+        try {
+            result = repository.save(progressBar);
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+        return result;
+    }
 }

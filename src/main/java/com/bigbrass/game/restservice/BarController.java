@@ -2,10 +2,8 @@ package com.bigbrass.game.restservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,4 +17,14 @@ public class BarController {
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody
     List<Progress> bars() {return service.findByUserId(1);}
+
+    @GetMapping("/start")
+    public ResponseEntity<?> startBar(@RequestParam int barId) {
+        Progress result = service.startProgressBar(barId);
+        if (result == null) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        } else {
+            return new ResponseEntity<>(result, HttpStatus.CREATED);
+        }
+    }
 }

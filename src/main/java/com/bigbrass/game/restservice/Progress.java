@@ -10,12 +10,23 @@ import java.time.LocalDateTime;
 public class Progress {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private int userId;
     private int barId;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
+
+    public Progress() {
+
+    }
+
+    public Progress(int barId) {
+        this.userId = 1;
+        this.barId = barId;
+        this.startTime = LocalDateTime.now();
+        this.endTime = LocalDateTime.now().plusMinutes(1L);
+    }
 
     public int getUserId() {
         return userId;
