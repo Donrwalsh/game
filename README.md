@@ -34,6 +34,8 @@ Ok, so now I've got a small handful of endpoints. Seems like a good time to figu
 
 Tests are coming together nicely. Only the 'sanity' tests are currently working, but I'm building them out to get a better understanding of the basics before applying lessons to the stuff I've built.
 
+Milliseconds are awkward to work with, and I don't really need that level of precision. By restricting the LocalDateTime values to seconds precision I bypass a weird issue in the test and since this is what I've been storing in the database anyway, I don't see a problem.
+
 ## Todo Section
 
 [] by way of request params enable 'faking' of user login
@@ -41,3 +43,5 @@ Tests are coming together nicely. Only the 'sanity' tests are currently working,
 [] Obviously it would be great to use an actual database rather than one that is in memory.
 
 [] Devops shenanigans
+
+[] All this bar stuff shouldn't be top level.

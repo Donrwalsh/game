@@ -16,9 +16,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -40,26 +38,19 @@ public class BarControllerTest {
 
     @Test
     public void getBars() throws Exception {
-
-        Progress progress = new Progress(1);
-        List progressList = new ArrayList<>();
-        progressList.add(progress);
-
-        when(progressService.findByUserId(1)).thenReturn(progressList);
+        Progress progress = new Progress(8, 1);
+        when(progressService.findByUserId(8)).thenReturn(Arrays.asList(progress));
+        System.out.println(progress);
 
         RequestBuilder request = MockMvcRequestBuilders
-                .get("/bars")
+                .get("/bars?userId=8")
                 .accept(MediaType.APPLICATION_JSON);
-
-        // toString() removes trailing zeros.
-        DateTimeFormatter desiredFormatter
-                = DateTimeFormatter.ofPattern("uuuu-MM-dd'T'HH:mm:ss.SSS");
 
         MvcResult result = mockMvc.perform(request)
                 .andExpect(status().isOk())
-                .andExpect(content().json("[{\"id\":null,\"userId\":1,\"barId\":1,\"startTime\":\""
-                        + progress.getStartTime().format(desiredFormatter) + "\",\"endTime\":\""
-                        + progress.getEndTime().format(desiredFormatter) + "\"}]"))
+                .andExpect(content().json("[{\"id\":null,\"userId\":8,\"barId\":1,\"startTime\":\""
+                        + progress.getStartTime().toString() + "\",\"endTime\":\""
+                        + progress.getEndTime().toString() + "\"}]"))
                 .andReturn();
     }
 }

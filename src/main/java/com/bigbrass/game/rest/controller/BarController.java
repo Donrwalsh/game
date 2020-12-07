@@ -24,11 +24,11 @@ public class BarController {
     @GetMapping("/bars")
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody
-    List<Progress> bars() {return progressService.findByUserId(1);}
+    List<Progress> bars(@RequestParam int userId) {return progressService.findByUserId(userId);}
 
     @PostMapping("/begin")
-    public ResponseEntity<?> beginBar(@RequestBody RequestPojo request) {
-        Progress result = progressService.startProgressBar(request.getBarId());
+    public ResponseEntity<?> beginBar(@RequestBody RequestPojo requestPojo) {
+        Progress result = progressService.startProgressBar(requestPojo);
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         } else {
@@ -37,13 +37,13 @@ public class BarController {
     }
 
     @GetMapping("/completions")
-    public ResponseEntity<?> completions() {
-        return new ResponseEntity<>(completionService.getCompletions(), HttpStatus.OK);
+    public ResponseEntity<?> completions(@RequestParam int userId) {
+        return new ResponseEntity<>(completionService.getCompletions(userId), HttpStatus.OK);
     }
 
-    @GetMapping("/complete")
-    public ResponseEntity<?> completeBar(@RequestParam int barId) {
-        Completion result = progressService.completeProgressBar(barId);
+    @PostMapping("/complete")
+    public ResponseEntity<?> completeBar(@RequestBody RequestPojo requestPojo) {
+        Completion result = progressService.completeProgressBar(requestPojo);
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         } else {

@@ -1,8 +1,9 @@
 package com.bigbrass.game.rest.service;
 
 import com.bigbrass.game.rest.model.Completion;
-import com.bigbrass.game.rest.repository.CompletionRepository;
 import com.bigbrass.game.rest.model.Progress;
+import com.bigbrass.game.rest.model.RequestPojo;
+import com.bigbrass.game.rest.repository.CompletionRepository;
 import com.bigbrass.game.rest.repository.ProgressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,8 +25,8 @@ public class ProgressService {
         return progressRepository.findByUserId(userId);
     }
 
-    public Progress startProgressBar(int barId) {
-        Progress progressBar = new Progress(barId);
+    public Progress startProgressBar(RequestPojo requestPojo) {
+        Progress progressBar = new Progress(requestPojo.getUserId(), requestPojo.getBarId());
         Progress result = null;
         try {
             result = progressRepository.save(progressBar);
@@ -36,11 +37,11 @@ public class ProgressService {
     }
 
     @Transactional
-    public Completion completeProgressBar(int barId) {
-        Progress progress = progressRepository.findByUserIdAndBarId(1, barId);
+    public Completion completeProgressBar(RequestPojo requestPojo) {
+        Progress progress = progressRepository.findByUserIdAndBarId(requestPojo.getUserId(), requestPojo.getBarId());
         if (progress.getEndTime().isBefore(LocalDateTime.now())) {
-            progressRepository.deleteByUserIdAndBarId(1, barId);
-            Completion completion = completionRepository.findByUserId(1);
+            progressRepository.deleteByUserIdAndBarId(requestPojo.getUserId(), requestPojo.getBarId());
+            Completion completion = completionRepository.findByUserId(requestPojo.getUserId());
             completion.setCount(completion.getCount() + 1);
             completionRepository.save(completion);
             return completion;

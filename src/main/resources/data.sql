@@ -22,5 +22,5 @@ CREATE TABLE completion (
   count INT NOT NULL
 );
 
-INSERT INTO completion (user_id, count) VALUES
-  (1, 0);
+--INSERT INTO completion (user_id, count) VALUES
+--  (1, 0);

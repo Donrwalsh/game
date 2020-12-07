@@ -11,7 +11,13 @@ public class CompletionService {
     @Autowired
     CompletionRepository completionRepository;
 
-    public Completion getCompletions() {
-        return completionRepository.findByUserId(1);
+    public Completion getCompletions(int userId) {
+        Completion completion = completionRepository.findByUserId(userId);
+        if (completion == null) {
+            completion = new Completion(userId);
+            completionRepository.save(completion);
+        }
+        System.out.println(completion);
+        return completion;
     }
 }

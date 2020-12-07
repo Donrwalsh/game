@@ -14,7 +14,7 @@ public class Completion {
     private int userId;
     private int count;
 
-    public Completion() {
+    protected Completion() {
 
     }
 

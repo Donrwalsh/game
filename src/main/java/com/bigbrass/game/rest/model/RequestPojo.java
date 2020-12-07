@@ -2,6 +2,9 @@ package com.bigbrass.game.rest.model;
 
 public class RequestPojo {
 
+    private int barId;
+    private int userId;
+
     public int getBarId() {
         return barId;
     }
@@ -10,7 +13,11 @@ public class RequestPojo {
         this.barId = barId;
     }
 
-    private int barId;
+    public int getUserId() {
+        return userId;
+    }
 
-
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 }

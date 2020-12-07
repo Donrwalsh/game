@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 @Entity
 public class Progress {
@@ -17,15 +18,15 @@ public class Progress {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 
-    public Progress() {
+    protected Progress() {
 
     }
 
-    public Progress(int barId) {
-        this.userId = 1;
+    public Progress(int userId, int barId) {
+        this.userId = userId;
         this.barId = barId;
-        this.startTime = LocalDateTime.now();
-        this.endTime = calculateEndTime(barId);
+        this.startTime = getRoundedNow();
+        this.endTime = calculateEndTime(barId).truncatedTo(ChronoUnit.SECONDS);
     }
 
     public int getUserId() {
@@ -53,6 +54,17 @@ public class Progress {
 
     public LocalDateTime getEndTime() {
         return endTime;
+    }
+
+    private LocalDateTime getRoundedNow() {
+        LocalDateTime roundedTime = LocalDateTime.now();
+        int nano = roundedTime.getNano();
+        if (nano > 500000000) {
+            roundedTime = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS).plusSeconds(1L);
+        } else {
+            roundedTime = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
+        }
+        return roundedTime;
     }
 
     private LocalDateTime calculateEndTime(int barId) {
