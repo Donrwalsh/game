@@ -2,6 +2,7 @@ package com.bigbrass.game.rest.controller;
 
 import com.bigbrass.game.rest.model.Completion;
 import com.bigbrass.game.rest.model.Progress;
+import com.bigbrass.game.rest.model.RequestPojo;
 import com.bigbrass.game.rest.service.ProgressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,9 +22,9 @@ public class BarController {
     public @ResponseBody
     List<Progress> bars() {return service.findByUserId(1);}
 
-    @GetMapping("/start")
-    public ResponseEntity<?> startBar(@RequestParam int barId) {
-        Progress result = service.startProgressBar(barId);
+    @PostMapping("/begin")
+    public ResponseEntity<?> beginBar(@RequestBody RequestPojo request) {
+        Progress result = service.startProgressBar(request.getBarId());
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         } else {

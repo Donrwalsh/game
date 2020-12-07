@@ -25,7 +25,7 @@ public class Progress {
         this.userId = 1;
         this.barId = barId;
         this.startTime = LocalDateTime.now();
-        this.endTime = LocalDateTime.now().plusMinutes(1L);
+        this.endTime = calculateEndTime(barId);
     }
 
     public int getUserId() {
@@ -52,6 +52,20 @@ public class Progress {
     }
 
     public LocalDateTime getEndTime() {
+        return endTime;
+    }
+
+    private LocalDateTime calculateEndTime(int barId) {
+        LocalDateTime endTime;
+        if (barId == 1) {
+            endTime = LocalDateTime.now().plusSeconds(10L);
+        } else if (barId == 2) {
+            endTime = LocalDateTime.now().plusMinutes(1L);
+        } else if (barId == 3) {
+            endTime = LocalDateTime.now().plusHours(1L);
+        } else {
+            endTime = LocalDateTime.now().plusMinutes(1L);
+        }
         return endTime;
     }
 }

@@ -44,10 +44,13 @@ $(document).ready(function(){
     $(".bar").click(function() {
         var id = parseInt($(this).attr('id').charAt(3));
         if (!isBarActive(bars[id-1])) {
-            const Url='http://localhost:8080/start?barId='+id;
+            const Url='http://localhost:8080/begin';
                 $.ajax({
                     url: Url,
-                    type: "GET",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({barId : id}),
+                    dataType: "json",
                     success: function(result) {
                         registerBar(result);
                     },
