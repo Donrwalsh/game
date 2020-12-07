@@ -1,5 +1,8 @@
-package com.bigbrass.game.restservice;
+package com.bigbrass.game.rest.controller;
 
+import com.bigbrass.game.rest.model.Completion;
+import com.bigbrass.game.rest.model.Progress;
+import com.bigbrass.game.rest.service.ProgressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

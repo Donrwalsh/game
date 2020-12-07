@@ -1,4 +1,4 @@
-package com.bigbrass.game.restservice;
+package com.bigbrass.game.rest.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

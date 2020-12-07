@@ -1,5 +1,6 @@
-package com.bigbrass.game.restservice;
+package com.bigbrass.game.rest.repository;
 
+import com.bigbrass.game.rest.model.Progress;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
