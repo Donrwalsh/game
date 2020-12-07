@@ -36,16 +36,4 @@ public class SanityControllerTest {
 
         assertEquals("Hello World", result.getResponse().getContentAsString());
     }
-
-    @Test
-    public void sanityItemTest() throws Exception {
-        RequestBuilder request = MockMvcRequestBuilders
-                .get("/sanity/completion-item")
-                .accept(MediaType.APPLICATION_JSON);
-
-        MvcResult result = mockMvc.perform(request)
-                .andExpect(status().isOk())
-                .andExpect(content().json("{\"id\":null,\"userId\":1,\"count\":0}"))
-                .andReturn();
-    }
 }
