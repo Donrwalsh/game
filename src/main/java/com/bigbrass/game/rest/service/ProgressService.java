@@ -35,10 +35,6 @@ public class ProgressService {
         return result;
     }
 
-    public Completion getCompletions() {
-        return completionRepository.findByUserId(1);
-    }
-
     @Transactional
     public Completion completeProgressBar(int barId) {
         Progress progress = progressRepository.findByUserIdAndBarId(1, barId);

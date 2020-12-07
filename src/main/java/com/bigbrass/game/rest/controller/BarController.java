@@ -3,6 +3,7 @@ package com.bigbrass.game.rest.controller;
 import com.bigbrass.game.rest.model.Completion;
 import com.bigbrass.game.rest.model.Progress;
 import com.bigbrass.game.rest.model.RequestPojo;
+import com.bigbrass.game.rest.service.CompletionService;
 import com.bigbrass.game.rest.service.ProgressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,16 +16,19 @@ import java.util.List;
 public class BarController {
 
     @Autowired
-    ProgressService service;
+    ProgressService progressService;
+
+    @Autowired
+    CompletionService completionService;
 
     @GetMapping("/bars")
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody
-    List<Progress> bars() {return service.findByUserId(1);}
+    List<Progress> bars() {return progressService.findByUserId(1);}
 
     @PostMapping("/begin")
     public ResponseEntity<?> beginBar(@RequestBody RequestPojo request) {
-        Progress result = service.startProgressBar(request.getBarId());
+        Progress result = progressService.startProgressBar(request.getBarId());
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         } else {
@@ -34,12 +38,12 @@ public class BarController {
 
     @GetMapping("/completions")
     public ResponseEntity<?> completions() {
-        return new ResponseEntity<>(service.getCompletions(), HttpStatus.OK);
+        return new ResponseEntity<>(completionService.getCompletions(), HttpStatus.OK);
     }
 
     @GetMapping("/complete")
     public ResponseEntity<?> completeBar(@RequestParam int barId) {
-        Completion result = service.completeProgressBar(barId);
+        Completion result = progressService.completeProgressBar(barId);
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         } else {

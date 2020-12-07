@@ -35,7 +35,7 @@ public class Progress {
     @Override
     public String toString() {
         return String.format(
-                "Progress[id=%d, userId='%d', barId='%d', startTime='%t', endTime='%t']",
+                "Progress[id=%d, userId='%d', barId='%d', startTime='%s', endTime='%s']",
                 id, userId, barId, startTime, endTime);
     }
 
