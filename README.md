@@ -36,6 +36,38 @@ Tests are coming together nicely. Only the 'sanity' tests are currently working,
 
 Milliseconds are awkward to work with, and I don't really need that level of precision. By restricting the LocalDateTime values to seconds precision I bypass a weird issue in the test and since this is what I've been storing in the database anyway, I don't see a problem.
 
+## Devops - Jenkins setup
+
+Using https://raspberrytips.com/install-jenkins-raspberry-pi/ for Jenkins setup on the pi.
+- Doing Raspbian Full since I had no option for Lite
+- `sudo apt update`
+- `sudo apt upgrade`
+- `ifconfig` to get ip address.
+- opted for openjdk: `sudo apt install openjdk-8-jdk`
+    - OS install came with Java 11 installed, so I used `sudo update-alternatives --config java` to select openjdk 8.
+- `wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -`
+- `sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'`
+- `sudo apt update`
+- `sudo apt install jenkins`
+- Access Jenkins at http://<ipaddress>:8080
+- `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
+- Initial login, installed suggested plugins
+
+- Installed Maven:
+- `sudo wget http://www.mirrorservice.org/sites/ftp.apache.org/maven/maven-3/3.2.5/binaries/apache-maven-3.2.5-bin.tar.gz`
+- `cd /opt && sudo tar -xzvf /apache-maven-3.2.5-bin.tar.gz`
+- `sudo vi /etc/profile.d/maven.sh` and add the following:
+  - `export M2_HOME=/opt/apache-maven-3.2.5`
+    
+    `export "PATH=$PATH:$M2_HOME/bin"`
+- Corrected JAVA_HOME by modifying `~/.bashrc` and adding the following:
+  - `export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-armhf"`
+    
+    `export PATH=$PATH:$JAVA_HOME/bin`
+- Via Global Tool Configuration, setup Java and Maven.
+
+- Created new Pipeline project. Configured it to poll SCM every three minutes and look for a Jenkinsfile.
+
 ## Todo Section
 
 [] by way of request params enable 'faking' of user login
