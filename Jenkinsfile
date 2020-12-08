@@ -29,8 +29,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo "-=- deploying application -=-"
-                sh 'nohup java -jar target/0.0.1-SNAPSHOT/game-0.0.1-SNAPSHOT.jar
- > spring-log.txt &'
+                sh 'nohup java -jar target/0.0.1-SNAPSHOT/game-0.0.1-SNAPSHOT.jar > spring-log.txt &'
             }
         }
     }
