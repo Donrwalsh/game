@@ -3,7 +3,8 @@ var bars = [
     {start: 0, end: 0, current: 0},
     {start: 0, end: 0, current: 0}
 ]
-var userId = $(location).attr('href').substring($(location).attr('href').split('/', 3).join('/').length+1);
+var baseUrl = $(location).attr('href');
+var userId = baseUrl.substring($(location).attr('href').split('/', 3).join('/').length+1);
 userId = userId == "" ? "0" : userId;
 
 //Primary Loop
@@ -20,7 +21,7 @@ setInterval(function() {
 }, 100);
 
 $(document).ready(function(){
-    const Url='http://localhost:8088/bars?userId=' + userId;
+    const Url=baseUrl + 'bars?userId=' + userId;
     $.ajax({
         url: Url,
         type:"GET",
@@ -32,7 +33,7 @@ $(document).ready(function(){
         }
     });
 
-    const Url2='http://localhost:8088/completions?userId=' + userId;
+    const Url2=baseUrl + 'completions?userId=' + userId;
     $.ajax({
         url: Url2,
         type:"GET",
@@ -47,7 +48,7 @@ $(document).ready(function(){
     $(".bar").click(function() {
         var id = parseInt($(this).attr('id').charAt(3));
         if (!isBarActive(bars[id-1])) {
-            const Url='http://localhost:8088/begin';
+            const Url=baseUrl + 'begin';
                 $.ajax({
                     url: Url,
                     type: "POST",
@@ -66,7 +67,7 @@ $(document).ready(function(){
                 });
         }
         if (isBarComplete(bars[id-1])) {
-            const Url='http://localhost:8088/complete';
+            const Url=baseUrl + 'complete';
                 $.ajax({
                     url: Url,
                     type: "POST",
