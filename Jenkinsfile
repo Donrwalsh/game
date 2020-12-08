@@ -1,29 +1,36 @@
-node {
+pipeline {
+    agent any
     tools {
-        maven 'Maven 3.2.5'
+        maven 'JenkinsMaven'
+        jdk 'JenkinsJava'
     }
-    stage('Initialize') {
-        sh '''
-            echo "PATH = ${PATH}"
-            echo "M2_HOME = ${M2_HOME}"
-        ''' 
-    }
-    stage('Checkout') {
-        git 'https://github.com/Donrwalsh/game'
-    }
-
-    stage('Compile') {
-        echo "-=- compiling project -=-"
-        sh "sudo ./mvnw clean compile"
-    }
-
-    stage('Tests') {
-        echo "-=- executing tests -=-"
-        sh "sudo ./mvnw test"
-    }
-
-    stage("deploy") {
-        echo "-=- deploying application -=-"
-        sh 'sudo nohup ./mvnw spring-boot:run'
+    stages {
+        stage ('Initialize') {
+            steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
+                git 'https://github.com/Donrwalsh/game'
+            }
+        }
+        stage ('Compile') {
+            steps {
+                echo "-=- compiling project -=-"
+                sh "mvn clean compile"
+            }
+        }
+        stage('Test') {
+            steps {
+                echo "-=- executing tests -=-"
+                sh "mvn test"
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo "-=- deploying application -=-"
+                sh 'nohup mvn spring-boot:run'
+            }
+        }
     }
 }

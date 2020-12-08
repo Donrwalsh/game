@@ -67,6 +67,7 @@ Using https://raspberrytips.com/install-jenkins-raspberry-pi/ for Jenkins setup 
 - Via Global Tool Configuration, setup Java and Maven.
 
 - Created new Pipeline project. Configured it to poll SCM every three minutes and look for a Jenkinsfile.
+- Not having a lot of luck, needed to add jenkins to the sudoers file by way of `sudo visudo`
 
 ## Todo Section
 
