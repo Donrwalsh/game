@@ -29,7 +29,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo "-=- deploying application -=-"
-                sh 'nohup mvn spring-boot:run'
+                sh 'nohup mvn spring-boot:run &'
             }
         }
     }
