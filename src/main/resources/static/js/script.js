@@ -20,7 +20,7 @@ setInterval(function() {
 }, 100);
 
 $(document).ready(function(){
-    const Url='http://localhost:8080/bars?userId=' + userId;
+    const Url='http://localhost:8088/bars?userId=' + userId;
     $.ajax({
         url: Url,
         type:"GET",
@@ -32,7 +32,7 @@ $(document).ready(function(){
         }
     });
 
-    const Url2='http://localhost:8080/completions?userId=' + userId;
+    const Url2='http://localhost:8088/completions?userId=' + userId;
     $.ajax({
         url: Url2,
         type:"GET",
@@ -47,7 +47,7 @@ $(document).ready(function(){
     $(".bar").click(function() {
         var id = parseInt($(this).attr('id').charAt(3));
         if (!isBarActive(bars[id-1])) {
-            const Url='http://localhost:8080/begin';
+            const Url='http://localhost:8088/begin';
                 $.ajax({
                     url: Url,
                     type: "POST",
@@ -66,7 +66,7 @@ $(document).ready(function(){
                 });
         }
         if (isBarComplete(bars[id-1])) {
-            const Url='http://localhost:8080/complete';
+            const Url='http://localhost:8088/complete';
                 $.ajax({
                     url: Url,
                     type: "POST",
