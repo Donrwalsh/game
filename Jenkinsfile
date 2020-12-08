@@ -23,13 +23,14 @@ pipeline {
         stage('Test') {
             steps {
                 echo "-=- executing tests -=-"
-                sh "mvn test"
+                sh "mvn clean install"
             }
         }
         stage('Deploy') {
             steps {
                 echo "-=- deploying application -=-"
-                sh 'nohup mvn spring-boot:run > spring-log.txt &'
+                sh 'nohup java -jar target\0.0.1-SNAPSHOT\game-0.0.1-SNAPSHOT.jar
+ > spring-log.txt &'
             }
         }
     }
