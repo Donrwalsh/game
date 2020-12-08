@@ -5,16 +5,16 @@ node {
 
     stage('Compile') {
         echo "-=- compiling project -=-"
-        sh "./mvnw clean compile"
+        sh "sudo ./mvnw clean compile"
     }
 
     stage('Tests') {
         echo "-=- executing tests -=-"
-        sh "./mvnw test"
+        sh "sudo ./mvnw test"
     }
 
     stage("deploy") {
         echo "-=- deploying application -=-"
-        sh 'nohup ./mvnw spring-boot:run'
+        sh 'sudo nohup ./mvnw spring-boot:run'
     }
 }
