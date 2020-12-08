@@ -4,22 +4,17 @@ node {
     }
 
     stage('Compile') {
-        steps {
-            echo "-=- compiling project -=-"
-            sh "./mvnw clean compile"
-        }
+        echo "-=- compiling project -=-"
+        sh "./mvnw clean compile"
     }
 
     stage('Tests') {
-        steps {
-            echo "-=- executing tests -=-"
-            sh "./mvnw test"
-        }
+        echo "-=- executing tests -=-"
+        sh "./mvnw test"
     }
 
     stage("deploy") {
-        steps {
-            sh 'nohup ./mvnw spring-boot:run'
-        }
+        echo "-=- deploying application -=-"
+        sh 'nohup ./mvnw spring-boot:run'
     }
 }
