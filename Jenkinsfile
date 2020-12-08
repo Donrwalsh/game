@@ -29,7 +29,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo "-=- deploying application -=-"
-                sh 'nohup java -jar target/0.0.1-SNAPSHOT/game-0.0.1-SNAPSHOT.jar > spring-log.txt &'
+                sh 'BUILD_ID=do_not_kill_me'
+                sh 'nohup java -jar target/game-0.0.1-SNAPSHOT.jar > spring-log.txt &'
             }
         }
     }
