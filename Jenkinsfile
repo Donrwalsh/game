@@ -1,4 +1,13 @@
 node {
+    tools {
+        maven 'Maven 3.2.5'
+    }
+    stage('Initialize') {
+        sh '''
+            echo "PATH = ${PATH}"
+            echo "M2_HOME = ${M2_HOME}"
+        ''' 
+    }
     stage('Checkout') {
         git 'https://github.com/Donrwalsh/game'
     }
