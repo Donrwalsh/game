@@ -3,8 +3,8 @@ var bars = [
     {start: 0, end: 0, current: 0},
     {start: 0, end: 0, current: 0}
 ]
-var baseUrl = $(location).attr('href');
-var userId = baseUrl.substring($(location).attr('href').split('/', 3).join('/').length+1);
+var baseUrl = $(location).attr('href').substring(0, $(location).attr('href').split('/', 3).join('/').length+1);
+var userId = $(location).attr('href').substring($(location).attr('href').split('/', 3).join('/').length+1);
 userId = userId == "" ? "0" : userId;
 
 //Primary Loop
