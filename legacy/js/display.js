@@ -192,11 +192,13 @@
             $.each(gear.upgrades, function(i, node) {
                 var id = 'tree-upgrade-' + node.id;
                 //need to programatically determine the correct margin-left value.
-                $('#selected-gear-upgrade-tree').append('<div class="container" style="margin-left:262.5px;"><img id="' + id +'" src="' + node.image + '" class="tree-node" style="background-color:' + (node.unlocked ? gear.color : 'lightgrey') + ';"><div class="icon-text">' + node.imageText + '</div></div>')
+                $('#selected-gear-upgrade-tree').append('<div class="container"><img id="' + id +'" src="' + node.image + '" class="tree-node" style="background-color:' + (node.unlocked ? gear.color : 'lightgrey') 
+                   // Working here
+                   + ';margin-left:262.5px;margin-top:"><div class="icon-text">' + node.imageText + '</div></div>')
                 $('#' + id).click(function() {
                     setNoSelectedUpgrade();
                     $('#deselect-upgrade').css('display', 'block').click(function() { setNoSelectedUpgrade();});
-                    $('#selected-gear-upgrade-icon').append('<div class="container"><img src="' + node.image + '" style="background-color:' + (node.unlocked ? gear.color : 'lightgrey') + '"><div class="icon-text">' + node.imageText + '</div></div>');
+                    $('#selected-gear-upgrade-icon').append('<div class="container"><img src="' + node.image + '" style="background-color:' + (node.unlocked ? gear.color : 'lightgrey') + ';"><div class="icon-text">' + node.imageText + '</div></div>');
                     $('#selected-gear-upgrade-text').append('<strong>' + node.title + '</strong><br><span class="upgrade-description">' + node.description + '</span>');
                     if (node.unlocked) {
                         $("#selected-gear-upgrade-cost").append('<strong>Already unlocked</strong>');    

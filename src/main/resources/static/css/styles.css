@@ -1,0 +1,16 @@
+.bar {
+    width: 90%;
+    height: 30px;
+    line-height: 30px;
+    margin: auto;
+    margin-bottom: 1em;
+    border: 2px solid brown;
+    border-radius: 5px;
+}
+
+.bar-progress {
+    background-color: brown;
+    z-index: 1;
+    height:30px;
+    position: absolute;
+}
