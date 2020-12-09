@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/header :: common-header" />
+
+<body>
+
+    <nav th:replace="common/nav :: common-nav" />
+
+<main role="main" class="container">
+
+    <div class="starter-template">
+        <h1>Home</h1>
+        <h2>
+            <span th:text="'Hello, ' + ${message}"></span>
+        </h2>
+    </div>
+
+
+    <h2>List from RoutingController:</h2>
+    <ol>
+        <li th:each="task : ${tasks}" th:text="${task}"></li>
+    </ol>
+
+</main>
+<!-- /.container -->
+
+</body>
+</html>

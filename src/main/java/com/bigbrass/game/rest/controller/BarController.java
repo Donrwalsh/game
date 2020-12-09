@@ -8,11 +8,12 @@ import com.bigbrass.game.rest.service.ProgressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 public class BarController {
 
     @Autowired
@@ -20,6 +21,17 @@ public class BarController {
 
     @Autowired
     CompletionService completionService;
+
+    //This only works without any prefix. WTF
+    @RequestMapping("/{numericId:[\\d]+}")
+    public String index(@PathVariable("numericId") int id) {
+        return "bars";
+    }
+
+    @RequestMapping("/what")
+    public String what() {
+        return "bars";
+    }
 
     @GetMapping("/bars")
     @ResponseStatus(HttpStatus.OK)

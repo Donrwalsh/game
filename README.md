@@ -71,10 +71,8 @@ Using https://raspberrytips.com/install-jenkins-raspberry-pi/ for Jenkins setup 
 
 ## Todo Section
 
-[] by way of request params enable 'faking' of user login
-
 [] Obviously it would be great to use an actual database rather than one that is in memory.
 
-[] Devops shenanigans
-
 [] All this bar stuff shouldn't be top level.
+
+[] Something is strange with the timing mechanism when the app is running on the Jenkins box. Additionally I cannot acces the h2 console remotely.
