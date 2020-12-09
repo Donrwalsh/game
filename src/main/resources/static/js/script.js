@@ -6,10 +6,15 @@ var bars = [
 var baseUrl = $(location).attr('href').substring(0, $(location).attr('href').split('/', 3).join('/').length+1);
 var userId = $(location).attr('href').substring($(location).attr('href').split('/', 3).join('/').length+1);
 userId = userId == "" ? "0" : userId;
+var diagCount = 0;
 
 //Primary Loop
 setInterval(function() {
     for (var i = 0; i < bars.length; i++) {
+        $('#diag-' + (i+1) + '-1').text(bars[i].start);
+        $('#diag-' + (i+1) + '-2').text(bars[i].current);
+        $('#diag-' + (i+1) + '-3').text(bars[i].end);
+
         if (bars[i].start != 0 && bars[i].end != 0) {
             bars[i].current = Date.now();
             var barWidth = parseFloat($("#bar"+(i+1)).css("width"));
@@ -47,7 +52,14 @@ $(document).ready(function(){
 
     $(".bar").click(function() {
         var id = parseInt($(this).attr('id').charAt(3));
+        var log = false;
+        diagCount++;
+        var diagNow = Date.now();
+        var diag = "<div><span class='col-2'>bar " + id + " clicked</span><span class='col-2'>" + diagNow + "</span>";
         if (!isBarActive(bars[id-1])) {
+            log = true;
+            diag = diag + "<span class='col-2'>client | server</span><span class='col-2 server-" + diagCount + "'></span>";
+            diag = diag + "<span class='col-2'>difference:</span><span class='col-2 diff-" + diagCount + "'></span>";
             const Url=baseUrl + 'begin';
                 $.ajax({
                     url: Url,
@@ -60,13 +72,15 @@ $(document).ready(function(){
                     dataType: "json",
                     success: function(result) {
                         registerBar(result);
+                        $('.server-' + diagCount).text(Date.parse(result.startTime));
+                        $('.diff-' + diagCount).text(diagNow - Date.parse(result.startTime));
                     },
                     error:function(error) {
                         console.log('Error ${error}')
                     }
                 });
-        }
-        if (isBarComplete(bars[id-1])) {
+        } else if (isBarComplete(bars[id-1])) {
+            diag = diag + "<span class='col-2'>complete</span>";
             const Url=baseUrl + 'complete';
                 $.ajax({
                     url: Url,
@@ -85,6 +99,12 @@ $(document).ready(function(){
                         console.log('Error ${error}')
                     }
                 });
+        } else {
+            diag = diag + "<span class='col-2'>none</span>";
+        }
+        diag = diag + "</div>"
+        if (log) {
+            $('.diagnostic').append(diag);
         }
     });
 });
