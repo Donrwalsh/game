@@ -20,4 +20,12 @@ public class RequestPojo {
     public void setUserId(int userId) {
         this.userId = userId;
     }
+
+    @Override
+    public String toString() {
+        return "RequestPojo{" +
+                "barId=" + barId +
+                ", userId=" + userId +
+                '}';
+    }
 }

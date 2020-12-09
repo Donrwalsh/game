@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequestMapping("/bars")
 @Controller
 public class BarController {
 
@@ -27,10 +28,10 @@ public class BarController {
         return "bars";
     }
 
-    @GetMapping("/bars")
+    @GetMapping("/init")
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody
-    List<Progress> bars(@RequestParam int userId) {return progressService.findByUserId(userId);}
+    List<Progress> initBars(@RequestParam int userId) {return progressService.findByUserId(userId);}
 
     @PostMapping("/begin")
     public ResponseEntity<?> beginBar(@RequestBody RequestPojo requestPojo) {

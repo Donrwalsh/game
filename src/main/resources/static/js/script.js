@@ -4,7 +4,7 @@ var bars = [
     {target: -1, current: -1}
 ]
 var baseUrl = $(location).attr('href').substring(0, $(location).attr('href').split('/', 3).join('/').length+1);
-var userId = $(location).attr('href').substring($(location).attr('href').split('/', 3).join('/').length+1);
+var userId = $(location).attr('href').substring($(location).attr('href').split('/', 4).join('/').length+1);
 userId = userId == "" ? "0" : userId;
 var diagCount = 0;
 var offset = 0;
@@ -36,7 +36,7 @@ $(document).ready(function(){
         }
     });
 
-    const Url=baseUrl + 'bars?userId=' + userId;
+    const Url=baseUrl + 'bars/init?userId=' + userId;
     $.ajax({
         url: Url,
         type:"GET",
@@ -48,7 +48,7 @@ $(document).ready(function(){
         }
     });
 
-    const Url2=baseUrl + 'completions?userId=' + userId;
+    const Url2=baseUrl + '/bars/completions?userId=' + userId;
     $.ajax({
         url: Url2,
         type:"GET",
@@ -70,7 +70,7 @@ $(document).ready(function(){
             log = true;
             diag = diag + "<span class='col-2'>client | server</span><span class='col-2 server-" + diagCount + "'></span>";
             diag = diag + "<span class='col-2'>difference:</span><span class='col-2 diff-" + diagCount + "'></span>";
-            const Url=baseUrl + 'begin';
+            const Url=baseUrl + 'bars/begin';
                 $.ajax({
                     url: Url,
                     type: "POST",
@@ -91,7 +91,7 @@ $(document).ready(function(){
                 });
         } else if (isBarComplete(bars[id-1])) {
             diag = diag + "<span class='col-2'>complete</span>";
-            const Url=baseUrl + 'complete';
+            const Url=baseUrl + 'bars/complete';
                 $.ajax({
                     url: Url,
                     type: "POST",
