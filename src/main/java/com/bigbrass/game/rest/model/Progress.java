@@ -26,7 +26,7 @@ public class Progress {
         this.userId = userId;
         this.barId = barId;
         this.startTime = getRoundedNow();
-        this.endTime = calculateEndTime(barId).truncatedTo(ChronoUnit.SECONDS);
+        this.endTime = calculateEndTime(barId, startTime).truncatedTo(ChronoUnit.SECONDS);
     }
 
     public int getUserId() {
@@ -67,16 +67,16 @@ public class Progress {
         return roundedTime;
     }
 
-    private LocalDateTime calculateEndTime(int barId) {
+    private LocalDateTime calculateEndTime(int barId, LocalDateTime startTime) {
         LocalDateTime endTime;
         if (barId == 1) {
-            endTime = LocalDateTime.now().plusSeconds(10L);
+            endTime = startTime.plusSeconds(10L);
         } else if (barId == 2) {
-            endTime = LocalDateTime.now().plusMinutes(1L);
+            endTime = startTime.plusMinutes(1L);
         } else if (barId == 3) {
-            endTime = LocalDateTime.now().plusHours(1L);
+            endTime = startTime.plusHours(1L);
         } else {
-            endTime = LocalDateTime.now().plusMinutes(1L);
+            endTime = startTime.plusMinutes(1L);
         }
         return endTime;
     }

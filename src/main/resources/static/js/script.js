@@ -1,24 +1,24 @@
 var bars = [
-    {start: 0, end: 0, current: 0},
-    {start: 0, end: 0, current: 0},
-    {start: 0, end: 0, current: 0}
+    {target: -1, current: -1},
+    {target: -1, current: -1},
+    {target: -1, current: -1}
 ]
 var baseUrl = $(location).attr('href').substring(0, $(location).attr('href').split('/', 3).join('/').length+1);
 var userId = $(location).attr('href').substring($(location).attr('href').split('/', 3).join('/').length+1);
 userId = userId == "" ? "0" : userId;
 var diagCount = 0;
+var offset = 0;
 
 //Primary Loop
 setInterval(function() {
     for (var i = 0; i < bars.length; i++) {
-        $('#diag-' + (i+1) + '-1').text(bars[i].start);
-        $('#diag-' + (i+1) + '-2').text(bars[i].current);
-        $('#diag-' + (i+1) + '-3').text(bars[i].end);
+        $('#diag-' + (i+1) + '-1').text(bars[i].current);
+        $('#diag-' + (i+1) + '-2').text(bars[i].target);
 
-        if (bars[i].start != 0 && bars[i].end != 0) {
-            bars[i].current = Date.now();
+        if (isBarActive(bars[i])) {
+            bars[i].current = bars[i].current < bars[i].target ? bars[i].current + 1 : bars[i].current;
             var barWidth = parseFloat($("#bar"+(i+1)).css("width"));
-            var width = ((bars[i].current - bars[i].start) / (bars[i].end - bars[i].start)) * barWidth;
+            var width = (bars[i].current / bars[i].target) * barWidth;
             width = width > barWidth ? barWidth : width;
             $("#bar"+(i+1)+"-progress").css("width", width);
         }
@@ -27,10 +27,12 @@ setInterval(function() {
 
 $(document).ready(function(){
     $.ajax({
-        url: baseUrl+ 'sanity/time',
+        url: baseUrl+ 'heartbeat/time',
         type: "GET",
         success: function(result) {
-            $('.offset').text((Date.parse(result) - Date.now())/1000 + ' second offset');
+            offset = Date.parse(result) - Date.now();
+            console.log(offset);
+            $('.offset').text((offset/1000 + ' second offset'));
         }
     });
 
@@ -124,21 +126,28 @@ function initPage(result) {
 }
 
 function registerBar(progress) {
-    bars[progress.barId-1].start = Date.parse(progress.startTime);
-    bars[progress.barId-1].end = Date.parse(progress.endTime);
+    var start = Date.parse(progress.startTime);
+    var end = Date.parse(progress.endTime);
+
+    var target = (end - start)/100;
+    var current = Math.round((Date.now() + offset - start)/100);
+    current = current > target ? target : current;
+    current = current < 0 ? 0 : current;
+
+    bars[progress.barId-1].target = target;
+    bars[progress.barId-1].current = current;
 }
 
 function isBarActive(bar) {
-    return bar.start != 0 && bar.end != 0 && bar.current != 0;
+    return bar.current != -1 && bar.target != -1;
 }
 
 function isBarComplete(bar) {
-    return isBarActive(bar) && bar.end - Date.parse(new Date()) <= 0;
+    return isBarActive(bar) && bar.target == bar.current;
 }
 
 function completeBar(bar, i) {
-    bar.end = 0;
-    bar.start = 0;
-    bar.current = 0;
+    bar.current = -1;
+    bar.target = -1;
     $("#bar"+(i)+"-progress").css("width", 0);
 }
