@@ -39,7 +39,7 @@ public class ProgressService {
     @Transactional
     public Completion completeProgressBar(RequestPojo requestPojo) {
         Progress progress = progressRepository.findByUserIdAndBarId(requestPojo.getUserId(), requestPojo.getBarId());
-        if (progress.getEndTime().isBefore(LocalDateTime.now())) {
+        if (progress.getEndTime().minusSeconds(1L).isBefore(LocalDateTime.now())) {
             progressRepository.deleteByUserIdAndBarId(requestPojo.getUserId(), requestPojo.getBarId());
             Completion completion = completionRepository.findByUserId(requestPojo.getUserId());
             completion.setCount(completion.getCount() + 1);

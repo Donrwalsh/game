@@ -128,9 +128,8 @@ function initPage(result) {
 function registerBar(progress) {
     var start = Date.parse(progress.startTime);
     var end = Date.parse(progress.endTime);
-    var offsetBuffer = Math.abs(offset) > 1000 ? 5 : 0
 
-    var target = (end - start)/100 + offsetBuffer;
+    var target = (end - start)/100;
     var current = Math.round((Date.now() + offset - start)/100);
     current = current > target ? target : current;
     current = current < 0 ? 0 : current;
