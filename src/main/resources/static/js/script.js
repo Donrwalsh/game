@@ -26,6 +26,14 @@ setInterval(function() {
 }, 100);
 
 $(document).ready(function(){
+    $.ajax({
+        url: baseUrl+ 'sanity/time',
+        type: "GET",
+        success: function(result) {
+            $('.offset').text((Date.parse(result) - Date.now())/1000 + ' second offset');
+        }
+    });
+
     const Url=baseUrl + 'bars?userId=' + userId;
     $.ajax({
         url: Url,
