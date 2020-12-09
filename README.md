@@ -75,4 +75,8 @@ Using https://raspberrytips.com/install-jenkins-raspberry-pi/ for Jenkins setup 
 
 [] All this bar stuff shouldn't be top level.
 
-[] Something is strange with the timing mechanism when the app is running on the Jenkins box. Additionally I cannot acces the h2 console remotely.
+[] Bug: Something is strange with the timing mechanism when the app is running on the Jenkins box. Additionally I cannot acces the h2 console remotely.
+
+[] Bug: The @PathVariable annotation on the "/<numericId>" only works when there is no prefix, so something like "bars/<numericId>" throws a 404. whaaaat
+
+[] Some sort of popup when I get an error on action taken?

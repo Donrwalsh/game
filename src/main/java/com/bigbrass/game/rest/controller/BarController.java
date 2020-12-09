@@ -22,14 +22,8 @@ public class BarController {
     @Autowired
     CompletionService completionService;
 
-    //This only works without any prefix. WTF
     @RequestMapping("/{numericId:[\\d]+}")
     public String index(@PathVariable("numericId") int id) {
-        return "bars";
-    }
-
-    @RequestMapping("/what")
-    public String what() {
         return "bars";
     }
 
