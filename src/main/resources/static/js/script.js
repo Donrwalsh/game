@@ -26,12 +26,23 @@ setInterval(function() {
 }, 100);
 
 $(document).ready(function(){
+    $(".btn.diagnostic").click(function(){
+    if ($(this).hasClass("active")) {
+        $(this).removeClass("active");
+        $(".diag-child").css('display', 'none');
+    } else {
+        $(this).addClass("active");
+        $(".diag-child").css('display', 'flex');
+        $(".diag-child.diag-output").css('display', 'block');
+    }
+
+    });
+
     $.ajax({
         url: baseUrl+ 'heartbeat/time',
         type: "GET",
         success: function(result) {
             offset = Date.parse(result) - Date.now();
-            console.log(offset);
             $('.offset').text((offset/1000 + ' second offset'));
         }
     });
@@ -114,7 +125,7 @@ $(document).ready(function(){
         }
         diag = diag + "</div>"
         if (log) {
-            $('.diagnostic').append(diag);
+            $('.diag-output').append(diag);
         }
     });
 });

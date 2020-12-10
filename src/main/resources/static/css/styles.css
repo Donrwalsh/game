@@ -16,3 +16,15 @@
     position: absolute;
     box-sizing: content-box;
 }
+
+.diagnostic {
+    margin-top: 8px;
+}
+
+.diag-child {
+    display: none;
+}
+
+.bar-label {
+    text-align: center;
+}
