@@ -71,12 +71,7 @@ Using https://raspberrytips.com/install-jenkins-raspberry-pi/ for Jenkins setup 
 
 ## Todo Section
 
-[] Obviously it would be great to use an actual database rather than one that is in memory.
-
-[] All this bar stuff shouldn't be top level.
-
-[] Bug: Something is strange with the timing mechanism when the app is running on the Jenkins box. Additionally I cannot acces the h2 console remotely.
-
-[] Bug: The @PathVariable annotation on the "/<numericId>" only works when there is no prefix, so something like "bars/<numericId>" throws a 404. whaaaat
-
-[] Some sort of popup when I get an error on action taken?
+- Obviously it would be great to use an actual database rather than one that is in memory.
+- Some sort of popup when I get an error on action taken?
+- This diagnostic stuff on the bars page is useful, but i'd like it to be optional
+- Expand bars with a new feature, how about autocomplete -> happens consistently with the page open but only x times in a row when closed
