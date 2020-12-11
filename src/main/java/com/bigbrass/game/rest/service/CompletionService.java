@@ -20,4 +20,8 @@ public class CompletionService {
         System.out.println(completion);
         return completion;
     }
+
+    public void saveCompletion(Completion completion) {
+        completionRepository.save(completion);
+    }
 }

@@ -33,6 +33,8 @@ setInterval(function() {
 }, 100);
 
 $(document).ready(function(){
+    console.log(/*[[${init}]]*/)
+
     $('.time-input.hours').on('input', function() {
         $(this).val($(this).val().match(/\d*\.?\d+/));
         $(this).val($(this).val() > 23 ? 23 : $(this).val());

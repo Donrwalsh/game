@@ -9,7 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RequestMapping("/bars")
@@ -26,8 +28,33 @@ public class BarController {
     CompletionService completionService;
 
     @RequestMapping("/{numericId:[\\d]+}")
-    public String index(@PathVariable("numericId") int id) {
-        return "bars";
+    public ModelAndView bars(@PathVariable("numericId") int userId) {
+        ModelAndView mv = new ModelAndView();
+
+        List<Bar> bars = barService.findByUserId(userId);
+        bars.forEach((bar) ->{
+            if (bar.isAuto() && bar.getAutoCount() > 0) {
+                Progress progress = progressService.findByUserIdAndBarId(userId, bar.getBarNum());
+                LocalDateTime resultTime = progress.getEndTime();
+                int completions = 1;
+                int maxCompletions = bar.getAutoCount();
+                while (maxCompletions > 0 && resultTime.isBefore(LocalDateTime.now())) {
+                    resultTime = resultTime.plusSeconds(bar.getDurationSec());
+                    completions++;
+                    maxCompletions--;
+                }
+                progress.setEndTime(resultTime);
+                progress.setStartTime(resultTime.minusSeconds(bar.getDurationSec()));
+                progressService.saveProgress(progress);
+
+                Completion completion = completionService.getCompletions(userId);
+                completion.setCount(completion.getCount() + completions);
+                completionService.saveCompletion(completion);
+            }
+        });
+
+        mv.setViewName("bars");
+        return mv;
     }
 
     @GetMapping("/init")

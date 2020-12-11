@@ -86,4 +86,7 @@ Milliseconds are awkward to work with, and I don't really need that level of pre
 - Expand bars with a new feature, how about autocomplete -> happens consistently with the page open but only x times in a row when closed
     - in-page elements and backing structure is in place, but these do not do anything yet.
     - Ability to set bar-specific completion value
+    - Right now the split between hitting 2 endpoints at the start of the page is a little awkward. . . Although there's a reasonable argument for wanting them separate in case there's a reason to 're-init' the bars in case of something going wrong. Similarly the Completions thing could be more than a read if it's a currency that can be expended. So how about just having the logic sort things out on pageload?
 - A 'built with' readme section itemizing all the different technologies would be cool.
+- Activity stops when the page is not active.
+- On the java side of stuff, I have not been consistent with 'barId' versus 'barNum'.

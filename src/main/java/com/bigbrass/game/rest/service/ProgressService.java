@@ -30,6 +30,14 @@ public class ProgressService {
         return progressRepository.findByUserId(userId);
     }
 
+    public Progress findByUserIdAndBarId(int userId, int barId) {
+        return progressRepository.findByUserIdAndBarId(userId, barId);
+    }
+
+    public void saveProgress(Progress progress) {
+        progressRepository.save(progress);
+    }
+
     public Progress startProgressBar(RequestPojo requestPojo) {
         Bar bar = barRepository.findByUserIdAndBarNum(requestPojo.getUserId(), requestPojo.getBarId());
         Progress progressBar = new Progress(bar);

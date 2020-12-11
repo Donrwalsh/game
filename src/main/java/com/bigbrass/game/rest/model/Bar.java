@@ -76,4 +76,16 @@ public class Bar {
     public void setAutoCount(int autoCount) {
         this.autoCount = autoCount;
     }
+
+    @Override
+    public String toString() {
+        return "Bar{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", barNum=" + barNum +
+                ", durationSec=" + durationSec +
+                ", auto=" + auto +
+                ", autoCount=" + autoCount +
+                '}';
+    }
 }
