@@ -35,8 +35,11 @@ public class BarController {
         bars.forEach((bar) ->{
             if (bar.isAuto() && bar.getAutoCount() > 0) {
                 Progress progress = progressService.findByUserIdAndBarId(userId, bar.getBarNum());
+                if (progress == null) {
+                    progress = progressService.startProgressBar(new RequestPojo(bar.getBarNum(), userId));
+                }
                 LocalDateTime resultTime = progress.getEndTime();
-                int completions = 1;
+                int completions = 0;
                 int maxCompletions = bar.getAutoCount();
                 while (maxCompletions > 0 && resultTime.isBefore(LocalDateTime.now())) {
                     resultTime = resultTime.plusSeconds(bar.getDurationSec());

@@ -222,7 +222,7 @@ function completeBar(bar, i) {
 }
 
 function zeroNotAllowed() {
-    for (var i = 0; i < 2; i++) {
+    for (var i = 0; i < 3; i++) {
         if ($('#bar' + (i+1) + '-hours').val() == 0
             && $('#bar' + (i+1) + '-minutes').val() == 0
             && $('#bar' + (i+1) + '-seconds').val() == 0) {

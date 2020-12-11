@@ -90,3 +90,5 @@ Milliseconds are awkward to work with, and I don't really need that level of pre
 - A 'built with' readme section itemizing all the different technologies would be cool.
 - Activity stops when the page is not active.
 - On the java side of stuff, I have not been consistent with 'barId' versus 'barNum'.
+- I need server side validation that restricts the duration in seconds value.
+- Having two windows open at once breaks everything.
