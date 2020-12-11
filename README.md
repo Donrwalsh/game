@@ -85,4 +85,5 @@ Milliseconds are awkward to work with, and I don't really need that level of pre
 - Some sort of popup when I get an error on action taken?
 - Expand bars with a new feature, how about autocomplete -> happens consistently with the page open but only x times in a row when closed
     - in-page elements and backing structure is in place, but these do not do anything yet.
+    - Ability to set bar-specific completion value
 - A 'built with' readme section itemizing all the different technologies would be cool.

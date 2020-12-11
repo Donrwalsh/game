@@ -1,9 +1,10 @@
-var bars = [
-    {target: -1, current: -1},
-    {target: -1, current: -1},
-    {target: -1, current: -1}
-]
+var progress_bars = [
+        {target: -1, current: -1},
+        {target: -1, current: -1},
+        {target: -1, current: -1}
+    ]
 var barDetails;
+
 var baseUrl = $(location).attr('href').substring(0, $(location).attr('href').split('/', 3).join('/').length+1);
 var userId = $(location).attr('href').substring($(location).attr('href').split('/', 4).join('/').length+1);
 userId = userId == "" ? "0" : userId;
@@ -12,16 +13,21 @@ var offset = 0;
 
 //Primary Loop
 setInterval(function() {
-    for (var i = 0; i < bars.length; i++) {
-        $('#diag-' + (i+1) + '-1').text(bars[i].current);
-        $('#diag-' + (i+1) + '-2').text(bars[i].target);
+    for (var i = 0; i < progress_bars.length; i++) {
+        $('#diag-' + (i+1) + '-1').text(progress_bars[i].current);
+        $('#diag-' + (i+1) + '-2').text(progress_bars[i].target);
 
-        if (isBarActive(bars[i])) {
-            bars[i].current = bars[i].current < bars[i].target ? bars[i].current + 1 : bars[i].current;
+        if (isBarActive(progress_bars[i])) {
+            progress_bars[i].current = progress_bars[i].current < progress_bars[i].target ? progress_bars[i].current + 1 : progress_bars[i].current;
             var barWidth = parseFloat($("#bar"+(i+1)).css("width"));
-            var width = (bars[i].current / bars[i].target) * barWidth;
+            var width = (progress_bars[i].current / progress_bars[i].target) * barWidth;
             width = width > barWidth ? barWidth : width;
             $("#bar"+(i+1)+"-progress").css("width", width);
+        }
+        if (barDetails != null && barDetails[i].auto) {
+            if (isBarComplete(progress_bars[i]) || (progress_bars[i].current == -1 && progress_bars[i].target == -1)) {
+                $('#bar' + (i+1)).click();
+            }
         }
     }
 }, 100);
@@ -52,8 +58,12 @@ $(document).ready(function(){
         submitBars();
     });
 
+    $('.auto-checkbox').change(function() {
+        submitBars();
+    })
+
     $('.times-input').change(function() {
-            submitBars();
+        submitBars();
     });
 
     $(".btn.diagnostic").click(function(){
@@ -107,7 +117,7 @@ $(document).ready(function(){
         diagCount++;
         var diagNow = Date.now();
         var diag = "<div><span class='col-2'>bar " + id + " clicked</span><span class='col-2'>" + diagNow + "</span>";
-        if (!isBarActive(bars[id-1])) {
+        if (!isBarActive(progress_bars[id-1])) {
             log = true;
             diag = diag + "<span class='col-2'>client | server</span><span class='col-2 server-" + diagCount + "'></span>";
             diag = diag + "<span class='col-2'>difference:</span><span class='col-2 diff-" + diagCount + "'></span>";
@@ -130,7 +140,7 @@ $(document).ready(function(){
                         console.log('Error ${error}')
                     }
                 });
-        } else if (isBarComplete(bars[id-1])) {
+        } else if (isBarComplete(progress_bars[id-1])) {
             diag = diag + "<span class='col-2'>complete</span>";
             const Url=baseUrl + 'bars/complete';
                 $.ajax({
@@ -143,7 +153,7 @@ $(document).ready(function(){
                         }),
                         dataType: "json",
                     success: function(result) {
-                        completeBar(bars[id-1], id);
+                        completeBar(progress_bars[id-1], id);
                         $('#completion-count').text(result.count);
                     },
                     error:function(error) {
@@ -179,8 +189,8 @@ function registerBar(progress) {
     current = current > target ? target : current;
     current = current < 0 ? 0 : current;
 
-    bars[progress.barId-1].target = target;
-    bars[progress.barId-1].current = current;
+    progress_bars[progress.barId-1].target = target;
+    progress_bars[progress.barId-1].current = current;
 }
 
 function determineSeconds(duration) {
@@ -191,8 +201,8 @@ function registerBarDetails(bar) {
     $('#bar' + bar.barNum + '-seconds').val(bar.durationSec % 60);
     $('#bar' + bar.barNum + '-minutes').val(Math.floor((bar.durationSec % 3600) / 60));
     $('#bar' + bar.barNum + '-hours').val(Math.floor(bar.durationSec / 3600));
-    $('#bar' + bar.barNum + '-autocomplete').prop("checked", bar.autoComplete);
-    $('#bar' + bar.barNum + '-autocomplete-count').val(bar.autoCompletions);
+    $('#bar' + bar.barNum + '-auto').prop("checked", bar.auto);
+    $('#bar' + bar.barNum + '-auto-count').val(bar.autoCount);
 }
 
 function isBarActive(bar) {
@@ -225,16 +235,16 @@ function submitBars() {
         var bar = barDetails[i];
 
         var newDuration = getNewDuration(bar.barNum);
-        var newAutoComplete = $('#bar' + bar.barNum + "-autocomplete").prop('checked');
-        var newAutoCompletions = parseInt($('#bar' + bar.barNum + "-autocomplete-count").val());
+        var newAuto = $('#bar' + bar.barNum + "-auto").prop('checked');
+        var newAutoCount = parseInt($('#bar' + bar.barNum + "-auto-count").val());
 
-        if (bar.durationSec != newDuration || bar.autoComplete != newAutoComplete || bar.autoCompletions != newAutoCompletions) {
+        if (bar.durationSec != newDuration || bar.auto != newAuto || bar.autoCount != newAutoCount) {
             updated = true;
         }
 
         bar.durationSec = newDuration;
-        bar.autoComplete = newAutoComplete;
-        bar.autoCompletions = newAutoCompletions;
+        bar.auto = newAuto;
+        bar.autoCount = newAutoCount;
     }
     if (updated) {
         const Url=baseUrl + 'bars/submit';

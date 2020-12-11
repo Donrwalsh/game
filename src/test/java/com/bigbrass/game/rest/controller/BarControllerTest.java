@@ -134,9 +134,9 @@ public class BarControllerTest {
                 .andExpect(content().json("{\"progresses\":[{\"id\":null,\"userId\":8,\"barId\":1,\"startTime\":\""
                         + progress.getStartTime().toString() + "\",\"endTime\":\""
                         + progress.getEndTime().toString() + "\"}],\"bars\":["
-                        + "{\"id\":null,\"userId\":8,\"barNum\":1,\"durationSec\":10,\"autoComplete\":false,\"autoCompletions\":0},"
-                        + "{\"id\":null,\"userId\":8,\"barNum\":2,\"durationSec\":60,\"autoComplete\":false,\"autoCompletions\":0},"
-                        + "{\"id\":null,\"userId\":8,\"barNum\":3,\"durationSec\":3600,\"autoComplete\":false,\"autoCompletions\":0}"
+                        + "{\"id\":null,\"userId\":8,\"barNum\":1,\"durationSec\":10,\"auto\":false,\"autoCount\":0},"
+                        + "{\"id\":null,\"userId\":8,\"barNum\":2,\"durationSec\":60,\"auto\":false,\"autoCount\":0},"
+                        + "{\"id\":null,\"userId\":8,\"barNum\":3,\"durationSec\":3600,\"auto\":false,\"autoCount\":0}"
                         + "]}"))
                 .andReturn();
     }
@@ -158,9 +158,9 @@ public class BarControllerTest {
         MvcResult result = mockMvc.perform(request)
                 .andExpect(status().isCreated())
                 .andExpect(content().json("["
-                    + "{\"id\":null,\"userId\":8,\"barNum\":1,\"durationSec\":10,\"autoComplete\":false,\"autoCompletions\":0},"
-                    + "{\"id\":null,\"userId\":8,\"barNum\":2,\"durationSec\":60,\"autoComplete\":false,\"autoCompletions\":0},"
-                    + "{\"id\":null,\"userId\":8,\"barNum\":3,\"durationSec\":3600,\"autoComplete\":false,\"autoCompletions\":0}]"))
+                    + "{\"id\":null,\"userId\":8,\"barNum\":1,\"durationSec\":10,\"auto\":false,\"autoCount\":0},"
+                    + "{\"id\":null,\"userId\":8,\"barNum\":2,\"durationSec\":60,\"auto\":false,\"autoCount\":0},"
+                    + "{\"id\":null,\"userId\":8,\"barNum\":3,\"durationSec\":3600,\"auto\":false,\"autoCount\":0}]"))
                 .andReturn();
 
 

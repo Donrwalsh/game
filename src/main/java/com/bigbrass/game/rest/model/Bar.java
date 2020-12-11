@@ -14,19 +14,19 @@ public class Bar {
     private int userId;
     private int barNum;
     private int durationSec;
-    private boolean autoComplete;
-    private int autoCompletions;
+    private boolean auto;
+    private int autoCount;
 
     public Bar() {
 
     }
 
-    public Bar(int userId, int barNum, int durationSec, boolean autoComplete, int autoCompletions) {
+    public Bar(int userId, int barNum, int durationSec, boolean auto, int autoCount) {
         this.userId = userId;
         this.barNum = barNum;
         this.durationSec = durationSec;
-        this.autoComplete = autoComplete;
-        this.autoCompletions = autoCompletions;
+        this.auto = auto;
+        this.autoCount = autoCount;
     }
 
     public Long getId() {
@@ -61,19 +61,19 @@ public class Bar {
         this.durationSec = durationSec;
     }
 
-    public boolean isAutoComplete() {
-        return autoComplete;
+    public boolean isAuto() {
+        return auto;
     }
 
-    public void setAutoComplete(boolean autoComplete) {
-        this.autoComplete = autoComplete;
+    public void setAuto(boolean auto) {
+        this.auto = auto;
     }
 
-    public int getAutoCompletions() {
-        return autoCompletions;
+    public int getAutoCount() {
+        return autoCount;
     }
 
-    public void setAutoCompletions(int autoCompletions) {
-        this.autoCompletions = autoCompletions;
+    public void setAutoCount(int autoCount) {
+        this.autoCount = autoCount;
     }
 }
