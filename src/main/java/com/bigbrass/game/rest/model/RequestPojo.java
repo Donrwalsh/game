@@ -5,6 +5,11 @@ public class RequestPojo {
     private int barId;
     private int userId;
 
+    public RequestPojo(int barId, int userId) {
+        this.barId = barId;
+        this.userId = userId;
+    }
+
     public int getBarId() {
         return barId;
     }

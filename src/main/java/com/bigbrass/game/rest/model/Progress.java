@@ -22,11 +22,11 @@ public class Progress {
 
     }
 
-    public Progress(int userId, int barId) {
-        this.userId = userId;
-        this.barId = barId;
+    public Progress(Bar bar) {
+        this.userId = bar.getUserId();
+        this.barId = bar.getBarNum();
         this.startTime = getRoundedNow();
-        this.endTime = calculateEndTime(barId, startTime).truncatedTo(ChronoUnit.SECONDS);
+        this.endTime = calculateEndTime(bar, startTime).truncatedTo(ChronoUnit.SECONDS);
     }
 
     public int getUserId() {
@@ -67,17 +67,8 @@ public class Progress {
         return roundedTime;
     }
 
-    private LocalDateTime calculateEndTime(int barId, LocalDateTime startTime) {
-        LocalDateTime endTime;
-        if (barId == 1) {
-            endTime = startTime.plusSeconds(10L);
-        } else if (barId == 2) {
-            endTime = startTime.plusMinutes(1L);
-        } else if (barId == 3) {
-            endTime = startTime.plusHours(1L);
-        } else {
-            endTime = startTime.plusMinutes(1L);
-        }
+    private LocalDateTime calculateEndTime(Bar bar, LocalDateTime startTime) {
+        LocalDateTime endTime = startTime.plusSeconds(Long.valueOf(bar.getDurationSec()));
         return endTime;
     }
 }

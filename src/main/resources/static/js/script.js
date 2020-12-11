@@ -3,6 +3,7 @@ var bars = [
     {target: -1, current: -1},
     {target: -1, current: -1}
 ]
+var barDetails;
 var baseUrl = $(location).attr('href').substring(0, $(location).attr('href').split('/', 3).join('/').length+1);
 var userId = $(location).attr('href').substring($(location).attr('href').split('/', 4).join('/').length+1);
 userId = userId == "" ? "0" : userId;
@@ -26,6 +27,35 @@ setInterval(function() {
 }, 100);
 
 $(document).ready(function(){
+    $('.time-input.hours').on('input', function() {
+        $(this).val($(this).val().match(/\d*\.?\d+/));
+        $(this).val($(this).val() > 23 ? 23 : $(this).val());
+    });
+
+    $('.time-input.minutes').on('input', function() {
+        $(this).val($(this).val().match(/\d*\.?\d+/));
+        $(this).val($(this).val() > 59 ? 59 : $(this).val());
+    });
+
+    $('.time-input.seconds').on('input', function() {
+        $(this).val($(this).val().match(/\d*\.?\d+/));
+        $(this).val($(this).val() > 59 ? 59 : $(this).val());
+    });
+
+    $('.times-input').on('input', function() {
+        $(this).val($(this).val().match(/\d*\.?\d+/));
+        $(this).val($(this).val() > 999999 ? 999999 : $(this).val());
+    });
+
+    $('.time-input').change(function() {
+        zeroNotAllowed();
+        submitBars();
+    });
+
+    $('.times-input').change(function() {
+            submitBars();
+    });
+
     $(".btn.diagnostic").click(function(){
     if ($(this).hasClass("active")) {
         $(this).removeClass("active");
@@ -131,8 +161,12 @@ $(document).ready(function(){
 });
 
 function initPage(result) {
-    for (var i = 0; i < result.length; i++) {
-        registerBar(result[i]);
+    for (var i = 0; i < result.progresses.length; i++) {
+        registerBar(result.progresses[i]);
+    }
+    barDetails = result.bars;
+    for (var i = 0; i < result.bars.length; i++) {
+        registerBarDetails(result.bars[i]);
     }
 }
 
@@ -149,6 +183,18 @@ function registerBar(progress) {
     bars[progress.barId-1].current = current;
 }
 
+function determineSeconds(duration) {
+    return duration % 60;
+}
+
+function registerBarDetails(bar) {
+    $('#bar' + bar.barNum + '-seconds').val(bar.durationSec % 60);
+    $('#bar' + bar.barNum + '-minutes').val(Math.floor((bar.durationSec % 3600) / 60));
+    $('#bar' + bar.barNum + '-hours').val(Math.floor(bar.durationSec / 3600));
+    $('#bar' + bar.barNum + '-autocomplete').prop("checked", bar.autoComplete);
+    $('#bar' + bar.barNum + '-autocomplete-count').val(bar.autoCompletions);
+}
+
 function isBarActive(bar) {
     return bar.current != -1 && bar.target != -1;
 }
@@ -161,4 +207,54 @@ function completeBar(bar, i) {
     bar.current = -1;
     bar.target = -1;
     $("#bar"+(i)+"-progress").css("width", 0);
+}
+
+function zeroNotAllowed() {
+    for (var i = 0; i < 2; i++) {
+        if ($('#bar' + (i+1) + '-hours').val() == 0
+            && $('#bar' + (i+1) + '-minutes').val() == 0
+            && $('#bar' + (i+1) + '-seconds').val() == 0) {
+                $('#bar' + (i+1) + '-seconds').val(1);
+        }
+    }
+}
+
+function submitBars() {
+    var updated = false;
+    for (var i = 0; i < barDetails.length; i++) {
+        var bar = barDetails[i];
+
+        var newDuration = getNewDuration(bar.barNum);
+        var newAutoComplete = $('#bar' + bar.barNum + "-autocomplete").prop('checked');
+        var newAutoCompletions = parseInt($('#bar' + bar.barNum + "-autocomplete-count").val());
+
+        if (bar.durationSec != newDuration || bar.autoComplete != newAutoComplete || bar.autoCompletions != newAutoCompletions) {
+            updated = true;
+        }
+
+        bar.durationSec = newDuration;
+        bar.autoComplete = newAutoComplete;
+        bar.autoCompletions = newAutoCompletions;
+    }
+    if (updated) {
+        const Url=baseUrl + 'bars/submit';
+        $.ajax({
+            url: Url,
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(barDetails),
+            dataType: "json",
+            success: function(result) {
+                //noop
+            },
+            error:function(error) {
+                console.log('Error ${error}')
+            }
+        });
+    }
+
+}
+
+function getNewDuration(id) {
+    return parseInt(($('#bar' + id + '-hours').val() * 3600)) + parseInt($('#bar' + id + '-minutes').val() * 60) + parseInt($('#bar' + id + '-seconds').val());
 }

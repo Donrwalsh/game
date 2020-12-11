@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS progress;
 DROP TABLE IF EXISTS completion;
+DROP TABLE IF EXISTS bar;
 
 CREATE TABLE progress (
   id INT AUTO_INCREMENT  PRIMARY KEY,
@@ -24,3 +25,17 @@ CREATE TABLE completion (
 
 --INSERT INTO completion (user_id, count) VALUES
 --  (1, 0);
+
+CREATE TABLE bar (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    bar_num INT NOT NULL,
+    duration_sec INT NOT NULL,
+    auto_complete BOOLEAN NOT NULL,
+    auto_completions INT NOT NULL
+);
+
+INSERT INTO bar (user_id, bar_num, duration_sec, auto_complete, auto_completions) VALUES
+    (1, 1, 10, FALSE, 0),
+    (1, 2, 60, FALSE, 0),
+    (1, 3, 3600, FALSE, 0);

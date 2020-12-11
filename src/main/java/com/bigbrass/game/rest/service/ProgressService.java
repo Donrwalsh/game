@@ -1,8 +1,10 @@
 package com.bigbrass.game.rest.service;
 
+import com.bigbrass.game.rest.model.Bar;
 import com.bigbrass.game.rest.model.Completion;
 import com.bigbrass.game.rest.model.Progress;
 import com.bigbrass.game.rest.model.RequestPojo;
+import com.bigbrass.game.rest.repository.BarRepository;
 import com.bigbrass.game.rest.repository.CompletionRepository;
 import com.bigbrass.game.rest.repository.ProgressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,9 @@ import java.util.List;
 public class ProgressService {
 
     @Autowired
+    BarRepository barRepository;
+
+    @Autowired
     ProgressRepository progressRepository;
 
     @Autowired
@@ -26,7 +31,8 @@ public class ProgressService {
     }
 
     public Progress startProgressBar(RequestPojo requestPojo) {
-        Progress progressBar = new Progress(requestPojo.getUserId(), requestPojo.getBarId());
+        Bar bar = barRepository.findByUserIdAndBarNum(requestPojo.getUserId(), requestPojo.getBarId());
+        Progress progressBar = new Progress(bar);
         Progress result = null;
         try {
             result = progressRepository.save(progressBar);

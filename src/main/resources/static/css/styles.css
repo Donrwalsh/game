@@ -27,4 +27,13 @@
 
 .bar-label {
     text-align: center;
+    margin-bottom: .5em;
+}
+
+.time-input {
+    width: 3em;
+}
+
+.times-input {
+    width: 5em;
 }

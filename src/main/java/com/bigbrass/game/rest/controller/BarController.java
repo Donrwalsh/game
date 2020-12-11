@@ -1,8 +1,7 @@
 package com.bigbrass.game.rest.controller;
 
-import com.bigbrass.game.rest.model.Completion;
-import com.bigbrass.game.rest.model.Progress;
-import com.bigbrass.game.rest.model.RequestPojo;
+import com.bigbrass.game.rest.model.*;
+import com.bigbrass.game.rest.service.BarService;
 import com.bigbrass.game.rest.service.CompletionService;
 import com.bigbrass.game.rest.service.ProgressService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +17,9 @@ import java.util.List;
 public class BarController {
 
     @Autowired
+    BarService barService;
+
+    @Autowired
     ProgressService progressService;
 
     @Autowired
@@ -31,7 +33,12 @@ public class BarController {
     @GetMapping("/init")
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody
-    List<Progress> initBars(@RequestParam int userId) {return progressService.findByUserId(userId);}
+    Init initBars(@RequestParam int userId) {
+        Init result = new Init();
+        result.setBars(barService.findByUserId(userId));
+        result.setProgresses(progressService.findByUserId(userId));
+        return result;
+    }
 
     @PostMapping("/begin")
     public ResponseEntity<?> beginBar(@RequestBody RequestPojo requestPojo) {
@@ -56,5 +63,11 @@ public class BarController {
         } else {
             return new ResponseEntity<>(result, HttpStatus.OK);
         }
+    }
+
+    @PostMapping("/submit")
+    public ResponseEntity<?> submitBar(@RequestBody List<Bar> barDetails) {
+        List<Bar> barResult = barService.saveBars(barDetails);
+        return new ResponseEntity<>(barResult, HttpStatus.CREATED);
     }
 }
