@@ -93,3 +93,4 @@ Milliseconds are awkward to work with, and I don't really need that level of pre
 - I need server side validation that restricts the duration in seconds value.
 - Having two windows open at once breaks everything.
 - If a complete fails (or any request fails?) stop and re-init the page. Had a weird situation where I forgot an open window and it caused a bit of havoc.
+- One banner for each bar. . .?

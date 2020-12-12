@@ -1,3 +1,40 @@
+@media only screen and (max-width: 600px) {
+    .small-title {
+        margin-top: 25vh;
+        text-align: center;
+    }
+    .large-title {
+        display: none;
+    }
+    .bars-top {
+        margin: 1em 0;
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    .large-title {
+        margin-top: 15vh;
+    }
+    .small-title {
+        display: none;
+    }
+    .fa-background {
+        display: none;
+    }
+}
+
+main.container {
+    padding-top: 56px;
+}
+
+.fa-background {
+    font-size: 100vw;
+    position: absolute;
+    top: 20vh;
+    color: grey;
+    opacity: .2;
+}
+
 .bar {
     width: 90%;
     height: 30px;
@@ -31,9 +68,9 @@
 }
 
 .time-input {
-    width: 3em;
+    width: 2em;
 }
 
 .times-input {
-    width: 5em;
+    width: 4em;
 }

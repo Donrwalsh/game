@@ -4,17 +4,12 @@
 
 <body>
     <nav th:replace="common/nav :: common-nav" />
+    <i class="fas fa-dungeon fa-background"></i>
     <main role="main" class="container">
-        <div class="starter-template">
-            <h1>Game Component Library</h1>
-            <h2>
-                <span th:text="'Hello, ' + ${message}"></span>
-            </h2>
+        <div class="homescreen">
+            <h1 class="small-title">Game<br />Component<br />Library</h1>
+            <h1 class="large-title">Game Component Library</h1>
         </div>
-        <h2>List from RoutingController:</h2>
-        <ol>
-            <li th:each="task : ${tasks}" th:text="${task}"></li>
-        </ol>
     </main>
     </body>
 </html>
