@@ -4,6 +4,14 @@ import java.util.List;
 
 public class Init {
 
+    public Init() {
+
+    }
+    public Init(List<Progress> progresses, List<Bar> bars) {
+        this.progresses = progresses;
+        this.bars = bars;
+    }
+
     public List<Progress> getProgresses() {
         return progresses;
     }

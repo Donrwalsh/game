@@ -1,12 +1,7 @@
 package com.bigbrass.game.rest.controller;
 
-import com.bigbrass.game.rest.model.Bar;
-import com.bigbrass.game.rest.model.Completion;
-import com.bigbrass.game.rest.model.Progress;
-import com.bigbrass.game.rest.model.RequestPojo;
-import com.bigbrass.game.rest.service.BarService;
-import com.bigbrass.game.rest.service.CompletionService;
-import com.bigbrass.game.rest.service.ProgressService;
+import com.bigbrass.game.rest.mediation.BarsMediation;
+import com.bigbrass.game.rest.model.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,8 +21,7 @@ import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(BarControllerTest.class)
@@ -38,13 +32,7 @@ public class BarControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private BarService barService;
-
-    @MockBean
-    private CompletionService completionService;
-
-    @MockBean
-    private ProgressService progressService;
+    private BarsMediation barsMediation;
 
     public static String asJsonString(final Object obj) {
         try {
@@ -58,13 +46,28 @@ public class BarControllerTest {
     }
 
     @Test
+    public void testBars() throws Exception {
+        when(barsMediation.resolveAuto(8675309)).thenReturn(5);
+
+        RequestBuilder request = MockMvcRequestBuilders
+                .get("/bars/8675309")
+                .accept(MediaType.APPLICATION_JSON);
+
+        MvcResult result = mockMvc.perform(request)
+                .andExpect(model().size(1))
+                .andExpect(model().attribute("autoCompletions", 5))
+                .andExpect(status().isOk())
+                .andReturn();
+    }
+
+    @Test
     public void testBeginBar() throws Exception {
         Bar bar = new Bar(2, 1, 60, false, 0);
         RequestPojo requestPojo = new RequestPojo(1, 2);
 
         Progress progress = new Progress(bar);
 
-        when(progressService.startProgressBar(any())).thenReturn(progress);
+        when(barsMediation.startProgressBar(any())).thenReturn(progress);
 
         RequestBuilder request = MockMvcRequestBuilders
                 .post("/bars/begin")
@@ -81,11 +84,10 @@ public class BarControllerTest {
 
     @Test
     public void testCompleteBar() throws Exception {
-        RequestPojo requestPojo = new RequestPojo(1, 2);
-
+        RequestPojo requestPojo = new RequestPojo(1, 43);
         Completion completion = new Completion(43);
 
-        when(progressService.completeProgressBar(any())).thenReturn(completion);
+        when(barsMediation.completeProgressBar(any())).thenReturn(completion);
 
         RequestBuilder request = MockMvcRequestBuilders
                 .post("/bars/complete")
@@ -102,7 +104,7 @@ public class BarControllerTest {
     public void testCompletions() throws Exception {
         Completion completion = new Completion(9);
 
-        when(completionService.getCompletions(9)).thenReturn(completion);
+        when(barsMediation.getCompletions(9)).thenReturn(completion);
 
         RequestBuilder request = MockMvcRequestBuilders
                 .get("/bars/completions?userId=9")
@@ -120,14 +122,12 @@ public class BarControllerTest {
         Bar bar2 = new Bar(8, 2, 60, false, 0);
         Bar bar3 = new Bar(8, 3, 3600, false, 0);
         Progress progress = new Progress(bar1);
-        when(progressService.findByUserId(8)).thenReturn(Arrays.asList(progress));
-        when(barService.findByUserId(8)).thenReturn(Arrays.asList(bar1, bar2, bar3));
+
+        when(barsMediation.generateInit(8)).thenReturn(new Init(Arrays.asList(progress), Arrays.asList(bar1, bar2, bar3)));
 
         RequestBuilder request = MockMvcRequestBuilders
                 .get("/bars/init?userId=8")
                 .accept(MediaType.APPLICATION_JSON);
-
-
 
         MvcResult result = mockMvc.perform(request)
                 .andExpect(status().isOk())
@@ -148,7 +148,7 @@ public class BarControllerTest {
         Bar bar3 = new Bar(8, 3, 3600, false, 0);
         List<Bar> barDetails = Arrays.asList(bar1, bar2, bar3);
 
-        when(barService.saveBars(any())).thenReturn(barDetails);
+        when(barsMediation.saveBars(any())).thenReturn(barDetails);
 
         RequestBuilder request = MockMvcRequestBuilders
                 .post("/bars/submit")

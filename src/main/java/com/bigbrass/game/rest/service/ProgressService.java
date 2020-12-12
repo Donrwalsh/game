@@ -3,7 +3,6 @@ package com.bigbrass.game.rest.service;
 import com.bigbrass.game.rest.model.Bar;
 import com.bigbrass.game.rest.model.Completion;
 import com.bigbrass.game.rest.model.Progress;
-import com.bigbrass.game.rest.model.RequestPojo;
 import com.bigbrass.game.rest.repository.BarRepository;
 import com.bigbrass.game.rest.repository.CompletionRepository;
 import com.bigbrass.game.rest.repository.ProgressRepository;
@@ -38,8 +37,8 @@ public class ProgressService {
         progressRepository.save(progress);
     }
 
-    public Progress startProgressBar(RequestPojo requestPojo) {
-        Bar bar = barRepository.findByUserIdAndBarNum(requestPojo.getUserId(), requestPojo.getBarId());
+    public Progress startProgressBar(int userId, int barId) {
+        Bar bar = barRepository.findByUserIdAndBarNum(userId, barId);
         Progress progressBar = new Progress(bar);
         Progress result = null;
         try {
@@ -51,11 +50,11 @@ public class ProgressService {
     }
 
     @Transactional
-    public Completion completeProgressBar(RequestPojo requestPojo) {
-        Progress progress = progressRepository.findByUserIdAndBarId(requestPojo.getUserId(), requestPojo.getBarId());
+    public Completion completeProgressBar(int userId, int barId) {
+        Progress progress = progressRepository.findByUserIdAndBarId(userId, barId);
         if (progress.getEndTime().minusSeconds(1L).isBefore(LocalDateTime.now())) {
-            progressRepository.deleteByUserIdAndBarId(requestPojo.getUserId(), requestPojo.getBarId());
-            Completion completion = completionRepository.findByUserId(requestPojo.getUserId());
+            progressRepository.deleteByUserIdAndBarId(userId, barId);
+            Completion completion = completionRepository.findByUserId(userId);
             completion.setCount(completion.getCount() + 1);
             completionRepository.save(completion);
             return completion;
