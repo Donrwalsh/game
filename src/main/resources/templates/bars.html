@@ -5,6 +5,15 @@
 <body>
     <nav th:replace="common/nav :: common-nav" />
     <main role="main" class="container">
+        <div th:if="${autoCompletions}">
+            <div class="alert alert-success" role="alert" style="margin-top: 1em;">
+                While you were gone, you completed <span th:text="${autoCompletions}">0</span>
+                <span th:text="${autoCompletions > 1} ? ' bars.' : ' bar.'"></span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
         <div class="row">
             <h1>Completions: <span id="completion-count"></span></h1>
             <div class="ml-auto">

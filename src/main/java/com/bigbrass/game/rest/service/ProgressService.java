@@ -52,6 +52,7 @@ public class ProgressService {
     @Transactional
     public Completion completeProgressBar(int userId, int barId) {
         Progress progress = progressRepository.findByUserIdAndBarId(userId, barId);
+        System.out.println(progress);
         if (progress.getEndTime().minusSeconds(1L).isBefore(LocalDateTime.now())) {
             progressRepository.deleteByUserIdAndBarId(userId, barId);
             Completion completion = completionRepository.findByUserId(userId);

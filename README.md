@@ -92,3 +92,4 @@ Milliseconds are awkward to work with, and I don't really need that level of pre
 - On the java side of stuff, I have not been consistent with 'barId' versus 'barNum'.
 - I need server side validation that restricts the duration in seconds value.
 - Having two windows open at once breaks everything.
+- If a complete fails (or any request fails?) stop and re-init the page. Had a weird situation where I forgot an open window and it caused a bit of havoc.
