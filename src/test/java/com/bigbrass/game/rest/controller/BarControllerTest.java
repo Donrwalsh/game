@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -47,7 +48,12 @@ public class BarControllerTest {
 
     @Test
     public void testBars() throws Exception {
-        when(barsMediation.resolveAuto(8675309)).thenReturn(5);
+        List <Integer> list = new ArrayList<Integer>() {{
+            add(1);
+            add(2);
+            add(3);
+        } };
+        when(barsMediation.resolveAuto(8675309)).thenReturn(list);
 
         RequestBuilder request = MockMvcRequestBuilders
                 .get("/bars/8675309")
@@ -55,7 +61,7 @@ public class BarControllerTest {
 
         MvcResult result = mockMvc.perform(request)
                 .andExpect(model().size(1))
-                .andExpect(model().attribute("autoCompletions", 5))
+                .andExpect(model().attribute("autoCompletions", list))
                 .andExpect(status().isOk())
                 .andReturn();
     }

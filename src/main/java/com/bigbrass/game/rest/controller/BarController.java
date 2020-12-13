@@ -20,7 +20,7 @@ public class BarController {
 
     @RequestMapping("/{numericId:[\\d]+}")
     public ModelAndView bars(@PathVariable("numericId") int userId) {
-        int autoCompletions = barsMediation.resolveAuto(userId);
+        List<Integer> autoCompletions = barsMediation.resolveAuto(userId);
         ModelAndView mv = new ModelAndView();
         mv.addObject("autoCompletions", autoCompletions);
         mv.setViewName("bars");

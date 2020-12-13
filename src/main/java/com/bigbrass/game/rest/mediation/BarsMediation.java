@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Component
 public class BarsMediation {
@@ -42,14 +42,14 @@ public class BarsMediation {
         return completionService.getCompletions(userId);
     }
 
-    public int resolveAuto(int userId) {
+    public List<Integer> resolveAuto(int userId) {
+        List<Integer> result = new ArrayList<Integer>();
         List<Bar> bars = barService.findByUserId(userId);
-        AtomicInteger totalCompletions = new AtomicInteger();
         bars.forEach((bar) ->{
             if (bar.isAuto() && bar.getAutoCount() > 0) {
                 Progress progress = progressService.findByUserIdAndBarId(userId, bar.getBarNum());
                 if (progress == null) {
-                    progress = progressService.startProgressBar(bar.getBarNum(), userId);
+                    progress = progressService.startProgressBar(userId, bar.getBarNum());
                 }
                 LocalDateTime resultTime = progress.getEndTime();
                 int completions = 0;
@@ -66,10 +66,12 @@ public class BarsMediation {
                 Completion completion = completionService.getCompletions(userId);
                 completion.setCount(completion.getCount() + completions);
                 completionService.saveCompletion(completion);
-                totalCompletions.getAndAdd(completions);
+                result.add(completions);
+            } else {
+                result.add(0);
             }
         });
-        return totalCompletions.get();
+        return result;
     }
 
     public Progress startProgressBar(RequestPojo requestPojo) {

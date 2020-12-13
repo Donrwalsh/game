@@ -81,16 +81,12 @@ Milliseconds are awkward to work with, and I don't really need that level of pre
 
 ## Todo Section
 
-- Obviously it would be great to use an actual database rather than one that is in memory.
-- Some sort of popup when I get an error on action taken?
-- Expand bars with a new feature, how about autocomplete -> happens consistently with the page open but only x times in a row when closed
-    - in-page elements and backing structure is in place, but these do not do anything yet.
-    - Ability to set bar-specific completion value
-    - Right now the split between hitting 2 endpoints at the start of the page is a little awkward. . . Although there's a reasonable argument for wanting them separate in case there's a reason to 're-init' the bars in case of something going wrong. Similarly the Completions thing could be more than a read if it's a currency that can be expended. So how about just having the logic sort things out on pageload?
+### Project
 - A 'built with' readme section itemizing all the different technologies would be cool.
-- Activity stops when the page is not active.
+
+### Bars
+- Show red danger popup on screen when a request fails
+- Ability to set bar-specific completion-worth value
+- Inactive page details. When I have the tab open in chrome but am not focused, page activity either ceases or slows down. Focusing on the tab causes it to pick up where it left off which effectively robs me of completions that I would have gotten if the tab was closed. Some initial searching suggests that the Page Visibility API is what I need to leverage here. Possible to rig up the completion of an individual bar to perform the same sort of auto check as on page load? Interesting thought.
 - On the java side of stuff, I have not been consistent with 'barId' versus 'barNum'.
-- I need server side validation that restricts the duration in seconds value.
-- Having two windows open at once breaks everything.
-- If a complete fails (or any request fails?) stop and re-init the page. Had a weird situation where I forgot an open window and it caused a bit of havoc.
-- One banner for each bar. . .?
+- Having two windows open at once breaks everything. For example if one page starts a bar and the other page doesn't know about it and that bar is auto, it will just try over and over again to start the bar without ever proceeding. Some sort of re-init would be helpful here.

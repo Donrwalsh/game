@@ -5,10 +5,21 @@
 <body>
     <nav th:replace="common/nav :: common-nav" />
     <main role="main" class="container">
-        <div th:if="${autoCompletions}">
+        <div th:if="${autoCompletions[0] > 0 || autoCompletions[1] > 0 || autoCompletions[2] > 0}">
             <div class="alert alert-success" role="alert" style="margin-top: 1em;">
-                While you were gone, you completed <span th:text="${autoCompletions}">0</span>
-                <span th:text="${autoCompletions > 1} ? ' bars.' : ' bar.'"></span>
+                While you were gone:
+                <span th:if="${autoCompletions[0] > 0}"><br/>Bar 1 completed
+                    <span th:text="${autoCompletions[0]}">0</span>
+                    <span th:text="${autoCompletions[0] > 1} ? ' times.' : ' time.'"></span>
+                </span>
+                <span th:if="${autoCompletions[1] > 0}"><br/>Bar 2 completed
+                    <span th:text="${autoCompletions[1]}">0</span>
+                    <span th:text="${autoCompletions[1] > 1} ? ' times.' : ' time.'"></span>
+                </span>
+                <span th:if="${autoCompletions[2] > 0}"><br/>Bar 3 completed
+                    <span th:text="${autoCompletions[2]}">0</span>
+                    <span th:text="${autoCompletions[2] > 1} ? ' times.' : ' time.'"></span>
+                </span>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -96,7 +107,7 @@
         <div class="diag-output diag-child">
             <h3>Diag Output</h3>
         </div>
-        <script type="text/javascript" src="../js/script.js"></script>
+        <script type="text/javascript" src="../js/bars.js"></script>
     </main>
 </body>
 
