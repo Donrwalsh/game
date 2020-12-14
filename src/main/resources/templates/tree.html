@@ -5,7 +5,31 @@
 <body>
 <nav th:replace="common/nav :: common-nav" />
 <main role="main" class="container">
-    <p>Tree</p>
+
+    <ul class="nav nav-pills mb-3 mt-3" id="pills-tab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="pills-3-wide-tab" data-toggle="pill" href="#pills-3-wide" role="tab" aria-controls="pills-3-wide" aria-selected="true">3-Wide</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-4-wide-tab" data-toggle="pill" href="#pills-4-wide" role="tab" aria-controls="pills-4-wide" aria-selected="false">4-Wide</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-3-wide" role="tabpanel" aria-labelledby="pills-3-wide-tab">
+            <div class="container-3-wide" style="padding-bottom:25vh;">
+                <div class="tier mb-3">
+                    <img class="skill-3-wide tier 1" th:src="@{img/green_20.png}" data-placement="bottom" data-toggle="tooltip" data-html="true" title="<b>skill detail</b>" alt="green20"/>
+                </div>
+            </div>
+            <div class="mobile-detail-3-wide">
+                <p>mobile skill detail</p>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="pills-4-wide" role="tabpanel" aria-labelledby="pills-4-wide-tab">
+            <p>4-wide</p>
+        </div>
+    </div>
+
 
     <script type="text/javascript" src="../js/tree.js"></script>
 </main>

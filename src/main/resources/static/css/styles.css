@@ -1,3 +1,5 @@
+@import "tree.css";
+
 @media only screen and (max-width: 600px) {
     .small-title {
         margin-top: 25vh;

@@ -83,6 +83,7 @@ Milliseconds are awkward to work with, and I don't really need that level of pre
 
 ### Project
 - A 'built with' readme section itemizing all the different technologies would be cool.
+- Single css file that imports a bunch of sub-files would be dope.
 
 ### Bars
 - Show red danger popup on screen when a request fails
@@ -90,3 +91,7 @@ Milliseconds are awkward to work with, and I don't really need that level of pre
 - Inactive page details. When I have the tab open in chrome but am not focused, page activity either ceases or slows down. Focusing on the tab causes it to pick up where it left off which effectively robs me of completions that I would have gotten if the tab was closed. Some initial searching suggests that the Page Visibility API is what I need to leverage here. Possible to rig up the completion of an individual bar to perform the same sort of auto check as on page load? Interesting thought.
 - On the java side of stuff, I have not been consistent with 'barId' versus 'barNum'.
 - Having two windows open at once breaks everything. For example if one page starts a bar and the other page doesn't know about it and that bar is auto, it will just try over and over again to start the bar without ever proceeding. Some sort of re-init would be helpful here.
+
+### Tree
+- Use pills for different colors of skill trees. R/B/G 3-wide and then R/B/G 4-wide or something.
+- Next step is to build a data structure for the tree nodes.
