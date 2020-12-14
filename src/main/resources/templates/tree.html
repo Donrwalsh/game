@@ -36,7 +36,7 @@
             </div>
             <div class="mobile-detail-3-wide">
                 <th:block th:each="item: ${init}">
-                    <div th:id="@{mobile-detail-{gridPosition}(gridPosition=${item.gridPosition})}" class="mobile-detail">
+                    <div th:id="@{mobile-detail-{gridPosition}(gridPosition=${item.gridPosition})}" class="mobile-detail" style="display:none;">
                         <img class="mobile-skill-detail-img"  th:src="@{img/{image}.png(image=${item.image})}" th:alt="${item.name}"/>
                         <b><span th:text="${item.name}">name</span></b><br/>
                         <span th:text="${item.description}">description</span>

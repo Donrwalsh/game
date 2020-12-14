@@ -94,4 +94,4 @@ Milliseconds are awkward to work with, and I don't really need that level of pre
 
 ### Tree
 - Use pills for different colors of skill trees. R/B/G 3-wide and then R/B/G 4-wide or something.
-- Next step is to build a data structure for the tree nodes.
+- The setup that I have right now with media query is incomplete because a tablet with a larger screen will get the 'hover' behavior which I don't want.

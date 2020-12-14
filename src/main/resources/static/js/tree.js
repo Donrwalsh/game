@@ -13,7 +13,7 @@ $(document).ready(function(){
     });
 
     $('.mobile-close').click(function() {
-        $('.mobile-detail').css('visibility', 'hidden');
+        $('.mobile-detail').css('display', 'none');
         $('.mobile-detail-3-wide').css('display', 'none');
         $('.container-3-wide').css('padding-bottom', '0');
     });
@@ -24,7 +24,7 @@ function showMobileDetail3Wide(x, button) {
     if (x.matches) {
         $('.mobile-detail-3-wide').css('display', 'block');
         $('.container-3-wide').css('padding-bottom', '25vh');
-        $('.mobile-detail').css('visibility', 'hidden');
-        $('#mobile-detail-' + button.attr('id')).css('visibility', 'visible');
+        $('.mobile-detail').css('display', 'none');
+        $('#mobile-detail-' + button.attr('id')).css('display', 'block');
     }
 }

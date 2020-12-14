@@ -56,7 +56,6 @@
 
 .empty-node-box {
     display: inline-block;
-    background-color: grey;
     margin: 0 1em;
 }
 
@@ -93,7 +92,7 @@
 }
 
 .mobile-detail {
-    visibility: hidden;
+    display: none;
     margin: 6px;
 }
 
