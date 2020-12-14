@@ -23,6 +23,7 @@ public class BarController {
         List<Integer> autoCompletions = barsMediation.resolveAuto(userId);
         ModelAndView mv = new ModelAndView();
         mv.addObject("autoCompletions", autoCompletions);
+        mv.addObject("barsActiveSetting", "active");
         mv.setViewName("bars");
         return mv;
     }
