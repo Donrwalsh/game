@@ -60,7 +60,7 @@ public class BarControllerTest {
                 .accept(MediaType.APPLICATION_JSON);
 
         MvcResult result = mockMvc.perform(request)
-                .andExpect(model().size(1))
+                .andExpect(model().size(2))
                 .andExpect(model().attribute("autoCompletions", list))
                 .andExpect(status().isOk())
                 .andReturn();
