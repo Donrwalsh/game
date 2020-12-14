@@ -17,12 +17,32 @@
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-3-wide" role="tabpanel" aria-labelledby="pills-3-wide-tab">
             <div class="container-3-wide" style="padding-bottom:25vh;">
-                <div class="tier mb-3">
-                    <img class="skill-3-wide tier 1" th:src="@{img/green_20.png}" data-placement="bottom" data-toggle="tooltip" data-html="true" title="<b>skill detail</b>" alt="green20"/>
-                </div>
+                <th:block th:each="i: ${#numbers.sequence(1, 5)}">
+                    <div class="tier mb-3">
+                        <th:block th:each="j: ${#numbers.sequence((i*3)-2, (i*3))}">
+                            <div th:if="${not init.?[gridPosition == __${j}__].isEmpty()}" class="node-box">
+                                <img th:id="${j}" class="skill-3-wide"  th:src="@{img/{image}.png(image=${init.?[gridPosition == __${j}__][0].image})}" th:alt="${init.?[gridPosition == __${j}__][0].name}"/>
+                                <div class="tooltip">
+                                    <b><span th:text="${init.?[gridPosition == __${j}__][0].name}">name</span></b><br/>
+                                    <span th:text="${init.?[gridPosition == __${j}__][0].description}">description</span>
+                                </div>
+                            </div>
+                            <div th:if="${init.?[gridPosition == __${j}__].isEmpty()}" class="empty-node-box">
+
+                            </div>
+                        </th:block>
+                    </div>
+                </th:block>
             </div>
             <div class="mobile-detail-3-wide">
-                <p>mobile skill detail</p>
+                <th:block th:each="item: ${init}">
+                    <div th:id="@{mobile-detail-{gridPosition}(gridPosition=${item.gridPosition})}" class="mobile-detail">
+                        <img class="mobile-skill-detail-img"  th:src="@{img/{image}.png(image=${item.image})}" th:alt="${item.name}"/>
+                        <b><span th:text="${item.name}">name</span></b><br/>
+                        <span th:text="${item.description}">description</span>
+                        <span class="mobile-close"></span>
+                    </div>
+                </th:block>
             </div>
         </div>
         <div class="tab-pane fade" id="pills-4-wide" role="tabpanel" aria-labelledby="pills-4-wide-tab">
@@ -34,4 +54,3 @@
     <script type="text/javascript" src="../js/tree.js"></script>
 </main>
 </body>
-

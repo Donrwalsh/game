@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS progress;
 DROP TABLE IF EXISTS completion;
 DROP TABLE IF EXISTS bar;
+DROP TABLE IF EXISTS tree_node;
 
 CREATE TABLE progress (
   id INT AUTO_INCREMENT  PRIMARY KEY,
@@ -39,3 +40,14 @@ INSERT INTO bar (user_id, bar_num, duration_sec, auto, auto_count) VALUES
     (1, 1, 10, FALSE, 0),
     (1, 2, 60, FALSE, 0),
     (1, 3, 3600, FALSE, 0);
+
+CREATE TABLE tree_node (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    grid_position INT NOT NULL,
+    name VARCHAR(20),
+    image VARCHAR(20),
+    description VARCHAR(255)
+);
+
+INSERT INTO tree_node (grid_position, name, image, description) VALUES
+    (2, 'Toughness', 'green_20', 'Makes you harder to kill. Also makes you easier to not kill.');

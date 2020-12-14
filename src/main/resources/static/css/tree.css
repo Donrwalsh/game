@@ -4,11 +4,19 @@
         margin: 0 1em;
         border-radius: .5em;
     }
-    .arrow {
-        display: none !important;
+    .empty-node-box {
+        height: 5em;
+        width: 5em;
     }
-    .tooltip-inner {
-        display: none !important;
+    .node-box {
+        width: 7em;
+        height: 5em;
+    }
+    .tier {
+        height: 5em;
+    }
+    .tooltip {
+        height: 0px;
     }
 }
 
@@ -18,6 +26,17 @@
         margin: 0 1em;
         border-radius: .5em;
     }
+    .empty-node-box {
+        height: 8em;
+        width: 8em;
+    }
+    .node-box {
+        width: 10em;
+        height: 8em;
+    }
+    .tier {
+        height: 8em;
+    }
 }
 
 .tier {
@@ -25,11 +44,66 @@
 }
 
 .mobile-detail-3-wide {
+    background-color: darkseagreen;
     display: none;
-    background-color: pink;
     width: 100%;
     height: 25vh;
     position: fixed;
     bottom: 0px;
     left: 0px;
+    border-top: .25rem solid black;
+}
+
+.empty-node-box {
+    display: inline-block;
+    background-color: grey;
+    margin: 0 1em;
+}
+
+.node-box {
+    display: inline-block;
+}
+
+.node-box:hover .tooltip {
+  /* display tooltip on hover */
+  opacity: 1;
+}
+
+.tooltip {
+  overflow: auto;
+  /* hide and position tooltip */
+  width: 450px;
+  left: 50px;
+  top: -10px;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  opacity: 0;
+  position: relative;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -ms-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+.mobile-skill-detail-img {
+    height: 3em;
+    border-radius: .5em;
+}
+
+.mobile-detail {
+    visibility: hidden;
+    margin: 6px;
+}
+
+.mobile-close:before {
+  content: '✕';
+}
+.mobile-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+  font-size: 1.5rem;
 }
