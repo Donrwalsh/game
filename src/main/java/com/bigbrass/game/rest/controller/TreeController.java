@@ -12,6 +12,7 @@ public class TreeController {
     public ModelAndView tree() {
         ModelAndView mv = new ModelAndView();
         mv.addObject("treeActiveSetting", "active");
+        mv.addObject("pageTitle", "GCL - Tree");
         mv.setViewName("tree");
         return mv;
     }

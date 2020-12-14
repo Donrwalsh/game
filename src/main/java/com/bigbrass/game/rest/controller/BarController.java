@@ -24,6 +24,7 @@ public class BarController {
         ModelAndView mv = new ModelAndView();
         mv.addObject("autoCompletions", autoCompletions);
         mv.addObject("barsActiveSetting", "active");
+        mv.addObject("pageTitle", "GCL - Bars");
         mv.setViewName("bars");
         return mv;
     }

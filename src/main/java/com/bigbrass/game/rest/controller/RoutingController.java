@@ -9,8 +9,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class RoutingController {
 
     @GetMapping("/")
-    public ModelAndView main(Model model) {
+    public ModelAndView home(Model model) {
         ModelAndView mv = new ModelAndView();
+        mv.addObject("pageTitle", "GCL");
         mv.setViewName("home");
         return mv;
     }

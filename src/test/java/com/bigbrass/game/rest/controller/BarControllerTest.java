@@ -60,8 +60,10 @@ public class BarControllerTest {
                 .accept(MediaType.APPLICATION_JSON);
 
         MvcResult result = mockMvc.perform(request)
-                .andExpect(model().size(2))
+                .andExpect(model().size(3))
                 .andExpect(model().attribute("autoCompletions", list))
+                .andExpect(model().attribute("pageTitle", "GCL - Bars"))
+                .andExpect(model().attribute("barsActiveSetting", "active"))
                 .andExpect(status().isOk())
                 .andReturn();
     }
