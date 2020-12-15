@@ -1,9 +1,7 @@
 package com.bigbrass.game.rest.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class TreeNode {
@@ -16,6 +14,11 @@ public class TreeNode {
     private String name;
     private String image;
     private String description;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "node_id", referencedColumnName = "id")
+    private List<TreePrereq> treePrereqs;
+
     public TreeNode() {
 
     }
@@ -75,5 +78,11 @@ public class TreeNode {
         this.description = description;
     }
 
+    public List<TreePrereq> getTreePrereqs() {
+        return treePrereqs;
+    }
 
+    public void setTreePrereqs(List<TreePrereq> treePrereqs) {
+        this.treePrereqs = treePrereqs;
+    }
 }

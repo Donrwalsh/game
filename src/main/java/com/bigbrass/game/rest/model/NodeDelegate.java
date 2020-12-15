@@ -1,5 +1,7 @@
 package com.bigbrass.game.rest.model;
 
+import java.util.List;
+
 public class NodeDelegate {
 
     private TreeNode treeNode;
@@ -30,5 +32,9 @@ public class NodeDelegate {
 
     public String getDescription() {
         return treeNode.getDescription();
+    }
+
+    public List<TreePrereq> treePrereqs() {
+        return treeNode.getTreePrereqs();
     }
 }

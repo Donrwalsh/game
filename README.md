@@ -93,7 +93,7 @@ Milliseconds are awkward to work with, and I don't really need that level of pre
 - Having two windows open at once breaks everything. For example if one page starts a bar and the other page doesn't know about it and that bar is auto, it will just try over and over again to start the bar without ever proceeding. Some sort of re-init would be helpful here.
 
 ### Tree
-- Use pills for different colors of skill trees. No need to do 4-wide, same concepts apply.
-- Get rid of the hover tooltip, just use the same approach as mobile on all screen types.
-- Spacing issue on more claws on larger media breakpoint. Odd, maybe tooltip going away fixes it?
-
+- The lines right now are prototype and need tweaking. They should 'point' in the direction of the node for the side-to-side case.
+- The lines are behind the icons but could be better arranged so they don't overlap at all. Consistency of spacing is required and maybe requires variables to set up correctly?
+- Naturally everything is set up just for green and will need rearrangement to enable multiple colors.
+- Sizing of the bottom section is the same for both screen types and I don't know if that will work. Need some sort of spacing constraints to rely on when dropping more elements into the bottom pane.

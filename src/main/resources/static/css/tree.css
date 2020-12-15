@@ -30,6 +30,7 @@
 
 .node-box {
     display: inline-block;
+    position: relative;
 }
 
 .skill-detail-img {
@@ -69,6 +70,7 @@
     }
     .tier {
         height: 5em;
+        margin-bottom: 3em;
     }
     .skill-detail-pane {
         max-width: 100%;
@@ -81,6 +83,9 @@
     .skill-pane-close {
         top: 5px;
         right: 15px;
+    }
+    .vertical-one-prereq {
+        left: 3em;
     }
 }
 
@@ -100,5 +105,18 @@
     }
     .tier {
         height: 8em;
+        margin-bottom: 5em;
     }
+    .vertical-one-prereq {
+        left: 4.5em;
+    }
+}
+
+.vertical-one-prereq {
+    position: absolute;
+    height: 10em;
+    width: 1em;
+    background-color: forestgreen;
+    top: -7em;
+    z-index: -1;
 }
