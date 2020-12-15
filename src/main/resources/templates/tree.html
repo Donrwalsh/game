@@ -8,26 +8,29 @@
 
     <ul class="nav nav-pills mb-3 mt-3" id="pills-tab" role="tablist">
         <li class="nav-item">
-            <a class="nav-link active" id="pills-3-wide-tab" data-toggle="pill" href="#pills-3-wide" role="tab" aria-controls="pills-3-wide" aria-selected="true">3-Wide</a>
+            <a class="nav-link active" id="pills-green-tab" data-toggle="pill" href="#pills-green" role="tab" aria-controls="pills-green" aria-selected="true">Green</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="pills-4-wide-tab" data-toggle="pill" href="#pills-4-wide" role="tab" aria-controls="pills-4-wide" aria-selected="false">4-Wide</a>
+            <a class="nav-link" id="pills-blue-tab" data-toggle="pill" href="#pills-blue" role="tab" aria-controls="pills-blue" aria-selected="false">Blue</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-red-tab" data-toggle="pill" href="#pills-red" role="tab" aria-controls="pills-red" aria-selected="false">Red</a>
         </li>
     </ul>
     <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-3-wide" role="tabpanel" aria-labelledby="pills-3-wide-tab">
-            <div class="container-3-wide" style="padding-bottom:25vh;">
+        <div class="tab-pane fade show active" id="pills-green" role="tabpanel" aria-labelledby="pills-green-tab">
+            <div class="container-green" style="padding-bottom:25vh;">
                 <th:block th:each="i: ${#numbers.sequence(1, 5)}">
                     <div class="tier mb-3">
                         <th:block th:each="j: ${#numbers.sequence((i*3)-2, (i*3))}">
-                            <div th:if="${not init.?[gridPosition == __${j}__].isEmpty()}" class="node-box">
-                                <img th:id="${j}" class="skill-3-wide"  th:src="@{img/{image}.png(image=${init.?[gridPosition == __${j}__][0].image})}" th:alt="${init.?[gridPosition == __${j}__][0].name}"/>
+                            <div th:if="${not green.?[gridPosition == __${j}__].isEmpty()}" class="node-box">
+                                <img th:id="${j}" class="skill"  th:src="@{img/green_{image}.png(image=${green.?[gridPosition == __${j}__][0].image})}" th:alt="${green.?[gridPosition == __${j}__][0].name}"/>
                                 <div class="tooltip">
-                                    <b><span th:text="${init.?[gridPosition == __${j}__][0].name}">name</span></b><br/>
-                                    <span th:text="${init.?[gridPosition == __${j}__][0].description}">description</span>
+                                    <b><span th:text="${green.?[gridPosition == __${j}__][0].name}">name</span></b><br/>
+                                    <span th:text="${green.?[gridPosition == __${j}__][0].description}">description</span>
                                 </div>
                             </div>
-                            <div th:if="${init.?[gridPosition == __${j}__].isEmpty()}" class="empty-node-box">
+                            <div th:if="${green.?[gridPosition == __${j}__].isEmpty()}" class="empty-node-box">
 
                             </div>
                         </th:block>
@@ -35,9 +38,9 @@
                 </th:block>
             </div>
             <div class="mobile-detail-3-wide">
-                <th:block th:each="item: ${init}">
+                <th:block th:each="item: ${green}">
                     <div th:id="@{mobile-detail-{gridPosition}(gridPosition=${item.gridPosition})}" class="mobile-detail" style="display:none;">
-                        <img class="mobile-skill-detail-img"  th:src="@{img/{image}.png(image=${item.image})}" th:alt="${item.name}"/>
+                        <img class="mobile-skill-detail-img"  th:src="@{img/green_{image}.png(image=${item.image})}" th:alt="${item.name}"/>
                         <b><span th:text="${item.name}">name</span></b><br/>
                         <span th:text="${item.description}">description</span>
                         <span class="mobile-close"></span>
@@ -45,8 +48,11 @@
                 </th:block>
             </div>
         </div>
-        <div class="tab-pane fade" id="pills-4-wide" role="tabpanel" aria-labelledby="pills-4-wide-tab">
-            <p>4-wide</p>
+        <div class="tab-pane fade" id="pills-blue" role="tabpanel" aria-labelledby="pills-blue">
+            <p>Blue</p>
+        </div>
+        <div class="tab-pane fade" id="pills-red" role="tabpanel" aria-labelledby="pills-red">
+            <p>Red</p>
         </div>
     </div>
 

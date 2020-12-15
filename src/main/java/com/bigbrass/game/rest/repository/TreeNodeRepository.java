@@ -8,4 +8,6 @@ import java.util.List;
 public interface TreeNodeRepository extends CrudRepository<TreeNode, Long> {
 
     List<TreeNode> findAll();
+
+    List<TreeNode> findByColor(String color);
 }

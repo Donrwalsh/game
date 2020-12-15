@@ -15,10 +15,10 @@ public class TreeMediation {
     @Autowired
     NodeService nodeService;
 
-    public List<NodeDelegate> generateInit() {
+    public List<NodeDelegate> getGreenNodes() {
         List<NodeDelegate> result = new ArrayList<NodeDelegate>();
 
-        List<TreeNode> treeNodes = nodeService.findAllTreeNodes();
+        List<TreeNode> treeNodes = nodeService.findByColor("green");
 
         treeNodes.forEach((treeNode) -> {
            result.add(new NodeDelegate(treeNode));

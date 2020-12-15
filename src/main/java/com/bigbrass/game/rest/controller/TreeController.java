@@ -18,7 +18,7 @@ public class TreeController {
         ModelAndView mv = new ModelAndView();
         mv.addObject("treeActiveSetting", "active");
         mv.addObject("pageTitle", "GCL - Tree");
-        mv.addObject("init", treeMediation.generateInit());
+        mv.addObject("green", treeMediation.getGreenNodes());
         mv.setViewName("tree");
         return mv;
     }

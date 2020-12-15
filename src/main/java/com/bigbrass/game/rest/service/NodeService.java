@@ -13,7 +13,7 @@ public class NodeService {
     @Autowired
     TreeNodeRepository treeNodeRepository;
 
-    public List<TreeNode> findAllTreeNodes() {
-        return treeNodeRepository.findAll();
+    public List<TreeNode> findByColor(String color) {
+        return treeNodeRepository.findByColor(color);
     }
 }

@@ -93,5 +93,7 @@ Milliseconds are awkward to work with, and I don't really need that level of pre
 - Having two windows open at once breaks everything. For example if one page starts a bar and the other page doesn't know about it and that bar is auto, it will just try over and over again to start the bar without ever proceeding. Some sort of re-init would be helpful here.
 
 ### Tree
-- Use pills for different colors of skill trees. R/B/G 3-wide and then R/B/G 4-wide or something.
-- The setup that I have right now with media query is incomplete because a tablet with a larger screen will get the 'hover' behavior which I don't want.
+- Use pills for different colors of skill trees. No need to do 4-wide, same concepts apply.
+- Get rid of the hover tooltip, just use the same approach as mobile on all screen types.
+- Spacing issue on more claws on larger media breakpoint. Odd, maybe tooltip going away fixes it?
+
