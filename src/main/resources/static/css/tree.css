@@ -1,3 +1,58 @@
+.skill-detail-pane {
+    background-color: darkseagreen;
+    display: none;
+    width: 100%;
+    height: 25vh;
+    position: fixed;
+    bottom: 0px;
+    left: 50%;
+    width: 480px;
+    border-top: .25rem solid darkgreen;
+    border-left: .25rem solid darkgreen;
+    border-right: .25rem solid darkgreen;
+    transform: translateX(-50%);
+}
+
+.skill {
+    display: block;
+}
+
+.tier {
+    text-align: center;
+}
+
+
+
+.empty-node-box {
+    display: inline-block;
+    margin: 0 1em;
+}
+
+.node-box {
+    display: inline-block;
+}
+
+.skill-detail-img {
+    height: 3em;
+    border-radius: .5em;
+}
+
+.skill-detail {
+    display: none;
+    margin: 6px;
+}
+
+.skill-pane-close:before {
+  content: '✕';
+}
+.skill-pane-close {
+  position: absolute;
+  top: .5em;
+  right: 1em;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
 @media only screen and (max-width: 600px) {
     .skill {
         width: 5em;
@@ -15,8 +70,17 @@
     .tier {
         height: 5em;
     }
-    .tooltip {
-        height: 0px;
+    .skill-detail-pane {
+        max-width: 100%;
+        left: 0px;
+        border-left: none;
+        border-right: none;
+        transform: none;
+        width: 100%;
+    }
+    .skill-pane-close {
+        top: 5px;
+        right: 15px;
     }
 }
 
@@ -37,72 +101,4 @@
     .tier {
         height: 8em;
     }
-}
-
-.tier {
-    text-align: center;
-}
-
-.mobile-detail-3-wide {
-    background-color: darkseagreen;
-    display: none;
-    width: 100%;
-    height: 25vh;
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
-    border-top: .25rem solid black;
-}
-
-.empty-node-box {
-    display: inline-block;
-    margin: 0 1em;
-}
-
-.node-box {
-    display: inline-block;
-}
-
-.node-box:hover .tooltip {
-  /* display tooltip on hover */
-  opacity: 1;
-}
-
-.tooltip {
-  overflow: auto;
-  /* hide and position tooltip */
-  width: 450px;
-  left: 50px;
-  top: -10px;
-  background-color: black;
-  color: white;
-  border-radius: 5px;
-  opacity: 0;
-  position: relative;
-  -webkit-transition: opacity 0.5s;
-  -moz-transition: opacity 0.5s;
-  -ms-transition: opacity 0.5s;
-  -o-transition: opacity 0.5s;
-  transition: opacity 0.5s;
-}
-
-.mobile-skill-detail-img {
-    height: 3em;
-    border-radius: .5em;
-}
-
-.mobile-detail {
-    display: none;
-    margin: 6px;
-}
-
-.mobile-close:before {
-  content: '✕';
-}
-.mobile-close {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  cursor: pointer;
-  font-size: 1.5rem;
 }

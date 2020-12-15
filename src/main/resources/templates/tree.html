@@ -19,16 +19,12 @@
     </ul>
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-green" role="tabpanel" aria-labelledby="pills-green-tab">
-            <div class="container-green" style="padding-bottom:25vh;">
+            <div class="container-green">
                 <th:block th:each="i: ${#numbers.sequence(1, 5)}">
                     <div class="tier mb-3">
                         <th:block th:each="j: ${#numbers.sequence((i*3)-2, (i*3))}">
                             <div th:if="${not green.?[gridPosition == __${j}__].isEmpty()}" class="node-box">
-                                <img th:id="${j}" class="skill"  th:src="@{img/green_{image}.png(image=${green.?[gridPosition == __${j}__][0].image})}" th:alt="${green.?[gridPosition == __${j}__][0].name}"/>
-                                <div class="tooltip">
-                                    <b><span th:text="${green.?[gridPosition == __${j}__][0].name}">name</span></b><br/>
-                                    <span th:text="${green.?[gridPosition == __${j}__][0].description}">description</span>
-                                </div>
+                                <img th:id="${j}" class="skill skill-green"  th:src="@{img/green_{image}.png(image=${green.?[gridPosition == __${j}__][0].image})}" th:alt="${green.?[gridPosition == __${j}__][0].name}"/>
                             </div>
                             <div th:if="${green.?[gridPosition == __${j}__].isEmpty()}" class="empty-node-box">
 
@@ -37,13 +33,13 @@
                     </div>
                 </th:block>
             </div>
-            <div class="mobile-detail-3-wide">
+            <div class="skill-detail-pane">
                 <th:block th:each="item: ${green}">
-                    <div th:id="@{mobile-detail-{gridPosition}(gridPosition=${item.gridPosition})}" class="mobile-detail" style="display:none;">
-                        <img class="mobile-skill-detail-img"  th:src="@{img/green_{image}.png(image=${item.image})}" th:alt="${item.name}"/>
+                    <div th:id="@{green-skill-detail-{gridPosition}(gridPosition=${item.gridPosition})}" class="skill-detail">
+                        <img class="skill-detail-img"  th:src="@{img/green_{image}.png(image=${item.image})}" th:alt="${item.name}"/>
                         <b><span th:text="${item.name}">name</span></b><br/>
                         <span th:text="${item.description}">description</span>
-                        <span class="mobile-close"></span>
+                        <span class="skill-pane-close"></span>
                     </div>
                 </th:block>
             </div>

@@ -1,30 +1,21 @@
 $(document).ready(function(){
 
-    var x = window.matchMedia("(max-width: 600px)")
-    x.addEventListener("change", (e) => {
-        if (!e.matches) {
-            $('.mobile-detail-3-wide').css('display', 'none');
-            $('.container-3-wide').css('padding-bottom', '0');
-        }
+    $('.skill-green').click(function() {
+        showNodeDetails($(this));
     });
 
-    $('.skill-3-wide').click(function() {
-        showMobileDetail3Wide(x, $(this));
+   $('.skill-pane-close').click(function() {
+        $('.skill-detail-pane').css('display', 'none');
+        $('.container-green').css('padding-bottom', '0');
+        $('.skill-detail').css('display', 'none');
     });
-
-    $('.mobile-close').click(function() {
-        $('.mobile-detail').css('display', 'none');
-        $('.mobile-detail-3-wide').css('display', 'none');
-        $('.container-3-wide').css('padding-bottom', '0');
-    });
-
 });
 
-function showMobileDetail3Wide(x, button) {
-    if (x.matches) {
-        $('.mobile-detail-3-wide').css('display', 'block');
-        $('.container-3-wide').css('padding-bottom', '25vh');
-        $('.mobile-detail').css('display', 'none');
-        $('#mobile-detail-' + button.attr('id')).css('display', 'block');
-    }
+function showNodeDetails(button) {
+    $('.skill-detail-pane').css('display', 'block');
+    $('.container-green').css('padding-bottom', '25vh');
+    $('.skill-detail').css('display', 'none');
+    $('#green-skill-detail-' + button.attr('id')).css('display', 'block');
 }
+
+
