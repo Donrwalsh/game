@@ -31,6 +31,14 @@ public class TreePrereq {
         this.id = id;
     }
 
+    public String getImage() {
+        return prereq.getImage();
+    }
+
+    public String getName() {
+        return prereq.getName();
+    }
+
     public TreeNode getPrereq() {
         return prereq;
     }

@@ -98,3 +98,4 @@ Milliseconds are awkward to work with, and I don't really need that level of pre
 - Naturally everything is set up just for green and will need rearrangement to enable multiple colors.
 - Sizing of the bottom section is the same for both screen types and I don't know if that will work. Need some sort of spacing constraints to rely on when dropping more elements into the bottom pane.
 - There's a whole lot of manual spacing happening with the prereq bars. How much of this can be tied directly to as few structural variables as possible?
+- Next up is introduce user-specific data.

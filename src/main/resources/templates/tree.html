@@ -53,8 +53,18 @@
                     <div th:id="@{green-skill-detail-{gridPosition}(gridPosition=${item.gridPosition})}" class="skill-detail">
                         <img class="skill-detail-img"  th:src="@{img/green_{image}.png(image=${item.image})}" th:alt="${item.name}"/>
                         <b><span th:text="${item.name}">name</span></b><br/>
-                        <span th:text="${item.description}">description</span>
+                        <div style="height:5em;">
+                            <span th:text="${item.description}">description</span>
+                        </div>
                         <span class="skill-pane-close"></span>
+                        <div th:if="${not item.treePrereqs.isEmpty()}">
+                            <span style="margin-right:1em">Requires:</span>
+                            <th:block th:each="prereq: ${item.treePrereqs}">
+                                <img class="skill-detail-img"  th:src="@{img/green_{image}.png(image=${prereq.image})}" th:alt="${prereq.name}"/>
+                                Lv<span th:text="${prereq.PrereqLevel}"></span>
+                            </th:block>
+                        </div>
+
                     </div>
                 </th:block>
             </div>
