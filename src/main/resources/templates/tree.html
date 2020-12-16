@@ -26,7 +26,19 @@
                             <div th:if="${not green.?[gridPosition == __${j}__].isEmpty()}" class="node-box">
                                 <img th:id="${j}" class="skill skill-green"  th:src="@{img/green_{image}.png(image=${green.?[gridPosition == __${j}__][0].image})}" th:alt="${green.?[gridPosition == __${j}__][0].name}"/>
                                 <th:block th:each="k: ${green.?[gridPosition == __${j}__][0].treePrereqs}">
-                                    <div th:if="${j == k.prereq.gridPosition + 3}" class="vertical-one-prereq"></div>
+                                    <div th:if="${j == k.prereq.gridPosition + 1}" class="prereq-bar side-one"></div>
+                                    <div th:if="${j == k.prereq.gridPosition + 3}" class="prereq-bar vertical-one"></div>
+                                    <div th:if="${j == k.prereq.gridPosition + 6}" class="prereq-bar vertical-two"></div>
+                                    <th:block th:if="${j == k.prereq.gridPosition + 2}">
+                                        <div class="prereq-bar angled-left-one"></div>
+                                        <div class="prereq-bar angled-left-two"></div>
+                                        <div class="prereq-bar angled-left-three"></div>
+                                    </th:block>
+                                    <th:block th:if="${j == k.prereq.gridPosition + 4}">
+                                        <div class="prereq-bar angled-right-one"></div>
+                                        <div class="prereq-bar angled-right-two"></div>
+                                        <div class="prereq-bar angled-right-three"></div>
+                                    </th:block>
                                 </th:block>
                             </div>
                             <div th:if="${green.?[gridPosition == __${j}__].isEmpty()}" class="empty-node-box">

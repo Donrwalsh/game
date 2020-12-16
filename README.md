@@ -97,3 +97,4 @@ Milliseconds are awkward to work with, and I don't really need that level of pre
 - The lines are behind the icons but could be better arranged so they don't overlap at all. Consistency of spacing is required and maybe requires variables to set up correctly?
 - Naturally everything is set up just for green and will need rearrangement to enable multiple colors.
 - Sizing of the bottom section is the same for both screen types and I don't know if that will work. Need some sort of spacing constraints to rely on when dropping more elements into the bottom pane.
+- There's a whole lot of manual spacing happening with the prereq bars. How much of this can be tied directly to as few structural variables as possible?

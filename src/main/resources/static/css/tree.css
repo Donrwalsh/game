@@ -1,3 +1,8 @@
+:root {
+    --prereq-bar-size: 1em;
+    --large-node: 8em;
+}
+
 .skill-detail-pane {
     background-color: darkseagreen;
     display: none;
@@ -84,14 +89,65 @@
         top: 5px;
         right: 15px;
     }
-    .vertical-one-prereq {
-        left: 3em;
+    .angled-left-one {
+        width: calc(var(--prereq-bar-size) / 2);
+        left: 9em;
+        height: 1.75em;
+        top: -3em;
+    }
+    .angled-left-two {
+        width: 5em;
+        left: 4.5em;
+        height: calc(var(--prereq-bar-size) / 2);
+        top: -1.75em;
+    }
+    .angled-left-three {
+        width: calc(var(--prereq-bar-size) / 2);
+        left: 4.5em;
+        height: 1.75em;
+        top: -1.75em;
+    }
+    .angled-right-one {
+        width: calc(var(--prereq-bar-size) / 2);
+        left: -2.5em;
+        height: 1.75em;
+        top: -3em;
+    }
+    .angled-right-two {
+        width: 5em;
+        left: -2.5em;
+        height: calc(var(--prereq-bar-size) / 2);
+        top: -1.75em;
+    }
+    .angled-right-three {
+        width: calc(var(--prereq-bar-size) / 2);
+        left: 2em;
+        height: 1.75em;
+        top: -1.75em;
+    }
+    .side-one {
+        width: 2.25em;
+        left: -1.25em;
+        height: calc(var(--prereq-bar-size) / 2);
+        top: 2.25em;
+    }
+    .vertical-one {
+        left: 3.25em;
+        height: 3em;
+        top: -3em;
+        width: calc(var(--prereq-bar-size) / 2);
+    }
+    .vertical-two {
+        left: 3.25em;
+        height: 11em;
+        top: -11em;
+        width: calc(var(--prereq-bar-size) / 2);
     }
 }
 
 @media only screen and (min-width: 601px) {
     .skill {
-        width: 8em;
+        width: var(--large-node);
         margin: 0 1em;
         border-radius: .5em;
     }
@@ -107,16 +163,64 @@
         height: 8em;
         margin-bottom: 5em;
     }
-    .vertical-one-prereq {
+    .angled-left-one {
+        width: var(--prereq-bar-size);
+        left: 12.5em;
+        height: 2.5em;
+        top: -5em;
+    }
+    .angled-left-two {
+        width: 7em;
+        left: 6.5em;
+        height: var(--prereq-bar-size);
+        top: -3em;
+    }
+    .angled-left-three {
+        width: var(--prereq-bar-size);
+        left: 6.5em;
+        height: 3em;
+        top: -3em;
+    }
+    .angled-right-one {
+        width: var(--prereq-bar-size);
+        left: -3.5em;
+        height: 2.5em;
+        top: -5em;
+    }
+    .angled-right-two {
+        width: 7em;
+        left: -3.5em;
+        height: var(--prereq-bar-size);
+        top: -3em;
+    }
+    .angled-right-three {
+        width: var(--prereq-bar-size);
+        left: 2.5em;
+        height: 3em;
+        top: -3em;
+    }
+    .side-one {
+        width: 2.25em;
+        left: -1.25em;
+        height: var(--prereq-bar-size);
+        top: 3.5em;
+    }
+    .vertical-one {
         left: 4.5em;
+        width: var(--prereq-bar-size);
+        height: 5em;
+        top: -5em;
+    }
+    .vertical-two {
+        left: 4.55em;
+        height: 18em;
+        top: -18em;
+        width: var(--prereq-bar-size);
     }
 }
 
-.vertical-one-prereq {
+.prereq-bar {
     position: absolute;
-    height: 10em;
-    width: 1em;
     background-color: forestgreen;
-    top: -7em;
-    z-index: -1;
 }
+
